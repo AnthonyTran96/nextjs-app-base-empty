@@ -15,9 +15,10 @@ import NavItem from './NavItem';
 
 import { HORIZONTAL_MAX_ITEM } from 'config/app';
 import useConfig from 'hooks/useConfig';
-import { useGetMenuMaster } from 'services/menu';
+import { useSelector } from 'react-redux';
 
 // TYPES
+import { selectMenuMaster } from 'stores/selector/menu';
 import { MenuOrientation } from 'types/config';
 import { NavItemType } from 'types/menu';
 
@@ -30,7 +31,8 @@ const Navigation = () => {
 
   const { menuOrientation } = useConfig();
   // const { menuLoading } = useGetMenu();
-  const { menuMaster } = useGetMenuMaster();
+  // const { menuMaster } = useGetMenuMaster();
+  const menuMaster = useSelector(selectMenuMaster);
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
 
   const [selectedItems, setSelectedItems] = useState<string | undefined>('');

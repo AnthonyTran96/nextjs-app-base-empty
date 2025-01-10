@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 // MATERIAL - UI
 import Box from '@mui/material/Box';
@@ -19,7 +20,9 @@ import Header from './Header';
 
 import { DRAWER_WIDTH } from 'config/app';
 import useConfig from 'hooks/useConfig';
-import { handlerDrawerOpen, useGetMenuMaster } from 'services/menu';
+import { dispatch } from 'stores/@extends';
+import { menuAction } from 'stores/action-slice';
+import { selectMenuMasterLoading } from 'stores/selector/menu';
 
 // TYPES
 import { MenuOrientation } from 'types/config';
@@ -28,7 +31,8 @@ import { MenuOrientation } from 'types/config';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const theme = useTheme();
-  const { menuMasterLoading } = useGetMenuMaster();
+  // const { menuMasterLoading } = useGetMenuMaster();
+  const menuMasterLoading = useSelector(selectMenuMasterLoading);
   const downXL = useMediaQuery(theme.breakpoints.down('xl'));
   const downLG = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -39,7 +43,8 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
   // set media wise responsive drawer
   useEffect(() => {
     if (!miniDrawer) {
-      handlerDrawerOpen(!downXL);
+      // handlerDrawerOpen(!downXL);
+      dispatch(menuAction.handlerDrawerOpen(!downXL));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [downXL]);

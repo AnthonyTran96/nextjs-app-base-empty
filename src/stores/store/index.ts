@@ -1,8 +1,8 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
-import { listenerMiddleware } from 'stores/extends/middleware/listener';
-import { subscribeActionMiddleware } from 'stores/extends/middleware/redux-subscribe-action';
-import storePersist from '../extends/storePersist';
+import { listenerMiddleware } from 'stores/@extends/middleware/listener';
+import { subscribeActionMiddleware } from 'stores/@extends/middleware/redux-subscribe-action';
+import storePersist from '../@extends/storePersist';
 import { allReducer } from './all-reducers';
 
 export const PERSIST_KEY = 'htc_persist_key';
@@ -38,13 +38,6 @@ export const makeStore = () => {
     middleware: (getDefaultMiddleware: any) =>
       getDefaultMiddleware({ serializableCheck: false }).prepend(listenerMiddleware.middleware).concat(middlewares)
   });
-  configureStore({
-    reducer: persistedReducer,
-    devTools: devMode,
-    middleware: (getDefaultMiddleware: any) =>
-      getDefaultMiddleware({ serializableCheck: false }).prepend(listenerMiddleware.middleware).concat(middlewares)
-  });
-
   store.__persistor = persistStore(store);
   return store;
 };

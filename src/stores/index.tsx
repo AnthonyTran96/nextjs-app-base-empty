@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { RXStore } from 'stores/extends';
+import { RXStore } from 'stores/@extends';
 import store from './store';
 
 type PersistGateProps = {

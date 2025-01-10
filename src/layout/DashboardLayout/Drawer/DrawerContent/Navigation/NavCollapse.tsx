@@ -1,4 +1,5 @@
 import { Dispatch, MouseEvent, SetStateAction, useEffect, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // NEXT
 import { usePathname, useRouter } from 'next/navigation';
@@ -24,7 +25,9 @@ import SimpleBar from 'components/@third-party/simple-bar';
 import NavItem from './NavItem';
 
 import useConfig from 'hooks/useConfig';
-import { handlerActiveItem, useGetMenuMaster } from 'services/menu';
+import { dispatch } from 'stores/@extends';
+import { menuAction } from 'stores/action-slice';
+import { selectMenuMaster } from 'stores/selector/menu';
 
 // ASSETS
 import { ArrowDown2, ArrowRight2, ArrowUp2, Copy } from 'iconsax-react';
@@ -73,7 +76,8 @@ interface Props {
 
 const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, setSelectedLevel, selectedLevel }: Props) => {
   const theme = useTheme();
-  const { menuMaster } = useGetMenuMaster();
+  // const { menuMaster } = useGetMenuMaster();
+  const menuMaster = useSelector(selectMenuMaster);
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
 
   const downLG = useMediaQuery(theme.breakpoints.down('lg'));
@@ -200,7 +204,8 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
 
   useEffect(() => {
     if (menu.url === pathname) {
-      handlerActiveItem(menu.id!);
+      // handlerActiveItem(menu.id!);
+      dispatch(menuAction.handlerActiveItem(menu.id!));
       setSelected(menu.id);
       setAnchorEl(null);
       setOpen(true);

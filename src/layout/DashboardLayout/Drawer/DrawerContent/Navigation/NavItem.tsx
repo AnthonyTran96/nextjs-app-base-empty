@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 // NEXT
 import Link from 'next/link';
@@ -17,7 +18,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // PROJECT IMPORTS
 import Dot from 'components/@extended/dot';
 import useConfig from 'hooks/useConfig';
-import { handlerActiveItem, handlerDrawerOpen, handlerHorizontalActiveItem, useGetMenuMaster } from 'services/menu';
+import { dispatch } from 'stores/@extends';
+import { menuAction } from 'stores/action-slice';
+import { selectMenuMaster } from 'stores/selector/menu';
 
 // TYPES
 import { MenuOrientation, ThemeMode } from 'types/config';
@@ -35,7 +38,8 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
   const theme = useTheme();
   const downLG = useMediaQuery(theme.breakpoints.down('lg'));
 
-  const { menuMaster } = useGetMenuMaster();
+  // const { menuMaster } = useGetMenuMaster();
+  const menuMaster = useSelector(selectMenuMaster);
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
   const openItem = menuMaster.openedItem;
 
@@ -54,7 +58,9 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
 
   // active menu item on page load
   useEffect(() => {
-    if (pathname === item.url) handlerActiveItem(item.id!);
+    if (pathname === item.url)
+      // handlerActiveItem(item.id!);
+      dispatch(menuAction.handlerActiveItem(item.id!));
     // eslint-disable-next-line
   }, [pathname]);
 
@@ -114,7 +120,9 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
             })
           }}
           {...(downLG && {
-            onClick: () => handlerDrawerOpen(false)
+            onClick: () =>
+              // handlerDrawerOpen(false)
+              dispatch(menuAction.handlerDrawerOpen(false))
           })}
         >
           {itemIcon && (
@@ -180,7 +188,8 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
           selected={isSelected}
           {...(isParents && {
             onClick: () => {
-              handlerHorizontalActiveItem(item.id!);
+              // handlerHorizontalActiveItem(item.id!);
+              dispatch(menuAction.handlerHorizontalActiveItem(item.id!));
             }
           })}
           sx={{

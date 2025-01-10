@@ -1,4 +1,5 @@
 import { ReactNode, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 // MATERIAL - UI
 import AppBar, { AppBarProps } from '@mui/material/AppBar';
@@ -13,7 +14,9 @@ import HeaderContent from './HeaderContent';
 
 import { DRAWER_WIDTH, MINI_DRAWER_WIDTH } from 'config/app';
 import useConfig from 'hooks/useConfig';
-import { handlerDrawerOpen, useGetMenuMaster } from 'services/menu';
+import { dispatch } from 'stores/@extends';
+import { menuAction } from 'stores/action-slice';
+import { selectMenuMaster } from 'stores/selector/menu';
 
 // ASSETS
 import { HambergerMenu } from 'iconsax-react';
@@ -28,7 +31,8 @@ const Header = () => {
   const downLG = useMediaQuery(theme.breakpoints.down('lg'));
 
   const { menuOrientation } = useConfig();
-  const { menuMaster } = useGetMenuMaster();
+  // const { menuMaster } = useGetMenuMaster();
+  const menuMaster = useSelector(selectMenuMaster);
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
 
   const isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downLG;
@@ -45,7 +49,10 @@ const Header = () => {
       {!isHorizontal ? (
         <IconButton
           aria-label="open drawer"
-          onClick={() => handlerDrawerOpen(!drawerOpen)}
+          onClick={() =>
+            // handlerDrawerOpen(!drawerOpen)
+            dispatch(menuAction.handlerDrawerOpen(!drawerOpen))
+          }
           edge="start"
           color="secondary"
           variant="light"

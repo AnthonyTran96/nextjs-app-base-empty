@@ -11,7 +11,8 @@ const FooterBlock = lazy(() => import('./FooterBlock'));
 
 // PROJECT IMPORTS
 import Loader from 'components/loader';
-import { useGetMenuMaster } from 'services/menu';
+import { useSelector } from 'react-redux';
+import { selectMenuMasterLoading } from 'stores/selector/menu';
 
 // ==============================|| LAYOUTS - STRUCTURE ||============================== //
 
@@ -20,7 +21,8 @@ interface Props {
 }
 
 const SimpleLayout = ({ children }: Props) => {
-  const { menuMasterLoading } = useGetMenuMaster();
+  // const { menuMasterLoading } = useGetMenuMaster();
+  const menuMasterLoading = useSelector(selectMenuMasterLoading);
 
   const pathname = usePathname();
   const layout: string = pathname === 'landing' || '/' ? 'landing' : 'simple';

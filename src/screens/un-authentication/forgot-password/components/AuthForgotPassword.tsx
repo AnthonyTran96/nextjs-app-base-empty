@@ -19,11 +19,11 @@ import * as Yup from 'yup';
 // PROJECT IMPORTS
 import AnimateButton from 'components/@extended/button/AnimateButton';
 import useScriptRef from 'hooks/useScriptRef';
-import { openSnackbar } from 'services/snackbar';
+import { dispatch } from 'stores/@extends';
+import { snackbarAction, SnackbarProps } from 'stores/action-slice/snackbar';
 
 // TYPES
 import { ROUTES } from 'config/routes';
-import { SnackbarProps } from 'model/snackbar';
 
 // ============================|| FIREBASE - FORGOT PASSWORD ||============================ //
 
@@ -44,14 +44,24 @@ const AuthForgotPassword = () => {
         try {
           setStatus({ success: true });
           setSubmitting(false);
-          openSnackbar({
-            open: true,
-            message: 'Check mail for reset password link',
-            variant: 'alert',
-            alert: {
-              color: 'success'
-            }
-          } as SnackbarProps);
+          // openSnackbar({
+          //   open: true,
+          //   message: 'Check mail for reset password link',
+          //   variant: 'alert',
+          //   alert: {
+          //     color: 'success'
+          //   }
+          // } as SnackbarProps);
+          dispatch(
+            snackbarAction.openSnackbar({
+              open: true,
+              message: 'Check mail for reset password link',
+              variant: 'alert',
+              alert: {
+                color: 'success'
+              }
+            } as SnackbarProps)
+          );
           setTimeout(() => {
             router.push(ROUTES.CHECK_MAIL);
           }, 1500);

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { useSelector } from 'react-redux';
 
 // MATERIAL - UI
 import { styled } from '@mui/material/styles';
@@ -8,7 +9,7 @@ import { SnackbarProvider } from 'notistack';
 
 // PROJECT IMPORTS
 import Loader from 'components/loader';
-import { useGetSnackbar } from 'services/snackbar';
+import { selectSnackbar } from 'stores/selector/snackbar';
 
 // ASSETS
 import { CloseCircle, InfoCircle, TickCircle, Warning2 } from 'iconsax-react';
@@ -35,7 +36,8 @@ const StyledSnackbarProvider = styled(SnackbarProvider)(({ theme }) => ({
 // ===========================|| SNACKBAR - NOTISTACK ||=========================== //
 
 const Notistack = ({ children }: { children: ReactNode }) => {
-  const { snackbar } = useGetSnackbar();
+  // const { snackbar } = useGetSnackbar();
+  const snackbar = useSelector(selectSnackbar);
   const iconSX = { marginRight: 8, fontSize: '1.15rem' };
 
   if (snackbar === undefined) return <Loader />;

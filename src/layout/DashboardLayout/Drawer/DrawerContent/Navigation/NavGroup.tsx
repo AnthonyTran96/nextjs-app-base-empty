@@ -26,12 +26,15 @@ import NavCollapse from './NavCollapse';
 import NavItem from './NavItem';
 
 import useConfig from 'hooks/useConfig';
-import { handlerHorizontalActiveItem, useGetMenuMaster } from 'services/menu';
+import { useSelector } from 'react-redux';
+import { dispatch } from 'stores/@extends';
+import { selectMenuMaster } from 'stores/selector/menu';
 
 // ASSETS
 import { More2 } from 'iconsax-react';
 
 // TYPES
+import { menuAction } from 'stores/action-slice';
 import { MenuOrientation, ThemeMode } from 'types/config';
 import { NavItemType } from 'types/menu';
 
@@ -81,7 +84,8 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
   const pathname = usePathname();
 
   const { menuOrientation, menuCaption } = useConfig();
-  const { menuMaster } = useGetMenuMaster();
+  // const { menuMaster } = useGetMenuMaster();
+  const menuMaster = useSelector(selectMenuMaster);
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
   const selectedID = menuMaster.openedHorizontalItem;
 
@@ -111,7 +115,8 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
         checkOpenForParent(ele.children, currentItem.id!);
       }
       if (ele.url === pathname) {
-        handlerHorizontalActiveItem(id);
+        // handlerHorizontalActiveItem(id);
+        dispatch(menuAction.handlerHorizontalActiveItem(id));
       }
     });
   };
@@ -122,7 +127,8 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
         checkOpenForParent(itemCheck.children, currentItem.id!);
       }
       if (itemCheck.url === pathname) {
-        handlerHorizontalActiveItem(currentItem.id!);
+        // handlerHorizontalActiveItem(currentItem.id!);
+        dispatch(menuAction.handlerHorizontalActiveItem(currentItem.id!));
       }
     });
   };

@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+import { useSelector } from 'react-redux';
 
 // MATERIAL - UI
 import Alert from '@mui/material/Alert';
@@ -10,7 +11,9 @@ import MuiSnackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 
 // PROJECT IMPORTS
-import { closeSnackbar, useGetSnackbar } from 'services/snackbar';
+import { dispatch } from 'stores/@extends';
+import { snackbarAction } from 'stores/action-slice';
+import { selectSnackbar } from 'stores/selector/snackbar';
 import IconButton from '../button/IconButton';
 
 // ASSETS
@@ -53,13 +56,15 @@ const animation: KeyedObject = {
 // ==============================|| SNACKBAR ||============================== //
 
 const Snackbar = () => {
-  const { snackbar } = useGetSnackbar();
+  // const { snackbar } = useGetSnackbar();
+  const snackbar = useSelector(selectSnackbar);
 
   const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
-    closeSnackbar();
+    // closeSnackbar();
+    dispatch(snackbarAction.closeSnackbar());
   };
 
   return (

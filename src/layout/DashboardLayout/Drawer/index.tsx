@@ -12,7 +12,10 @@ import DrawerHeader from './DrawerHeader';
 import MiniDrawerStyled from './MiniDrawerStyled';
 
 import { DRAWER_WIDTH } from 'config/app';
-import { handlerDrawerOpen, useGetMenuMaster } from 'services/menu';
+import { useSelector } from 'react-redux';
+import { dispatch } from 'stores/@extends';
+import { menuAction } from 'stores/action-slice';
+import { selectMenuMaster } from 'stores/selector/menu';
 
 // ==============================|| MAIN LAYOUT - DRAWER ||============================== //
 
@@ -24,7 +27,8 @@ const MainDrawer = ({ window }: Props) => {
   const theme = useTheme();
   const downLG = useMediaQuery(theme.breakpoints.down('lg'));
 
-  const { menuMaster } = useGetMenuMaster();
+  // const { menuMaster } = useGetMenuMaster();
+  const menuMaster = useSelector(selectMenuMaster);
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
 
   // responsive drawer container
@@ -46,7 +50,10 @@ const MainDrawer = ({ window }: Props) => {
           container={container}
           variant="temporary"
           open={drawerOpen}
-          onClose={() => handlerDrawerOpen(!drawerOpen)}
+          onClose={() =>
+            // handlerDrawerOpen(!drawerOpen)
+            dispatch(menuAction.handlerDrawerOpen(!drawerOpen))
+          }
           ModalProps={{ keepMounted: true }}
           sx={{
             display: { xs: 'block', lg: 'none' },
