@@ -1,5 +1,6 @@
 // PROJECT IMPORTS
-import UnderConstructionPage from 'screens/@common/maintenance/under-construction';
+
+import UnderConstructionPage from '@common-screens/maintenance/under-construction';
 
 // ==============================|| UNDER CONSTRUCTION ||============================== //
 

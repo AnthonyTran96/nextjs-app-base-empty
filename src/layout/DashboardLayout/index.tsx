@@ -11,18 +11,17 @@ import Toolbar from '@mui/material/Toolbar';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 // PROJECT IMPORTS
+import { dispatch } from '@redux-common';
+import { selectMenuMasterLoading } from '@redux-selector/menu';
+import { menuAction } from '@redux-slice';
 import Breadcrumbs from 'components/@extended/breadcrumbs';
 import Loader from 'components/loader';
+import { DRAWER_WIDTH } from 'config/app';
+import useConfig from 'hooks/useConfig';
 import Drawer from './Drawer';
 import HorizontalBar from './Drawer/HorizontalBar';
 import Footer from './Footer';
 import Header from './Header';
-
-import { DRAWER_WIDTH } from 'config/app';
-import useConfig from 'hooks/useConfig';
-import { dispatch } from 'stores/@extends';
-import { menuAction } from 'stores/action-slice';
-import { selectMenuMasterLoading } from 'stores/selector/menu';
 
 // TYPES
 import { MenuOrientation } from 'types/config';

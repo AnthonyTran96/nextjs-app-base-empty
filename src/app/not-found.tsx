@@ -1,4 +1,4 @@
-import Error404Page from 'screens/@common/maintenance/error404';
+import Error404Page from '@common-screens/maintenance/error404';
 
 // ==============================|| ERROR 404 - MAIN ||============================== //
 

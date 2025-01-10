@@ -27,7 +27,22 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@constant": ["./utils/constant/index"],
+      "@store": ["./stores/store/index"],
+      "@store/*": ["./stores/store/*"],
+      "@redux-slice": ["./stores/action-slice/index.ts"],
+      "@redux-selector/*": ["./stores/selector/*"],
+      "@redux-action-type/*": ["./stores/action-type/*"],
+      "@redux-common": ["./stores/@extends/index"],
+      "@listener": ["./stores/@extends/middleware/listener.ts"],
+      "@component-extended": ["./components/@extended/index"],
+      "@component-extended/*": ["./components/@extended/*"],
+      "@component-third-party": ["./components/@third-party/index"],
+      "@component-third-party/*": ["./components/@third-party/*"],
+      "@common-screens/*": ["./screens/@common/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

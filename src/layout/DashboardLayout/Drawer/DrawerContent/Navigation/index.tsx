@@ -13,12 +13,12 @@ import menuItem from 'config/menu-items';
 import NavGroup from './NavGroup';
 import NavItem from './NavItem';
 
+import { selectMenuMaster } from '@redux-selector/menu';
 import { HORIZONTAL_MAX_ITEM } from 'config/app';
 import useConfig from 'hooks/useConfig';
 import { useSelector } from 'react-redux';
 
 // TYPES
-import { selectMenuMaster } from 'stores/selector/menu';
 import { MenuOrientation } from 'types/config';
 import { NavItemType } from 'types/menu';
 

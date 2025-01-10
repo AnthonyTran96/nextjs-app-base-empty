@@ -7,15 +7,14 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 // PROJECT IMPORTS
+import { dispatch } from '@redux-common';
+import { selectMenuMaster } from '@redux-selector/menu';
+import { menuAction } from '@redux-slice';
+import { DRAWER_WIDTH } from 'config/app';
+import { useSelector } from 'react-redux';
 import DrawerContent from './DrawerContent';
 import DrawerHeader from './DrawerHeader';
 import MiniDrawerStyled from './MiniDrawerStyled';
-
-import { DRAWER_WIDTH } from 'config/app';
-import { useSelector } from 'react-redux';
-import { dispatch } from 'stores/@extends';
-import { menuAction } from 'stores/action-slice';
-import { selectMenuMaster } from 'stores/selector/menu';
 
 // ==============================|| MAIN LAYOUT - DRAWER ||============================== //
 

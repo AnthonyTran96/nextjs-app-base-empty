@@ -17,10 +17,10 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 // PROJECT IMPORTS
+import { dispatch } from '@redux-common';
+import { snackbarAction, SnackbarProps } from '@redux-slice';
 import AnimateButton from 'components/@extended/button/AnimateButton';
 import useScriptRef from 'hooks/useScriptRef';
-import { dispatch } from 'stores/@extends';
-import { snackbarAction, SnackbarProps } from 'stores/action-slice/snackbar';
 
 // TYPES
 import { ROUTES } from 'config/routes';

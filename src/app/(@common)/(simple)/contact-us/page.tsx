@@ -1,5 +1,6 @@
 // PROJECT IMPORTS
-import ContactUSPage from 'screens/@common/simple/contact-us';
+
+import ContactUSPage from '@common-screens/simple/contact-us';
 
 // ==============================|| CONTACT US - MAIN ||============================== //
 

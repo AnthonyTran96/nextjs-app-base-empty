@@ -1,10 +1,10 @@
+import { RootState } from '@store/all-reducers';
 import { createRef, forwardRef, useImperativeHandle } from 'react';
 
 import isEqual from 'react-fast-compare';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createSelectorCreator, defaultMemoize } from 'reselect';
-import { RootState } from 'stores/store/all-reducers';
 
 type ActionBase<T = any> = {
   type: string;

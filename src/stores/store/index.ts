@@ -1,6 +1,7 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
-import { listenerMiddleware } from 'stores/@extends/middleware/listener';
+
+import { listenerMiddleware } from '@listener';
 import { subscribeActionMiddleware } from 'stores/@extends/middleware/redux-subscribe-action';
 import storePersist from '../@extends/storePersist';
 import { allReducer } from './all-reducers';

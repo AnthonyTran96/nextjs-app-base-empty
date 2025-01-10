@@ -1,6 +1,6 @@
 // PROJECT IMPORTS
 
-import ComingSoonPage from 'screens/@common/maintenance/comingSoon';
+import ComingSoonPage from '@common-screens/maintenance/comingSoon';
 
 // ==============================|| COMING SOON ||============================== //
 

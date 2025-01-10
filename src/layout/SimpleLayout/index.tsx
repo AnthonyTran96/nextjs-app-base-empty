@@ -10,9 +10,9 @@ const Header = lazy(() => import('./Header'));
 const FooterBlock = lazy(() => import('./FooterBlock'));
 
 // PROJECT IMPORTS
+import { selectMenuMasterLoading } from '@redux-selector/menu';
 import Loader from 'components/loader';
 import { useSelector } from 'react-redux';
-import { selectMenuMasterLoading } from 'stores/selector/menu';
 
 // ==============================|| LAYOUTS - STRUCTURE ||============================== //
 

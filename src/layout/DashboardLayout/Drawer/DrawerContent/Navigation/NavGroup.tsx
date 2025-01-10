@@ -25,16 +25,16 @@ import SimpleBar from 'components/@third-party/simple-bar';
 import NavCollapse from './NavCollapse';
 import NavItem from './NavItem';
 
+import { dispatch } from '@redux-common';
+import { selectMenuMaster } from '@redux-selector/menu';
+import { menuAction } from '@redux-slice';
 import useConfig from 'hooks/useConfig';
 import { useSelector } from 'react-redux';
-import { dispatch } from 'stores/@extends';
-import { selectMenuMaster } from 'stores/selector/menu';
 
 // ASSETS
 import { More2 } from 'iconsax-react';
 
 // TYPES
-import { menuAction } from 'stores/action-slice';
 import { MenuOrientation, ThemeMode } from 'types/config';
 import { NavItemType } from 'types/menu';
 

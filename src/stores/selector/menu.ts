@@ -1,5 +1,5 @@
-import { createDeepEqualSelector } from 'stores/@extends';
-import { RootState } from 'stores/store/all-reducers';
+import { createDeepEqualSelector } from '@redux-common';
+import { RootState } from '@store/all-reducers';
 
 export const selectMenuMasterLoading = createDeepEqualSelector(
   (state: RootState) => state?.menu,

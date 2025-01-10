@@ -1,6 +1,6 @@
 // PROJECT IMPORTS
 
-import Error500Page from 'screens/@common/maintenance/error500';
+import Error500Page from '@common-screens/maintenance/error500';
 
 // ==============================|| ERROR 500 ||============================== //
 

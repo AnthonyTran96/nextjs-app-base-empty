@@ -11,9 +11,9 @@ import MuiSnackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 
 // PROJECT IMPORTS
-import { dispatch } from 'stores/@extends';
-import { snackbarAction } from 'stores/action-slice';
-import { selectSnackbar } from 'stores/selector/snackbar';
+import { dispatch } from '@redux-common';
+import { selectSnackbar } from '@redux-selector/snackbar';
+import { snackbarAction } from '@redux-slice';
 import IconButton from '../button/IconButton';
 
 // ASSETS

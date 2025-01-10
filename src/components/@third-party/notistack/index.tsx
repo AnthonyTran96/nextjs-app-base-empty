@@ -8,8 +8,8 @@ import { styled } from '@mui/material/styles';
 import { SnackbarProvider } from 'notistack';
 
 // PROJECT IMPORTS
+import { selectSnackbar } from '@redux-selector/snackbar';
 import Loader from 'components/loader';
-import { selectSnackbar } from 'stores/selector/snackbar';
 
 // ASSETS
 import { CloseCircle, InfoCircle, TickCircle, Warning2 } from 'iconsax-react';

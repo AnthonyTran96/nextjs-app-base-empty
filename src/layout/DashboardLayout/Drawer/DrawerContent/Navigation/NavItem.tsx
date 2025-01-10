@@ -16,11 +16,11 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 // PROJECT IMPORTS
+import { dispatch } from '@redux-common';
+import { selectMenuMaster } from '@redux-selector/menu';
+import { menuAction } from '@redux-slice';
 import Dot from 'components/@extended/dot';
 import useConfig from 'hooks/useConfig';
-import { dispatch } from 'stores/@extends';
-import { menuAction } from 'stores/action-slice';
-import { selectMenuMaster } from 'stores/selector/menu';
 
 // TYPES
 import { MenuOrientation, ThemeMode } from 'types/config';
