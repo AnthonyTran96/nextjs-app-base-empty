@@ -7,8 +7,8 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 // PROJECT IMPORTS
+import { AuthWrapper } from '@unauth-common/components';
 import { ROUTES } from 'config/routes';
-import AuthWrapper from '../@common/components/AuthWrapper';
 import AuthRegister from './components/AuthRegister';
 
 // ================================|| REGISTER ||================================ //

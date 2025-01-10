@@ -8,9 +8,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 // PROJECT IMPORTS
+import { AuthWrapper } from '@unauth-common/components';
 import AnimateButton from 'components/@extended/button/AnimateButton';
 import { ROUTES } from 'config/routes';
-import AuthWrapper from '../@common/components/AuthWrapper';
 
 // ================================|| CHECK MAIL ||================================ //
 
