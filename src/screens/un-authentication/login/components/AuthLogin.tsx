@@ -1,6 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { SyntheticEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // NEXT
 import Link from 'next/link';
@@ -26,26 +28,49 @@ import * as Yup from 'yup';
 import AnimateButton from 'components/@extended/button/AnimateButton';
 import IconButton from 'components/@extended/button/IconButton';
 
+import { LOGIN } from '@redux-action-type/auth';
+import { dispatch } from '@redux-common';
+import { selectLoginLoading } from '@redux-selector/auth';
+import { snackbarActions, SnackbarProps } from '@redux-slice';
+import { ROUTES } from 'config/routes';
+import { LoginParams, LoginResult } from 'model/auth';
+
 // ASSETS
 import { Eye, EyeSlash } from 'iconsax-react';
-import { useRouter } from 'next/navigation';
-
-import { ROUTES } from 'config/routes';
+import { DebugUtils } from 'utils/debug-utils';
 
 // ============================|| JWT - LOGIN ||============================ //
 
 const AuthLogin = ({ providers, csrfToken }: any) => {
   const router = useRouter();
-  // const scriptedRef = useScriptRef();
   const [checked, setChecked] = useState(false);
-  // const { data: session } = useSession();
   const [showPassword, setShowPassword] = useState(false);
+  const loginLoading = useSelector(selectLoginLoading);
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   const handleMouseDownPassword = (event: SyntheticEvent) => {
     event.preventDefault();
+  };
+
+  const onLoginSuccess = (res: LoginResult) => {
+    DebugUtils.logS(res);
+    router.push(ROUTES.SAMPLE_PAGE);
+  };
+
+  const onLoginFailed = () => {
+    dispatch(
+      snackbarActions.openSnackbar({
+        open: true,
+        message: 'Login failed!',
+        variant: 'alert',
+        alert: {
+          color: 'error'
+        }
+      } as SnackbarProps)
+    );
   };
 
   return (
@@ -60,21 +85,14 @@ const AuthLogin = ({ providers, csrfToken }: any) => {
         password: Yup.string().max(255).required('Password is required')
       })}
       onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-        // try {
-        //   signIn('login', { redirect: false, email: values.email, password: values.password });
-        //   if (scriptedRef.current) {
-        //     setStatus({ success: true });
-        //     setSubmitting(false);
-        //     preload('api/menu/dashboard', fetcher); // load menu on login success
-        //   }
-        // } catch (err: any) {
-        //   if (scriptedRef.current) {
-        //     setStatus({ success: false });
-        //     setErrors({ submit: err.message });
-        //     setSubmitting(false);
-        //   }
-        // }
-        router.push(ROUTES.SAMPLE_PAGE);
+        const body: LoginParams = {
+          credential: values.email,
+          password: values.password
+        };
+        dispatch({
+          type: LOGIN,
+          payload: { body, onSuccess: onLoginSuccess, onFailed: onLoginFailed }
+        });
       }}
     >
       {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
@@ -162,7 +180,7 @@ const AuthLogin = ({ providers, csrfToken }: any) => {
             )}
             <Grid item xs={12}>
               <AnimateButton>
-                <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                <Button disableElevation disabled={loginLoading} fullWidth size="large" type="submit" variant="contained" color="primary">
                   Login
                 </Button>
               </AnimateButton>

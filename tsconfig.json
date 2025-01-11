@@ -43,7 +43,8 @@
       "@component-third-party/*": ["./components/@third-party/*"],
       "@common-screens/*": ["./screens/@common/*"],
       "@auth-common/*": ["./screens/authentication/@common/*"],
-      "@unauth-common/*": ["./screens/un-authentication/@common/*"]
+      "@unauth-common/*": ["./screens/un-authentication/@common/*"],
+      "@app-services": ["./services/networking/app-services.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

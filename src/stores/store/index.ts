@@ -1,31 +1,32 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 
-import { listenerMiddleware } from '@listener';
 import { subscribeActionMiddleware } from 'stores/@extends/middleware/redux-subscribe-action';
+import { SLICE_NAME } from 'stores/types';
 import storePersist from '../@extends/storePersist';
+import { listenerMiddleware } from '../listener';
 import { allReducer } from './all-reducers';
 
 export const PERSIST_KEY = 'htc_persist_key';
 
-const devMode = process.env.ENV !== 'production';
+const devMode = process.env.NODE_ENV !== 'production';
 
-const makeConfiguredStore = () =>
-  configureStore({
-    reducer: allReducer,
-    devTools: true
-  });
+// const makeConfiguredStore = () =>
+//   configureStore({
+//     reducer: allReducer,
+//     devTools: true
+//   });
 
 export const makeStore = () => {
-  const isServer = typeof window === 'undefined';
+  // const isServer = typeof window === 'undefined';
 
-  if (isServer) {
-    return makeConfiguredStore();
-  }
+  // if (isServer) {
+  //   return makeConfiguredStore();
+  // }
 
   const persistConfig = {
     key: PERSIST_KEY,
-    whitelist: ['auth'],
+    whitelist: [SLICE_NAME.AUTH],
     storage: storePersist
   };
 

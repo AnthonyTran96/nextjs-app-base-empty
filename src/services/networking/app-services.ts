@@ -1,20 +1,23 @@
+import { LOGOUT } from '@redux-action-type/auth';
+import { dispatch, getState } from '@redux-common';
 import axios, { AxiosRequestConfig } from 'axios';
 import { ENVConfig } from 'config/env';
 import { ROUTES } from 'config/routes';
+import { SLICE_NAME } from 'stores/types';
 
-const axiosServices = axios.create({ baseURL: ENVConfig.API_URL });
+const appServices = axios.create({ baseURL: ENVConfig.API_URL });
 
-// ==============================|| AXIOS - FOR MOCK SERVICES ||============================== //
+// ==============================|| AXIOS - FOR APP SERVICES ||============================== //
 
 /**
  * Request interceptor to add Authorization token to request
  */
-axiosServices.interceptors.request.use(
+appServices.interceptors.request.use(
   async (config) => {
-    // const session = await getSession();
-    // if (session?.token.accessToken) {
-    //   config.headers['Authorization'] = `Bearer ${session?.token.accessToken}`;
-    // }
+    const { token } = getState(SLICE_NAME.AUTH);
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {
@@ -22,22 +25,23 @@ axiosServices.interceptors.request.use(
   }
 );
 
-axiosServices.interceptors.response.use(
+appServices.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.status === 401 && !window.location.href.includes(ROUTES.LOGIN)) {
+    if ([401, 403].includes(error.response.status) && !window.location.href.includes(ROUTES.LOGIN)) {
+      dispatch({ type: LOGOUT });
       window.location.pathname = ROUTES.LOGIN;
     }
     return Promise.reject((error.response && error.response.data) || 'Wrong Services');
   }
 );
 
-export default axiosServices;
+export default appServices;
 
 export const fetcher = async (args: string | [string, AxiosRequestConfig]) => {
   const [url, config] = Array.isArray(args) ? args : [args];
 
-  const res = await axiosServices.get(url, { ...config });
+  const res = await appServices.get(url, { ...config });
 
   return res.data;
 };
@@ -45,7 +49,7 @@ export const fetcher = async (args: string | [string, AxiosRequestConfig]) => {
 export const fetcherPost = async (args: string | [string, AxiosRequestConfig]) => {
   const [url, config] = Array.isArray(args) ? args : [args];
 
-  const res = await axiosServices.post(url, { ...config });
+  const res = await appServices.post(url, { ...config });
 
   return res.data;
 };

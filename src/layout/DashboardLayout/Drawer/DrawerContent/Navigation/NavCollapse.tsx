@@ -21,7 +21,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // PROJECT IMPORTS
 import { dispatch } from '@redux-common';
 import { selectMenuMaster } from '@redux-selector/menu';
-import { menuAction } from '@redux-slice';
+import { menuActions } from '@redux-slice';
 import Dot from 'components/@extended/dot';
 import Transitions from 'components/@extended/transitions';
 import SimpleBar from 'components/@third-party/simple-bar';
@@ -204,7 +204,7 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
   useEffect(() => {
     if (menu.url === pathname) {
       // handlerActiveItem(menu.id!);
-      dispatch(menuAction.handlerActiveItem(menu.id!));
+      dispatch(menuActions.handlerActiveItem(menu.id!));
       setSelected(menu.id);
       setAnchorEl(null);
       setOpen(true);

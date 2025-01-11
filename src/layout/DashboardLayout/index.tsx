@@ -13,7 +13,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // PROJECT IMPORTS
 import { dispatch } from '@redux-common';
 import { selectMenuMasterLoading } from '@redux-selector/menu';
-import { menuAction } from '@redux-slice';
+import { menuActions } from '@redux-slice';
 import Breadcrumbs from 'components/@extended/breadcrumbs';
 import Loader from 'components/loader';
 import { DRAWER_WIDTH } from 'config/app';
@@ -43,7 +43,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (!miniDrawer) {
       // handlerDrawerOpen(!downXL);
-      dispatch(menuAction.handlerDrawerOpen(!downXL));
+      dispatch(menuActions.handlerDrawerOpen(!downXL));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [downXL]);

@@ -13,7 +13,7 @@ import Stack from '@mui/material/Stack';
 // PROJECT IMPORTS
 import { dispatch } from '@redux-common';
 import { selectSnackbar } from '@redux-selector/snackbar';
-import { snackbarAction } from '@redux-slice';
+import { snackbarActions } from '@redux-slice';
 import IconButton from '../button/IconButton';
 
 // ASSETS
@@ -64,7 +64,7 @@ const Snackbar = () => {
       return;
     }
     // closeSnackbar();
-    dispatch(snackbarAction.closeSnackbar());
+    dispatch(snackbarActions.closeSnackbar());
   };
 
   return (

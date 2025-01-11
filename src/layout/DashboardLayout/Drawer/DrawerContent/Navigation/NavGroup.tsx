@@ -27,7 +27,7 @@ import NavItem from './NavItem';
 
 import { dispatch } from '@redux-common';
 import { selectMenuMaster } from '@redux-selector/menu';
-import { menuAction } from '@redux-slice';
+import { menuActions } from '@redux-slice';
 import useConfig from 'hooks/useConfig';
 import { useSelector } from 'react-redux';
 
@@ -116,7 +116,7 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
       }
       if (ele.url === pathname) {
         // handlerHorizontalActiveItem(id);
-        dispatch(menuAction.handlerHorizontalActiveItem(id));
+        dispatch(menuActions.handlerHorizontalActiveItem(id));
       }
     });
   };
@@ -128,7 +128,7 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
       }
       if (itemCheck.url === pathname) {
         // handlerHorizontalActiveItem(currentItem.id!);
-        dispatch(menuAction.handlerHorizontalActiveItem(currentItem.id!));
+        dispatch(menuActions.handlerHorizontalActiveItem(currentItem.id!));
       }
     });
   };

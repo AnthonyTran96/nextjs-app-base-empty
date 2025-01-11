@@ -17,7 +17,7 @@ export interface SnackbarProps {
   iconVariant: string;
 }
 
-const initialState: SnackbarProps = {
+export const initialSnackbar: SnackbarProps = {
   action: false,
   open: false,
   message: 'Note archived',
@@ -40,24 +40,24 @@ const initialState: SnackbarProps = {
 
 const snackbarSlice = createSlice({
   name: SLICE_NAME.SNACKBAR,
-  initialState,
+  initialState: initialSnackbar,
   reducers: {
-    reset: () => initialState,
+    reset: () => initialSnackbar,
     openSnackbar: (state, { payload }: PayloadAction<SnackbarProps>) => {
       const { action, open, message, anchorOrigin, variant, alert, transition, close, actionButton } = payload;
       Object.assign(state, {
-        action: action || initialState.action,
-        open: open || initialState.open,
-        message: message || initialState.message,
-        anchorOrigin: anchorOrigin || initialState.anchorOrigin,
-        variant: variant || initialState.variant,
+        action: action || initialSnackbar.action,
+        open: open || initialSnackbar.open,
+        message: message || initialSnackbar.message,
+        anchorOrigin: anchorOrigin || initialSnackbar.anchorOrigin,
+        variant: variant || initialSnackbar.variant,
         alert: {
-          color: alert?.color || initialState.alert.color,
-          variant: alert?.variant || initialState.alert.variant
+          color: alert?.color || initialSnackbar.alert.color,
+          variant: alert?.variant || initialSnackbar.alert.variant
         },
-        transition: transition || initialState.transition,
-        close: close || initialState.close,
-        actionButton: actionButton || initialState.actionButton
+        transition: transition || initialSnackbar.transition,
+        close: close || initialSnackbar.close,
+        actionButton: actionButton || initialSnackbar.actionButton
       });
     },
     closeSnackbar: (state) => {
@@ -75,7 +75,7 @@ const snackbarSlice = createSlice({
   }
 });
 
-export const snackbarAction = {
+export const snackbarActions = {
   ...snackbarSlice.actions
 };
 

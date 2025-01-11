@@ -18,7 +18,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // PROJECT IMPORTS
 import { dispatch } from '@redux-common';
 import { selectMenuMaster } from '@redux-selector/menu';
-import { menuAction } from '@redux-slice';
+import { menuActions } from '@redux-slice';
 import Dot from 'components/@extended/dot';
 import useConfig from 'hooks/useConfig';
 
@@ -60,7 +60,7 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
   useEffect(() => {
     if (pathname === item.url)
       // handlerActiveItem(item.id!);
-      dispatch(menuAction.handlerActiveItem(item.id!));
+      dispatch(menuActions.handlerActiveItem(item.id!));
     // eslint-disable-next-line
   }, [pathname]);
 
@@ -122,7 +122,7 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
           {...(downLG && {
             onClick: () =>
               // handlerDrawerOpen(false)
-              dispatch(menuAction.handlerDrawerOpen(false))
+              dispatch(menuActions.handlerDrawerOpen(false))
           })}
         >
           {itemIcon && (
@@ -189,7 +189,7 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
           {...(isParents && {
             onClick: () => {
               // handlerHorizontalActiveItem(item.id!);
-              dispatch(menuAction.handlerHorizontalActiveItem(item.id!));
+              dispatch(menuActions.handlerHorizontalActiveItem(item.id!));
             }
           })}
           sx={{

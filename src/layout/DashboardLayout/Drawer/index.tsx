@@ -9,7 +9,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // PROJECT IMPORTS
 import { dispatch } from '@redux-common';
 import { selectMenuMaster } from '@redux-selector/menu';
-import { menuAction } from '@redux-slice';
+import { menuActions } from '@redux-slice';
 import { DRAWER_WIDTH } from 'config/app';
 import { useSelector } from 'react-redux';
 import DrawerContent from './DrawerContent';
@@ -51,7 +51,7 @@ const MainDrawer = ({ window }: Props) => {
           open={drawerOpen}
           onClose={() =>
             // handlerDrawerOpen(!drawerOpen)
-            dispatch(menuAction.handlerDrawerOpen(!drawerOpen))
+            dispatch(menuActions.handlerDrawerOpen(!drawerOpen))
           }
           ModalProps={{ keepMounted: true }}
           sx={{

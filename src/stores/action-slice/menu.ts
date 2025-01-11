@@ -7,7 +7,7 @@ export interface MenuState {
   menuMasterLoading: boolean;
 }
 
-const initialState: MenuState = {
+export const initialMenu: MenuState = {
   menuMaster: {
     openedItem: 'dashboard',
     openedComponent: 'buttons',
@@ -20,9 +20,9 @@ const initialState: MenuState = {
 
 const menuSlice = createSlice({
   name: SLICE_NAME.MENU,
-  initialState,
+  initialState: initialMenu,
   reducers: {
-    reset: () => initialState,
+    reset: () => initialMenu,
     startLoadingMenuMaster: (state) => {
       state.menuMasterLoading = true;
     },
@@ -47,7 +47,7 @@ const menuSlice = createSlice({
   }
 });
 
-export const menuAction = {
+export const menuActions = {
   ...menuSlice.actions
 };
 

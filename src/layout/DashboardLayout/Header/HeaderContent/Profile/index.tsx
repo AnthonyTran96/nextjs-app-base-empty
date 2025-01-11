@@ -19,6 +19,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
 // PROJECT IMPORTS
+import { dispatch } from '@redux-common';
 import Avatar from 'components/@extended/avatar';
 import IconButton from 'components/@extended/button/IconButton';
 import Transitions from 'components/@extended/transitions';
@@ -31,6 +32,7 @@ import SettingTab from './SettingTab';
 const avatar1 = '/assets/images/users/avatar-6.png';
 
 // TYPES
+import { LOGOUT } from '@redux-action-type/auth';
 import { ROUTES } from 'config/routes';
 import { ThemeMode } from 'types/config';
 
@@ -74,7 +76,7 @@ const ProfilePage = () => {
 
   const handleLogout = async () => {
     try {
-      // signOut({ redirect: false });
+      dispatch({ type: LOGOUT });
       router.push(ROUTES.LOGIN);
     } catch (err) {}
   };

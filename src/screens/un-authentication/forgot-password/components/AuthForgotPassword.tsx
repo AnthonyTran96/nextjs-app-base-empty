@@ -18,7 +18,7 @@ import * as Yup from 'yup';
 
 // PROJECT IMPORTS
 import { dispatch } from '@redux-common';
-import { snackbarAction, SnackbarProps } from '@redux-slice';
+import { snackbarActions, SnackbarProps } from '@redux-slice';
 import AnimateButton from 'components/@extended/button/AnimateButton';
 import useScriptRef from 'hooks/useScriptRef';
 
@@ -53,7 +53,7 @@ const AuthForgotPassword = () => {
           //   }
           // } as SnackbarProps);
           dispatch(
-            snackbarAction.openSnackbar({
+            snackbarActions.openSnackbar({
               open: true,
               message: 'Check mail for reset password link',
               variant: 'alert',

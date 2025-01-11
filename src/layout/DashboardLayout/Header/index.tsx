@@ -14,7 +14,7 @@ import HeaderContent from './HeaderContent';
 
 import { dispatch } from '@redux-common';
 import { selectMenuMaster } from '@redux-selector/menu';
-import { menuAction } from '@redux-slice';
+import { menuActions } from '@redux-slice';
 import { DRAWER_WIDTH, MINI_DRAWER_WIDTH } from 'config/app';
 import useConfig from 'hooks/useConfig';
 
@@ -51,7 +51,7 @@ const Header = () => {
           aria-label="open drawer"
           onClick={() =>
             // handlerDrawerOpen(!drawerOpen)
-            dispatch(menuAction.handlerDrawerOpen(!drawerOpen))
+            dispatch(menuActions.handlerDrawerOpen(!drawerOpen))
           }
           edge="start"
           color="secondary"

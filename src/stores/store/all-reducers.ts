@@ -1,7 +1,8 @@
-import { menuReducer, snackbarReducer } from '@redux-slice';
+import { authReducer, menuReducer, snackbarReducer } from '@redux-slice';
 import { combineReducers } from '@reduxjs/toolkit';
 
 export const allReducer = combineReducers({
+  auth: authReducer,
   menu: menuReducer,
   snackbar: snackbarReducer
 });
