@@ -26,6 +26,13 @@ takeLatestListeners({
   actionCreator: authActions.logout,
   effect: async (_, listenerApi) => {
     authServices.logout();
+    listenerApi.dispatch(authActions.clearStore());
+  }
+});
+
+takeLatestListeners({
+  actionCreator: authActions.clearStore,
+  effect: async (_, listenerApi) => {
     listenerApi.dispatch(authActions.reset());
     listenerApi.dispatch(menuActions.reset());
     listenerApi.dispatch(snackbarActions.reset());

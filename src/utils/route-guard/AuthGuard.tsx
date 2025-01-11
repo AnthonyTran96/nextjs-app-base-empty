@@ -4,7 +4,7 @@ import { selectToken } from '@redux-selector/auth';
 import { Loader } from 'components';
 import { ROUTES } from 'config/routes';
 import { useRouter } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 // ==============================|| AUTH GUARD ||============================== //
@@ -34,10 +34,12 @@ const AuthGuard = ({ children }: GuardProps) => {
 
   // if (status == 'loading' || !session?.user) return <Loader />;
 
-  if (!token) {
-    router.push(ROUTES.LOGIN);
-    return <Loader />;
-  }
+  useEffect(() => {
+    if (!token) router.push(ROUTES.LOGIN);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
+  if (!token) return <Loader />;
 
   return <>{children}</>;
 };

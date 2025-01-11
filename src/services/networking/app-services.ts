@@ -1,4 +1,4 @@
-import { LOGOUT } from '@redux-action-type/auth';
+import { CLEAR_STORE } from '@redux-action-type/auth';
 import { dispatch, getState } from '@redux-common';
 import axios, { AxiosRequestConfig } from 'axios';
 import { ENVConfig } from 'config/env';
@@ -32,8 +32,8 @@ appServices.interceptors.response.use(
       [401, 403].includes(error.response.status) &&
       !window.location.href.includes(ROUTES.LOGIN)
     ) {
-      dispatch({ type: LOGOUT });
-      window.location.pathname = ROUTES.LOGIN;
+      dispatch({ type: CLEAR_STORE });
+      // window.location.pathname = ROUTES.LOGIN;
     }
     return Promise.reject((error.response && error.response.data) || 'Wrong Services');
   }

@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '@redux-action-type/auth';
+import { CLEAR_STORE, LOGIN, LOGOUT } from '@redux-action-type/auth';
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LoginParams, LoginResult, User } from 'model/auth';
 import { SLICE_NAME } from 'stores/types';
@@ -47,10 +47,13 @@ const login = createAction(
 
 const logout = createAction(LOGOUT, () => ({ payload: {} }));
 
+const clearStore = createAction(CLEAR_STORE, () => ({ payload: {} }));
+
 export const authActions = {
   ...authSlice.actions,
   login,
-  logout
+  logout,
+  clearStore
 };
 
 export const authReducer = authSlice.reducer;

@@ -1,7 +1,6 @@
 import { ReactNode, SyntheticEvent, useRef, useState } from 'react';
 
 // NEXT
-import { useRouter } from 'next/navigation';
 
 // MATERIAL - UI
 import Box from '@mui/material/Box';
@@ -33,7 +32,6 @@ const avatar1 = '/assets/images/users/avatar-6.png';
 
 // TYPES
 import { LOGOUT } from '@redux-action-type/auth';
-import { ROUTES } from 'config/routes';
 import { ThemeMode } from 'types/config';
 
 interface TabPanelProps {
@@ -72,12 +70,10 @@ function a11yProps(index: number) {
 
 const ProfilePage = () => {
   const theme = useTheme();
-  const router = useRouter();
 
   const handleLogout = async () => {
     try {
       dispatch({ type: LOGOUT });
-      router.push(ROUTES.LOGIN);
     } catch (err) {}
   };
 
