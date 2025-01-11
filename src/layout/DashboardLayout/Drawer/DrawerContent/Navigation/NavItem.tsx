@@ -138,14 +138,17 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     '&:hover': {
-                      bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.200'
+                      bgcolor:
+                        theme.palette.mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.200'
                     }
                   }),
                 ...(!drawerOpen &&
                   isSelected && {
-                    bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.100' : 'primary.lighter',
+                    bgcolor:
+                      theme.palette.mode === ThemeMode.DARK ? 'secondary.100' : 'primary.lighter',
                     '&:hover': {
-                      bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'primary.lighter'
+                      bgcolor:
+                        theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'primary.lighter'
                     }
                   })
               }}
@@ -163,7 +166,13 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
           {(drawerOpen || (!drawerOpen && level !== 1)) && (
             <ListItemText
               primary={
-                <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor, fontWeight: isSelected ? 500 : 400 }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: isSelected ? iconSelectedColor : textColor,
+                    fontWeight: isSelected ? 500 : 400
+                  }}
+                >
                   {item.title}
                 </Typography>
               }
@@ -249,7 +258,13 @@ const NavItem = ({ item, level, isParents = false }: Props) => {
 
           <ListItemText
             primary={
-              <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor, fontWeight: isSelected ? 500 : 400 }}>
+              <Typography
+                variant="h6"
+                sx={{
+                  color: isSelected ? iconSelectedColor : textColor,
+                  fontWeight: isSelected ? 500 : 400
+                }}
+              >
                 {item.title}
               </Typography>
             }

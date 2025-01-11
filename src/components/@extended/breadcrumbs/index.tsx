@@ -169,9 +169,21 @@ const Breadcrumbs = ({
           spacing={0.5}
         >
           <Grid item>
-            <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
+            <MuiBreadcrumbs
+              aria-label="breadcrumb"
+              maxItems={maxItems || 8}
+              separator={separatorIcon}
+            >
               <NextLink href="/" passHref legacyBehavior>
-                <Typography variant="body1" sx={{ textDecoration: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                >
                   {icons && <Home3 style={iconSX} />}
                   {icon && !icons && <Home3 variant="Bold" style={{ ...iconSX, marginRight: 0 }} />}
                   {(!icon || icons) && 'Home'}
@@ -199,7 +211,11 @@ const Breadcrumbs = ({
 
     ItemIcon = item?.icon ? item.icon : Buildings2;
     itemContent = (
-      <Typography variant="body1" color="textSecondary" sx={{ display: 'flex', alignItems: 'center' }}>
+      <Typography
+        variant="body1"
+        color="textSecondary"
+        sx={{ display: 'flex', alignItems: 'center' }}
+      >
         {icons && <ItemIcon style={iconSX} />}
         {itemTitle}
       </Typography>
@@ -211,7 +227,12 @@ const Breadcrumbs = ({
           <Typography
             color="textPrimary"
             variant="body1"
-            sx={{ textDecoration: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            sx={{
+              textDecoration: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center'
+            }}
           >
             {icons && <Home3 style={iconSX} />}
             {icon && !icons && <Home3 variant="Bold" style={{ ...iconSX, marginRight: 0 }} />}

@@ -44,7 +44,17 @@ const snackbarSlice = createSlice({
   reducers: {
     reset: () => initialSnackbar,
     openSnackbar: (state, { payload }: PayloadAction<SnackbarProps>) => {
-      const { action, open, message, anchorOrigin, variant, alert, transition, close, actionButton } = payload;
+      const {
+        action,
+        open,
+        message,
+        anchorOrigin,
+        variant,
+        alert,
+        transition,
+        close,
+        actionButton
+      } = payload;
       Object.assign(state, {
         action: action || initialSnackbar.action,
         open: open || initialSnackbar.open,

@@ -38,7 +38,9 @@ export const makeStore = () => {
     reducer: persistedReducer,
     devTools: devMode,
     middleware: (getDefaultMiddleware: any) =>
-      getDefaultMiddleware({ serializableCheck: false }).prepend(listenerMiddleware.middleware).concat(middlewares)
+      getDefaultMiddleware({ serializableCheck: false })
+        .prepend(listenerMiddleware.middleware)
+        .concat(middlewares)
   });
   store.__persistor = persistStore(store);
   return store;

@@ -55,8 +55,10 @@ const MegaMenuSection = () => {
     setOpen(false);
   };
 
-  const iconBackColorOpen = theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
-  const iconBackColor = theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
+  const iconBackColorOpen =
+    theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
+  const iconBackColor =
+    theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>
@@ -69,7 +71,12 @@ const MegaMenuSection = () => {
         aria-haspopup="true"
         onClick={handleToggle}
         size="large"
-        sx={{ color: 'secondary.main', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 }, p: 1 }}
+        sx={{
+          color: 'secondary.main',
+          bgcolor: open ? iconBackColorOpen : iconBackColor,
+          ml: { xs: 0, lg: -2 },
+          p: 1
+        }}
       >
         <Windows variant="Bulk" size={22} />
       </IconButton>
@@ -114,7 +121,8 @@ const MegaMenuSection = () => {
                       xs={4}
                       sx={{
                         color: 'common.white',
-                        bgcolor: theme.palette.mode === ThemeMode.DARK ? 'primary.400' : 'primary.darker',
+                        bgcolor:
+                          theme.palette.mode === ThemeMode.DARK ? 'primary.400' : 'primary.darker',
                         position: 'relative',
                         '&:after': {
                           content: '""',
@@ -138,9 +146,15 @@ const MegaMenuSection = () => {
                             Explore Components
                           </Typography>
                           <Typography variant="h6">
-                            Try Able Pro&apos;s component pages to check how it feels and suits as per your need.
+                            Try Able Pro&apos;s component pages to check how it feels and suits as
+                            per your need.
                           </Typography>
-                          <Stack direction="row" justifyContent="space-between" alignItems="flex-end" sx={{ mt: -1 }}>
+                          <Stack
+                            direction="row"
+                            justifyContent="space-between"
+                            alignItems="flex-end"
+                            sx={{ mt: -1 }}
+                          >
                             <AnimateButton>
                               <Button
                                 variant="contained"
@@ -151,7 +165,9 @@ const MegaMenuSection = () => {
                                   '&:hover': { bgcolor: 'background.paper', color: 'text.primary' },
                                   zIndex: 2
                                 }}
-                                endIcon={<ArrowRight3 variant="Bulk" color={theme.palette.primary.main} />}
+                                endIcon={
+                                  <ArrowRight3 variant="Bulk" color={theme.palette.primary.main} />
+                                }
                                 component={Link}
                                 href="#"
                                 target="_blank"
@@ -159,7 +175,12 @@ const MegaMenuSection = () => {
                                 View All
                               </Button>
                             </AnimateButton>
-                            <CardMedia component="img" src={imageChart} alt="Chart" sx={{ mr: -2.5, mb: -2.5, width: 124 }} />
+                            <CardMedia
+                              component="img"
+                              src={imageChart}
+                              alt="Chart"
+                              sx={{ mr: -2.5, mb: -2.5, width: 124 }}
+                            />
                           </Stack>
                         </Stack>
                       </Box>
@@ -199,31 +220,56 @@ const MegaMenuSection = () => {
                                 </ListSubheader>
                               }
                             >
-                              <ListItemButton disableRipple component={Link} target="_blank" href="#">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href="#"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
                                 <ListItemText primary="Login" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href="#">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href="#"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
                                 <ListItemText primary="Register" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href="#">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href="#"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
                                 <ListItemText primary="Reset Password" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href="#">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href="#"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
                                 <ListItemText primary="Forgot Password" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href="#">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href="#"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
@@ -249,7 +295,12 @@ const MegaMenuSection = () => {
                                 </ListItemIcon>
                                 <ListItemText primary="About us" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} href={ROUTES.CONTACT_US} target="_blank">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                href={ROUTES.CONTACT_US}
+                                target="_blank"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
@@ -267,13 +318,23 @@ const MegaMenuSection = () => {
                                 </ListItemIcon>
                                 <ListItemText primary="Payment" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href={ROUTES.MAINTENANCE_UNDER_CONSTRUCTION}>
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href={ROUTES.MAINTENANCE_UNDER_CONSTRUCTION}
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
                                 <ListItemText primary="Construction" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href={ROUTES.MAINTENANCE_COMING_SOON}>
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href={ROUTES.MAINTENANCE_COMING_SOON}
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
@@ -293,13 +354,23 @@ const MegaMenuSection = () => {
                                 </ListSubheader>
                               }
                             >
-                              <ListItemButton disableRipple component={Link} target="_blank" href={ROUTES.MAINTENANCE_404}>
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href={ROUTES.MAINTENANCE_404}
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>
                                 <ListItemText primary="404 Error" />
                               </ListItemButton>
-                              <ListItemButton disableRipple component={Link} target="_blank" href="#">
+                              <ListItemButton
+                                disableRipple
+                                component={Link}
+                                target="_blank"
+                                href="#"
+                              >
                                 <ListItemIcon>
                                   <Dot size={7} color="secondary" variant="outlined" />
                                 </ListItemIcon>

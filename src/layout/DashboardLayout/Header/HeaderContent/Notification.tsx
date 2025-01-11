@@ -59,8 +59,10 @@ const NotificationPage = () => {
     setOpen(false);
   };
 
-  const iconBackColorOpen = theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
-  const iconBackColor = theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
+  const iconBackColorOpen =
+    theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
+  const iconBackColor =
+    theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.5 }}>
@@ -75,7 +77,11 @@ const NotificationPage = () => {
         size="large"
         sx={{ color: 'secondary.main', bgcolor: open ? iconBackColorOpen : iconBackColor, p: 1 }}
       >
-        <Badge badgeContent={read} color="success" sx={{ '& .MuiBadge-badge': { top: 2, right: 4 } }}>
+        <Badge
+          badgeContent={read}
+          color="success"
+          sx={{ '& .MuiBadge-badge': { top: 2, right: 4 } }}
+        >
           <Notification variant="Bold" />
         </Badge>
       </IconButton>
@@ -98,7 +104,13 @@ const NotificationPage = () => {
         }}
       >
         {({ TransitionProps }) => (
-          <Transitions type="grow" position={matchesXs ? 'top' : 'top-right'} sx={{ overflow: 'hidden' }} in={open} {...TransitionProps}>
+          <Transitions
+            type="grow"
+            position={matchesXs ? 'top' : 'top-right'}
+            sx={{ overflow: 'hidden' }}
+            in={open}
+            {...TransitionProps}
+          >
             <Paper
               sx={{
                 boxShadow: theme.customShadows.z1,

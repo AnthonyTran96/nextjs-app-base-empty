@@ -63,7 +63,19 @@ const MainCard = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     return (
-      <MainCardStyled {...{ border, shadow, boxShadow, codeHighlight, modal, sx, elevation: elevation || 0, ...others }} ref={ref}>
+      <MainCardStyled
+        {...{
+          border,
+          shadow,
+          boxShadow,
+          codeHighlight,
+          modal,
+          sx,
+          elevation: elevation || 0,
+          ...others
+        }}
+        ref={ref}
+      >
         {/* card header and action */}
         {!darkTitle && title && (
           <CardHeader
@@ -74,7 +86,13 @@ const MainCard = forwardRef(
             subheader={subheader}
           />
         )}
-        {darkTitle && title && <CardHeader sx={headerSX} title={<Typography variant="h4">{title}</Typography>} action={secondary} />}
+        {darkTitle && title && (
+          <CardHeader
+            sx={headerSX}
+            title={<Typography variant="h4">{title}</Typography>}
+            action={secondary}
+          />
+        )}
 
         {/* content & header divider */}
         {title && divider && <Divider />}

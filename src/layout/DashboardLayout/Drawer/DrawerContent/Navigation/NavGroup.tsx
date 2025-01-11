@@ -79,7 +79,16 @@ const PopperStyled = styled(Popper)(({ theme }) => ({
   }
 }));
 
-const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, selectedItems, setSelectedLevel, selectedLevel }: Props) => {
+const NavGroup = ({
+  item,
+  lastItem,
+  remItems,
+  lastItemId,
+  setSelectedItems,
+  selectedItems,
+  setSelectedLevel,
+  selectedLevel
+}: Props) => {
   const theme = useTheme();
   const pathname = usePathname();
 
@@ -90,7 +99,9 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
   const selectedID = menuMaster.openedHorizontalItem;
 
   const downLG = useMediaQuery(theme.breakpoints.down('lg'));
-  const [anchorEl, setAnchorEl] = useState<VirtualElement | (() => VirtualElement) | null | undefined>(null);
+  const [anchorEl, setAnchorEl] = useState<
+    VirtualElement | (() => VirtualElement) | null | undefined
+  >(null);
   const [currentItem, setCurrentItem] = useState(item);
 
   const openMini = Boolean(anchorEl);
@@ -153,7 +164,11 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
 
   const Icon = currentItem?.icon!;
   const itemIcon = currentItem?.icon ? (
-    <Icon variant="Bulk" size={22} color={isSelected ? theme.palette.primary.main : theme.palette.secondary.main} />
+    <Icon
+      variant="Bulk"
+      size={22}
+      color={isSelected ? theme.palette.primary.main : theme.palette.secondary.main}
+    />
   ) : null;
 
   const navCollapse = item.children?.map((menuItem, index) => {
@@ -284,7 +299,15 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
         <List>
           <ListItemButton
             selected={isSelected}
-            sx={{ p: 1, px: 1.5, my: 0.5, mr: 1, display: 'flex', alignItems: 'center', borderRadius: 1 }}
+            sx={{
+              p: 1,
+              px: 1.5,
+              my: 0.5,
+              mr: 1,
+              display: 'flex',
+              alignItems: 'center',
+              borderRadius: 1
+            }}
             onMouseEnter={handleClick}
             onClick={handleClick}
             onMouseLeave={handleClose}
@@ -298,13 +321,27 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
             <ListItemText
               sx={{ mr: 1 }}
               primary={
-                <Typography variant="h6" color={isSelected ? 'primary' : textColor} sx={{ fontWeight: isSelected ? 500 : 400 }}>
-                  {currentItem.id === lastItemId ? <FormattedMessage id="More Items" /> : currentItem.title}
+                <Typography
+                  variant="h6"
+                  color={isSelected ? 'primary' : textColor}
+                  sx={{ fontWeight: isSelected ? 500 : 400 }}
+                >
+                  {currentItem.id === lastItemId ? (
+                    <FormattedMessage id="More Items" />
+                  ) : (
+                    currentItem.title
+                  )}
                 </Typography>
               }
             />
             {anchorEl && (
-              <PopperStyled id={popperId} open={openMini} anchorEl={anchorEl} placement="bottom-start" sx={{ zIndex: 2001 }}>
+              <PopperStyled
+                id={popperId}
+                open={openMini}
+                anchorEl={anchorEl}
+                placement="bottom-start"
+                sx={{ zIndex: 2001 }}
+              >
                 {({ TransitionProps }) => (
                   <Transitions in={openMini} {...TransitionProps}>
                     <Paper
@@ -317,7 +354,13 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
                       }}
                     >
                       <ClickAwayListener onClickAway={handleClose}>
-                        <SimpleBar sx={{ minWidth: 200, overflowY: 'auto', maxHeight: 'calc(100vh - 170px)' }}>
+                        <SimpleBar
+                          sx={{
+                            minWidth: 200,
+                            overflowY: 'auto',
+                            maxHeight: 'calc(100vh - 170px)'
+                          }}
+                        >
                           {currentItem.id !== lastItemId ? items : moreItems}
                         </SimpleBar>
                       </ClickAwayListener>

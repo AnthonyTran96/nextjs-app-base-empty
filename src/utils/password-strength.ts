@@ -1,12 +1,17 @@
 // ==============================|| CUSTOM FUNCTION - PASSWORD STRENGTH ||============================== //
 
-import { NumbColorFunc, StringBoolFunc, StringNumFunc } from 'screens/un-authentication/register/types';
+import {
+  NumbColorFunc,
+  StringBoolFunc,
+  StringNumFunc
+} from 'screens/un-authentication/register/types';
 
 // has number
 const hasNumber: StringBoolFunc = (number) => new RegExp(/[0-9]/).test(number);
 
 // has mix of small and capitals
-const hasMixed: StringBoolFunc = (number) => new RegExp(/[a-z]/).test(number) && new RegExp(/[A-Z]/).test(number);
+const hasMixed: StringBoolFunc = (number) =>
+  new RegExp(/[a-z]/).test(number) && new RegExp(/[A-Z]/).test(number);
 
 // has special chars
 const hasSpecial: StringBoolFunc = (number) => new RegExp(/[!#@$%^&*)(+=._-]/).test(number);

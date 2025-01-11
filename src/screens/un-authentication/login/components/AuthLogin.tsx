@@ -168,7 +168,12 @@ const AuthLogin = ({ providers, csrfToken }: any) => {
                   }
                   label={<Typography variant="h6">Keep me sign in</Typography>}
                 />
-                <Links variant="h6" component={Link} href={ROUTES.FORGOT_PASSWORD} color="text.primary">
+                <Links
+                  variant="h6"
+                  component={Link}
+                  href={ROUTES.FORGOT_PASSWORD}
+                  color="text.primary"
+                >
                   Forgot Password?
                 </Links>
               </Stack>
@@ -180,7 +185,15 @@ const AuthLogin = ({ providers, csrfToken }: any) => {
             )}
             <Grid item xs={12}>
               <AnimateButton>
-                <Button disableElevation disabled={loginLoading} fullWidth size="large" type="submit" variant="contained" color="primary">
+                <Button
+                  disableElevation
+                  disabled={loginLoading}
+                  fullWidth
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
                   Login
                 </Button>
               </AnimateButton>

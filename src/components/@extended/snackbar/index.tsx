@@ -111,7 +111,13 @@ const Snackbar = () => {
                   </Button>
                 )}
                 {snackbar.close !== false && (
-                  <IconButton size="small" aria-label="close" variant="contained" color={snackbar.alert.color} onClick={handleClose}>
+                  <IconButton
+                    size="small"
+                    aria-label="close"
+                    variant="contained"
+                    color={snackbar.alert.color}
+                    onClick={handleClose}
+                  >
                     <Add style={{ transform: 'rotate(45deg)' }} />
                   </IconButton>
                 )}

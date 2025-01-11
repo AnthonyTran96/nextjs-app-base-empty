@@ -73,7 +73,15 @@ interface Props {
   selectedLevel: number;
 }
 
-const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, setSelectedLevel, selectedLevel }: Props) => {
+const NavCollapse = ({
+  menu,
+  level,
+  parentId,
+  setSelectedItems,
+  selectedItems,
+  setSelectedLevel,
+  selectedLevel
+}: Props) => {
   const theme = useTheme();
   // const { menuMaster } = useGetMenuMaster();
   const menuMaster = useSelector(selectMenuMaster);
@@ -86,7 +94,9 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
 
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<string | null | undefined>(null);
-  const [anchorEl, setAnchorEl] = useState<VirtualElement | (() => VirtualElement) | null | undefined>(null);
+  const [anchorEl, setAnchorEl] = useState<
+    VirtualElement | (() => VirtualElement) | null | undefined
+  >(null);
 
   const handleClick = (event: MouseEvent<HTMLElement> | undefined) => {
     setAnchorEl(null);
@@ -241,10 +251,21 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
   const borderIcon = level === 1 ? <Copy variant="Bulk" size={drawerOpen ? 22 : 24} /> : false;
   const Icon = menu.icon!;
   const menuIcon = menu.icon ? <Icon variant="Bulk" size={drawerOpen ? 22 : 24} /> : borderIcon;
-  const textColor = theme.palette.mode === ThemeMode.DARK ? theme.palette.secondary[400] : theme.palette.secondary.main;
-  const iconSelectedColor = theme.palette.mode === ThemeMode.DARK && drawerOpen ? theme.palette.text.primary : theme.palette.primary.main;
+  const textColor =
+    theme.palette.mode === ThemeMode.DARK
+      ? theme.palette.secondary[400]
+      : theme.palette.secondary.main;
+  const iconSelectedColor =
+    theme.palette.mode === ThemeMode.DARK && drawerOpen
+      ? theme.palette.text.primary
+      : theme.palette.primary.main;
   const popperId = miniMenuOpened ? `collapse-pop-${menu.id}` : undefined;
-  const FlexBox = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' };
+  const FlexBox = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%'
+  };
 
   return (
     <>
@@ -295,14 +316,19 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
                     alignItems: 'center',
                     justifyContent: 'center',
                     '&:hover': {
-                      bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.200'
+                      bgcolor:
+                        theme.palette.mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.200'
                     }
                   }),
                   ...(!drawerOpen &&
                     isSelected && {
-                      bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.100' : 'primary.lighter',
+                      bgcolor:
+                        theme.palette.mode === ThemeMode.DARK ? 'secondary.100' : 'primary.lighter',
                       '&:hover': {
-                        bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'primary.lighter'
+                        bgcolor:
+                          theme.palette.mode === ThemeMode.DARK
+                            ? 'secondary.200'
+                            : 'primary.lighter'
                       }
                     })
                 }}
@@ -320,7 +346,11 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
             {(drawerOpen || (!drawerOpen && level !== 1)) && (
               <ListItemText
                 primary={
-                  <Typography variant="h6" color={isSelected ? 'primary' : textColor} sx={{ fontWeight: isSelected ? 500 : 400 }}>
+                  <Typography
+                    variant="h6"
+                    color={isSelected ? 'primary' : textColor}
+                    sx={{ fontWeight: isSelected ? 500 : 400 }}
+                  >
                     {menu.title}
                   </Typography>
                 }
@@ -375,7 +405,13 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
                       }}
                     >
                       <ClickAwayListener onClickAway={handleClose}>
-                        <SimpleBar sx={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: 'calc(100vh - 170px)' }}>
+                        <SimpleBar
+                          sx={{
+                            overflowX: 'hidden',
+                            overflowY: 'auto',
+                            maxHeight: 'calc(100vh - 170px)'
+                          }}
+                        >
                           {navCollapse}
                         </SimpleBar>
                       </ClickAwayListener>
@@ -413,18 +449,32 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
         >
           <Box onClick={handlerIconLink} sx={FlexBox}>
             {menuIcon && (
-              <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36, color: theme.palette.secondary.dark }}>
+              <ListItemIcon
+                sx={{
+                  my: 'auto',
+                  minWidth: !menu.icon ? 18 : 36,
+                  color: theme.palette.secondary.dark
+                }}
+              >
                 {menuIcon}
               </ListItemIcon>
             )}
             <ListItemText
               primary={
-                <Typography variant="h6" color={textColor} sx={{ fontWeight: isSelected ? 500 : 400 }}>
+                <Typography
+                  variant="h6"
+                  color={textColor}
+                  sx={{ fontWeight: isSelected ? 500 : 400 }}
+                >
                   {menu.title}
                 </Typography>
               }
             />
-            {miniMenuOpened ? <ArrowRight2 size={12} color={textColor} /> : <ArrowDown2 size={12} color={textColor} />}
+            {miniMenuOpened ? (
+              <ArrowRight2 size={12} color={textColor} />
+            ) : (
+              <ArrowDown2 size={12} color={textColor} />
+            )}
           </Box>
 
           {anchorEl && (
@@ -456,7 +506,15 @@ const NavCollapse = ({ menu, level, parentId, setSelectedItems, selectedItems, s
                     }}
                   >
                     <ClickAwayListener onClickAway={handleClose}>
-                      <SimpleBar sx={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: 'calc(100vh - 170px)' }}>{navCollapse}</SimpleBar>
+                      <SimpleBar
+                        sx={{
+                          overflowX: 'hidden',
+                          overflowY: 'auto',
+                          maxHeight: 'calc(100vh - 170px)'
+                        }}
+                      >
+                        {navCollapse}
+                      </SimpleBar>
                     </ClickAwayListener>
                   </Paper>
                 </Transitions>

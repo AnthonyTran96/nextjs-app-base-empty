@@ -88,7 +88,11 @@ const Header = () => {
       >
         <Container maxWidth="xl" disableGutters={matchDownMd}>
           <Toolbar sx={{ px: { xs: 1.5, sm: 4, md: 0, lg: 0 }, py: 1 }}>
-            <Stack direction="row" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }} alignItems="center">
+            <Stack
+              direction="row"
+              sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }}
+              alignItems="center"
+            >
               <Typography component="div" sx={{ textAlign: 'left', display: 'inline-block' }}>
                 <Logo reverse to="/" />
               </Typography>
@@ -97,13 +101,22 @@ const Header = () => {
                 variant="outlined"
                 size="small"
                 color="secondary"
-                sx={{ mt: 0.5, ml: 1, fontSize: '0.725rem', height: 20, '& .MuiChip-label': { px: 0.5 } }}
+                sx={{
+                  mt: 0.5,
+                  ml: 1,
+                  fontSize: '0.725rem',
+                  height: 20,
+                  '& .MuiChip-label': { px: 0.5 }
+                }}
               />
             </Stack>
             <Stack
               direction="row"
               sx={{
-                '& .header-link': { fontWeight: 500, '&:hover': { color: theme.palette.primary.main } },
+                '& .header-link': {
+                  fontWeight: 500,
+                  '&:hover': { color: theme.palette.primary.main }
+                },
                 display: { xs: 'none', md: 'block' }
               }}
               spacing={3}
@@ -119,7 +132,13 @@ const Header = () => {
               >
                 Dashboard
               </Links>
-              <Links className="header-link" color="secondary.main" component={Link} href="#" underline="none">
+              <Links
+                className="header-link"
+                color="secondary.main"
+                component={Link}
+                href="#"
+                underline="none"
+              >
                 Components
               </Links>
               <Links
@@ -161,16 +180,34 @@ const Header = () => {
                 </AnimateButton>
               </Box>
             </Stack>
-            <Box sx={{ width: '100%', alignItems: 'center', justifyContent: 'space-between', display: { xs: 'flex', md: 'none' } }}>
+            <Box
+              sx={{
+                width: '100%',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                display: { xs: 'flex', md: 'none' }
+              }}
+            >
               <Typography component="div" sx={{ textAlign: 'left', display: 'inline-block' }}>
                 <Logo reverse to="/" />
               </Typography>
               <Stack direction="row" spacing={2}>
-                <Button variant="outlined" color="warning" component={Link} href="#" sx={{ mt: 0.25 }}>
+                <Button
+                  variant="outlined"
+                  color="warning"
+                  component={Link}
+                  href="#"
+                  sx={{ mt: 0.25 }}
+                >
                   All Components
                 </Button>
 
-                <IconButton size="large" color="secondary" onClick={drawerToggler(true)} sx={{ p: 1 }}>
+                <IconButton
+                  size="large"
+                  color="secondary"
+                  onClick={drawerToggler(true)}
+                  sx={{ p: 1 }}
+                >
                   <HambergerMenu />
                 </IconButton>
               </Stack>
@@ -181,7 +218,10 @@ const Header = () => {
                 sx={{ '& .MuiDrawer-paper': { backgroundImage: 'none' } }}
               >
                 <Box
-                  sx={{ width: 'auto', '& .MuiListItemIcon-root': { fontSize: '1rem', minWidth: 32 } }}
+                  sx={{
+                    width: 'auto',
+                    '& .MuiListItemIcon-root': { fontSize: '1rem', minWidth: 32 }
+                  }}
                   role="presentation"
                   onClick={drawerToggler(false)}
                   onKeyDown={drawerToggler(false)}
@@ -192,7 +232,10 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Dashboard" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText
+                          primary="Dashboard"
+                          primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }}
+                        />
                       </ListItemButton>
                     </Links>
                     <Links sx={linksSx} href="#" target="_blank">
@@ -200,7 +243,10 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="All Components" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText
+                          primary="All Components"
+                          primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }}
+                        />
                       </ListItemButton>
                     </Links>
                     <Links sx={linksSx} href="https://codedthemes.com/?s=able+pro" target="_blank">
@@ -208,15 +254,25 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Free Version" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText
+                          primary="Free Version"
+                          primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }}
+                        />
                       </ListItemButton>
                     </Links>
-                    <Links sx={linksSx} href="https://phoenixcoded.gitbook.io/able-pro/v/react" target="_blank">
+                    <Links
+                      sx={linksSx}
+                      href="https://phoenixcoded.gitbook.io/able-pro/v/react"
+                      target="_blank"
+                    >
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Documentation" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText
+                          primary="Documentation"
+                          primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }}
+                        />
                       </ListItemButton>
                     </Links>
                     <Links sx={linksSx} href="https://phoenixcoded.authordesk.app/" target="_blank">
@@ -224,7 +280,10 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Support" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText
+                          primary="Support"
+                          primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }}
+                        />
                       </ListItemButton>
                     </Links>
                     <Links
@@ -236,7 +295,10 @@ const Header = () => {
                         <ListItemIcon>
                           <Minus color={theme.palette.secondary.main} />
                         </ListItemIcon>
-                        <ListItemText primary="Purchase Now" primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }} />
+                        <ListItemText
+                          primary="Purchase Now"
+                          primaryTypographyProps={{ variant: 'h6', color: 'secondary.main' }}
+                        />
                         <Chip color="primary" label="v1.0" size="small" />
                       </ListItemButton>
                     </Links>

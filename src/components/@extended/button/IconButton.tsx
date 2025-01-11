@@ -105,49 +105,49 @@ interface StyleProps extends IconButtonStyleProps {
   shape?: IconButtonShapeProps;
 }
 
-const IconButtonStyle = styled(MuiIconButton, { shouldForwardProp: (prop) => prop !== 'variant' && prop !== 'shape' })(
-  ({ theme, variant, shape, color }: StyleProps) => ({
-    position: 'relative',
-    '::after': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: shape === 'rounded' ? '50%' : 8,
-      opacity: 0,
-      transition: 'all 0.5s'
-    },
+const IconButtonStyle = styled(MuiIconButton, {
+  shouldForwardProp: (prop) => prop !== 'variant' && prop !== 'shape'
+})(({ theme, variant, shape, color }: StyleProps) => ({
+  position: 'relative',
+  '::after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    borderRadius: shape === 'rounded' ? '50%' : 8,
+    opacity: 0,
+    transition: 'all 0.5s'
+  },
 
-    ':active::after': {
-      position: 'absolute',
-      borderRadius: shape === 'rounded' ? '50%' : 8,
-      left: 0,
-      top: 0,
-      opacity: 1,
-      transition: '0s'
-    },
-    ...(shape === 'rounded' && {
-      borderRadius: '50%'
-    }),
-    ...(variant === 'outlined' && {
-      border: '1px solid',
-      borderColor: 'inherit'
-    }),
-    ...(variant === 'dashed' && {
-      border: '1px dashed',
-      borderColor: 'inherit'
-    }),
-    ...(variant !== 'text' && {
-      '&.Mui-disabled': {
-        backgroundColor: theme.palette.secondary[200]
-      }
-    }),
-    ...getColorStyle({ variant, theme, color })
-  })
-);
+  ':active::after': {
+    position: 'absolute',
+    borderRadius: shape === 'rounded' ? '50%' : 8,
+    left: 0,
+    top: 0,
+    opacity: 1,
+    transition: '0s'
+  },
+  ...(shape === 'rounded' && {
+    borderRadius: '50%'
+  }),
+  ...(variant === 'outlined' && {
+    border: '1px solid',
+    borderColor: 'inherit'
+  }),
+  ...(variant === 'dashed' && {
+    border: '1px dashed',
+    borderColor: 'inherit'
+  }),
+  ...(variant !== 'text' && {
+    '&.Mui-disabled': {
+      backgroundColor: theme.palette.secondary[200]
+    }
+  }),
+  ...getColorStyle({ variant, theme, color })
+}));
 
 // ==============================|| ICON BUTTON - EXTENDED ||============================== //
 
@@ -160,13 +160,27 @@ export interface IconButtonExtendProps extends IconButtonProps {
 
 const IconButton = forwardRef(
   (
-    { variant = 'text', shape = 'square', children, color = 'primary', tooltip, ...others }: IconButtonExtendProps,
+    {
+      variant = 'text',
+      shape = 'square',
+      children,
+      color = 'primary',
+      tooltip,
+      ...others
+    }: IconButtonExtendProps,
     ref: Ref<HTMLButtonElement>
   ) => {
     const theme = useTheme();
 
     return (
-      <IconButtonStyle ref={ref} variant={variant} shape={shape} theme={theme} color={color} {...others}>
+      <IconButtonStyle
+        ref={ref}
+        variant={variant}
+        shape={shape}
+        theme={theme}
+        color={color}
+        {...others}
+      >
         {children}
       </IconButtonStyle>
     );

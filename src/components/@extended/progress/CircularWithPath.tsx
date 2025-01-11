@@ -1,6 +1,9 @@
 // MATERIAL - UI
 import Box from '@mui/material/Box';
-import CircularProgress, { CircularProgressProps, circularProgressClasses } from '@mui/material/CircularProgress';
+import CircularProgress, {
+  CircularProgressProps,
+  circularProgressClasses
+} from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 
 // ==============================|| PROGRESS - CIRCULAR PATH ||============================== //
@@ -10,7 +13,16 @@ interface Props extends CircularProgressProps {
   pathColor?: string;
 }
 
-export default function CircularWithPath({ value, size, variant, thickness, showLabel, pathColor, sx, ...others }: Props) {
+export default function CircularWithPath({
+  value,
+  size,
+  variant,
+  thickness,
+  showLabel,
+  pathColor,
+  sx,
+  ...others
+}: Props) {
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
       <CircularProgress

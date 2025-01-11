@@ -27,7 +27,8 @@ function getColorStyle({ variant, theme, color, type }: AvatarStyleProps) {
   switch (type) {
     case 'filled':
       return {
-        color: color === 'secondary' && theme.palette.mode === ThemeMode.DARK ? lighter : contrastText,
+        color:
+          color === 'secondary' && theme.palette.mode === ThemeMode.DARK ? lighter : contrastText,
         backgroundColor: main
       };
     case 'outlined':
@@ -131,15 +132,15 @@ interface StyleProps {
   size?: SizeProps;
 }
 
-const AvatarStyle = styled(MuiAvatar, { shouldForwardProp: (prop) => prop !== 'color' && prop !== 'type' && prop !== 'size' })(
-  ({ theme, variant, color, type, size }: StyleProps) => ({
-    ...getSizeStyle(size),
-    ...getColorStyle({ variant, theme, color, type }),
-    ...(size === 'badge' && {
-      borderColor: theme.palette.background.default
-    })
+const AvatarStyle = styled(MuiAvatar, {
+  shouldForwardProp: (prop) => prop !== 'color' && prop !== 'type' && prop !== 'size'
+})(({ theme, variant, color, type, size }: StyleProps) => ({
+  ...getSizeStyle(size),
+  ...getColorStyle({ variant, theme, color, type }),
+  ...(size === 'badge' && {
+    borderColor: theme.palette.background.default
   })
-);
+}));
 
 // ==============================|| AVATAR - EXTENDED ||============================== //
 
@@ -150,7 +151,14 @@ export interface AvatarExtendProps extends AvatarProps {
   size?: SizeProps;
 }
 
-export default function Avatar({ variant = 'circular', children, color = 'primary', type, size = 'md', ...others }: AvatarExtendProps) {
+export default function Avatar({
+  variant = 'circular',
+  children,
+  color = 'primary',
+  type,
+  size = 'md',
+  ...others
+}: AvatarExtendProps) {
   const theme = useTheme();
 
   return (

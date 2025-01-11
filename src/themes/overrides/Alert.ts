@@ -46,7 +46,10 @@ export default function Alert(theme: Theme) {
           marginTop: 3
         },
         filled: {
-          color: theme.palette.mode === ThemeMode.DARK ? theme.palette.common.black : theme.palette.common.white
+          color:
+            theme.palette.mode === ThemeMode.DARK
+              ? theme.palette.common.black
+              : theme.palette.common.white
         },
         border: {
           padding: '10px 16px',

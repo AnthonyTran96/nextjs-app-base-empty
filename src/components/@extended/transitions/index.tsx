@@ -21,7 +21,17 @@ interface TransitionsProps {
 }
 
 const Transitions = forwardRef(
-  ({ children, position = 'top-left', sx, type = 'grow', direction = 'up', ...others }: TransitionsProps, ref: Ref<ExoticComponent>) => {
+  (
+    {
+      children,
+      position = 'top-left',
+      sx,
+      type = 'grow',
+      direction = 'up',
+      ...others
+    }: TransitionsProps,
+    ref: Ref<ExoticComponent>
+  ) => {
     let positionSX = {
       transformOrigin: '0 0 0'
     };

@@ -28,7 +28,10 @@ appServices.interceptors.request.use(
 appServices.interceptors.response.use(
   (response) => response,
   (error) => {
-    if ([401, 403].includes(error.response.status) && !window.location.href.includes(ROUTES.LOGIN)) {
+    if (
+      [401, 403].includes(error.response.status) &&
+      !window.location.href.includes(ROUTES.LOGIN)
+    ) {
       dispatch({ type: LOGOUT });
       window.location.pathname = ROUTES.LOGIN;
     }

@@ -136,82 +136,82 @@ interface StyleProps extends LoadingButtonStyleProps {
   loading: LoadingButtonProps['loading'];
 }
 
-const LoadingButtonStyle = styled(MuiLoadingButton, { shouldForwardProp: (prop) => prop !== 'shape' && prop !== 'variant' })(
-  ({ theme, variant, shape, color, loading, loadingPosition }: StyleProps) => ({
-    '::after': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: shape === 'rounded' ? '50%' : 8,
-      opacity: 0,
-      transition: 'all 0.5s'
-    },
+const LoadingButtonStyle = styled(MuiLoadingButton, {
+  shouldForwardProp: (prop) => prop !== 'shape' && prop !== 'variant'
+})(({ theme, variant, shape, color, loading, loadingPosition }: StyleProps) => ({
+  '::after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    borderRadius: shape === 'rounded' ? '50%' : 8,
+    opacity: 0,
+    transition: 'all 0.5s'
+  },
 
-    ':active::after': {
-      position: 'absolute',
-      borderRadius: shape === 'rounded' ? '50%' : 8,
-      left: 0,
-      top: 0,
-      opacity: 1,
-      transition: '0s'
+  ':active::after': {
+    position: 'absolute',
+    borderRadius: shape === 'rounded' ? '50%' : 8,
+    left: 0,
+    top: 0,
+    opacity: 1,
+    transition: '0s'
+  },
+  ...(variant === 'text' && {
+    ...getColorStyle({ variant, theme, color, loadingPosition }),
+    '&.MuiButton-sizeMedium': {
+      height: 36
     },
-    ...(variant === 'text' && {
-      ...getColorStyle({ variant, theme, color, loadingPosition }),
-      '&.MuiButton-sizeMedium': {
-        height: 36
-      },
-      '&.MuiButton-sizeSmall': {
-        height: 30
-      },
-      '&.MuiButton-sizeLarge': {
-        height: 44
-      }
-    }),
-    ...(shape && {
-      padding: 0,
-      minWidth: 0,
-      '&.MuiButton-sizeMedium': {
-        width: 36,
-        height: 36
-      },
-      '&.MuiButton-sizeSmall': {
-        width: 30,
-        height: 30
-      },
-      '&.MuiButton-sizeLarge': {
-        width: 44,
-        height: 44
-      },
-      ...(shape === 'rounded' && {
-        borderRadius: '50%'
-      })
-    }),
+    '&.MuiButton-sizeSmall': {
+      height: 30
+    },
+    '&.MuiButton-sizeLarge': {
+      height: 44
+    }
+  }),
+  ...(shape && {
+    padding: 0,
+    minWidth: 0,
+    '&.MuiButton-sizeMedium': {
+      width: 36,
+      height: 36
+    },
+    '&.MuiButton-sizeSmall': {
+      width: 30,
+      height: 30
+    },
+    '&.MuiButton-sizeLarge': {
+      width: 44,
+      height: 44
+    },
+    ...(shape === 'rounded' && {
+      borderRadius: '50%'
+    })
+  }),
 
-    ...(variant === 'outlined' && {
-      border: '1px solid'
+  ...(variant === 'outlined' && {
+    border: '1px solid'
+  }),
+  ...(variant === 'dashed' && {
+    border: '1px dashed'
+  }),
+  ...((variant === 'contained' || variant === 'shadow') &&
+    !loading && {
+      color: '#fff'
     }),
-    ...(variant === 'dashed' && {
-      border: '1px dashed'
-    }),
-    ...((variant === 'contained' || variant === 'shadow') &&
-      !loading && {
-        color: '#fff'
-      }),
+  ...(variant !== 'text' && {
+    ...getColorStyle({ variant, theme, color, loadingPosition })
+  }),
+
+  '&.Mui-disabled': {
     ...(variant !== 'text' && {
       ...getColorStyle({ variant, theme, color, loadingPosition })
-    }),
-
-    '&.Mui-disabled': {
-      ...(variant !== 'text' && {
-        ...getColorStyle({ variant, theme, color, loadingPosition })
-      })
-    }
-  })
-);
+    })
+  }
+}));
 
 // ==============================|| LOADING BUTTON - EXTENDED ||============================== //
 
@@ -223,7 +223,10 @@ interface LoadingButtonExtendProps extends LoadingButtonProps {
 }
 
 const LoadingButton = forwardRef(
-  ({ variant = 'text', shape, children, color = 'primary', ...others }: LoadingButtonExtendProps, ref: Ref<HTMLButtonElement>) => {
+  (
+    { variant = 'text', shape, children, color = 'primary', ...others }: LoadingButtonExtendProps,
+    ref: Ref<HTMLButtonElement>
+  ) => {
     const theme = useTheme();
 
     return (

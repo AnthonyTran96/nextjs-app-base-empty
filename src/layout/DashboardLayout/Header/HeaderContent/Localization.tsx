@@ -51,8 +51,10 @@ const Localization = () => {
     setOpen(false);
   };
 
-  const iconBackColorOpen = theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
-  const iconBackColor = theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
+  const iconBackColorOpen =
+    theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
+  const iconBackColor =
+    theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.5 }}>
@@ -88,7 +90,12 @@ const Localization = () => {
         }}
       >
         {({ TransitionProps }) => (
-          <Transitions type="grow" position={matchesXs ? 'top-right' : 'top'} in={open} {...TransitionProps}>
+          <Transitions
+            type="grow"
+            position={matchesXs ? 'top-right' : 'top'}
+            in={open}
+            {...TransitionProps}
+          >
             <Paper sx={{ boxShadow: theme.customShadows.z1, borderRadius: 1.5 }}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard border={false} content={false}>
@@ -105,7 +112,10 @@ const Localization = () => {
                       }
                     }}
                   >
-                    <ListItemButton selected={i18n === 'vi'} onClick={() => handleListItemClick('vi')}>
+                    <ListItemButton
+                      selected={i18n === 'vi'}
+                      onClick={() => handleListItemClick('vi')}
+                    >
                       <ListItemText
                         primary={
                           <Grid container>
@@ -117,7 +127,10 @@ const Localization = () => {
                         }
                       />
                     </ListItemButton>
-                    <ListItemButton selected={i18n === 'en'} onClick={() => handleListItemClick('en')}>
+                    <ListItemButton
+                      selected={i18n === 'en'}
+                      onClick={() => handleListItemClick('en')}
+                    >
                       <ListItemText
                         primary={
                           <Grid container>
@@ -129,7 +142,10 @@ const Localization = () => {
                         }
                       />
                     </ListItemButton>
-                    <ListItemButton selected={i18n === 'fr'} onClick={() => handleListItemClick('fr')}>
+                    <ListItemButton
+                      selected={i18n === 'fr'}
+                      onClick={() => handleListItemClick('fr')}
+                    >
                       <ListItemText
                         primary={
                           <Grid container>
@@ -141,7 +157,10 @@ const Localization = () => {
                         }
                       />
                     </ListItemButton>
-                    <ListItemButton selected={i18n === 'ro'} onClick={() => handleListItemClick('ro')}>
+                    <ListItemButton
+                      selected={i18n === 'ro'}
+                      onClick={() => handleListItemClick('ro')}
+                    >
                       <ListItemText
                         primary={
                           <Grid container>
@@ -153,7 +172,10 @@ const Localization = () => {
                         }
                       />
                     </ListItemButton>
-                    <ListItemButton selected={i18n === 'zh'} onClick={() => handleListItemClick('zh')}>
+                    <ListItemButton
+                      selected={i18n === 'zh'}
+                      onClick={() => handleListItemClick('zh')}
+                    >
                       <ListItemText
                         primary={
                           <Grid container>

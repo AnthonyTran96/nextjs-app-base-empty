@@ -38,9 +38,12 @@ const authSlice = createSlice({
   }
 });
 
-const login = createAction(LOGIN, (body: LoginParams, onSuccess: (data: LoginResult) => void, onFailed: () => void) => ({
-  payload: { body, onSuccess, onFailed }
-}));
+const login = createAction(
+  LOGIN,
+  (body: LoginParams, onSuccess: (data: LoginResult) => void, onFailed: () => void) => ({
+    payload: { body, onSuccess, onFailed }
+  })
+);
 
 const logout = createAction(LOGOUT, () => ({ payload: {} }));
 

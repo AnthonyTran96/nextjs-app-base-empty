@@ -51,8 +51,10 @@ const MobileSection = () => {
     prevOpen.current = open;
   }, [open]);
 
-  const iconBackColorOpen = theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
-  const iconBackColor = theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
+  const iconBackColorOpen =
+    theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
+  const iconBackColor =
+    theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
 
   return (
     <>

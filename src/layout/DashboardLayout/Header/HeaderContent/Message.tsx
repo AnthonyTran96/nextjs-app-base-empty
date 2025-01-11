@@ -35,8 +35,10 @@ const Customization = () => {
     setOpen(!open);
   };
 
-  const iconBackColorOpen = theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
-  const iconBackColor = theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
+  const iconBackColorOpen =
+    theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
+  const iconBackColor =
+    theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
 
   return (
     <>
@@ -52,12 +54,25 @@ const Customization = () => {
           <NotificationStatus variant="Bulk" />
         </IconButton>
       </Box>
-      <Drawer sx={{ zIndex: 2001 }} anchor="right" onClose={handleToggle} open={open} PaperProps={{ sx: { width: { xs: 350, sm: 474 } } }}>
+      <Drawer
+        sx={{ zIndex: 2001 }}
+        anchor="right"
+        onClose={handleToggle}
+        open={open}
+        PaperProps={{ sx: { width: { xs: 350, sm: 474 } } }}
+      >
         {open && (
           <MainCard content={false} sx={{ border: 'none', borderRadius: 0, height: '100vh' }}>
-            <SimpleBar sx={{ '& .simplebar-content': { display: 'flex', flexDirection: 'column' } }}>
+            <SimpleBar
+              sx={{ '& .simplebar-content': { display: 'flex', flexDirection: 'column' } }}
+            >
               <Box sx={{ p: 2.5 }}>
-                <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1.5}>
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  spacing={1.5}
+                >
                   <Typography variant="h5">What’s new announcement?</Typography>
                   <IconButton color="secondary" sx={{ p: 0 }} onClick={handleToggle}>
                     <Add size={28} style={{ transform: 'rotate(45deg)' }} />

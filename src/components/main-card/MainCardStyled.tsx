@@ -24,7 +24,11 @@ interface Props extends CardProps {
 
 const MainCardStyled = styled(Card, {
   shouldForwardProp: (prop) =>
-    prop !== 'border' && prop !== 'shadow' && prop !== 'boxShadow' && prop !== 'codeHighlight' && prop !== 'modal'
+    prop !== 'border' &&
+    prop !== 'shadow' &&
+    prop !== 'boxShadow' &&
+    prop !== 'codeHighlight' &&
+    prop !== 'modal'
 })(({ theme, border, shadow, boxShadow, codeHighlight, modal, ...others }: Props) => {
   boxShadow = theme.palette.mode === ThemeMode.DARK ? boxShadow || true : boxShadow;
   const { themeContrast } = useConfig();

@@ -29,7 +29,14 @@ function UnderConstructionPage() {
   const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundImage: `url(${constructionBg})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        backgroundImage: `url(${constructionBg})`,
+        backgroundSize: '100%',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <Container fixed sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
         <Grid
           container
@@ -50,7 +57,8 @@ function UnderConstructionPage() {
                 Under Construction
               </Typography>
               <Typography color="textSecondary" align="center" sx={{ width: '85%' }}>
-                Hey! Please check out this site later. We are doing some maintenance on it right now.
+                Hey! Please check out this site later. We are doing some maintenance on it right
+                now.
               </Typography>
               <Button component={Link} href={APP_DEFAULT_PATH} variant="contained">
                 Back To Home

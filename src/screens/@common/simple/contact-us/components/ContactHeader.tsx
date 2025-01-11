@@ -20,7 +20,8 @@ function ContactHeader() {
               Talk to our Expert
             </Typography>
             <Typography align="center" color="textSecondary">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
             </Typography>
           </Stack>
         </Box>

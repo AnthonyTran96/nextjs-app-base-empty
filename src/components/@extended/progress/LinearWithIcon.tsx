@@ -6,7 +6,11 @@ import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgres
 
 // ==============================|| PROGRESS - LINEAR ICON ||============================== //
 
-export default function LinearWithIcon({ icon, value, ...others }: LinearProgressProps & { icon: ReactNode }) {
+export default function LinearWithIcon({
+  icon,
+  value,
+  ...others
+}: LinearProgressProps & { icon: ReactNode }) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1 }}>

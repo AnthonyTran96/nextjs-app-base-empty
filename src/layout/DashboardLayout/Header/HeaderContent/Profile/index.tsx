@@ -106,7 +106,9 @@ const ProfilePage = () => {
         sx={{
           p: 0.25,
           borderRadius: 1,
-          '&:hover': { bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.lighter' },
+          '&:hover': {
+            bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.lighter'
+          },
           '&:focus-visible': {
             outline: `2px solid ${theme.palette.secondary.dark}`,
             outlineOffset: 2
@@ -169,7 +171,12 @@ const ProfilePage = () => {
                       </Grid>
                       <Grid item>
                         <Tooltip title="Logout">
-                          <IconButton size="large" color="error" sx={{ p: 1 }} onClick={handleLogout}>
+                          <IconButton
+                            size="large"
+                            color="error"
+                            sx={{ p: 1 }}
+                            onClick={handleLogout}
+                          >
                             <Logout variant="Bulk" />
                           </IconButton>
                         </Tooltip>
@@ -178,7 +185,12 @@ const ProfilePage = () => {
                   </CardContent>
 
                   <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs variant="fullWidth" value={value} onChange={handleChange} aria-label="profile tabs">
+                    <Tabs
+                      variant="fullWidth"
+                      value={value}
+                      onChange={handleChange}
+                      aria-label="profile tabs"
+                    >
                       <Tab
                         sx={{
                           display: 'flex',
@@ -187,7 +199,9 @@ const ProfilePage = () => {
                           alignItems: 'center',
                           textTransform: 'capitalize'
                         }}
-                        icon={<Profile size={18} style={{ marginBottom: 0, marginRight: '10px' }} />}
+                        icon={
+                          <Profile size={18} style={{ marginBottom: 0, marginRight: '10px' }} />
+                        }
                         label="Profile"
                         {...a11yProps(0)}
                       />
@@ -199,7 +213,9 @@ const ProfilePage = () => {
                           alignItems: 'center',
                           textTransform: 'capitalize'
                         }}
-                        icon={<Setting2 size={18} style={{ marginBottom: 0, marginRight: '10px' }} />}
+                        icon={
+                          <Setting2 size={18} style={{ marginBottom: 0, marginRight: '10px' }} />
+                        }
                         label="Setting"
                         {...a11yProps(1)}
                       />

@@ -45,7 +45,10 @@ export default function OutlinedInput(theme: Theme) {
           padding: 14
         },
         notchedOutline: {
-          borderColor: theme.palette.mode === ThemeMode.DARK ? theme.palette.secondary[200] : theme.palette.secondary[400]
+          borderColor:
+            theme.palette.mode === ThemeMode.DARK
+              ? theme.palette.secondary[200]
+              : theme.palette.secondary[400]
         },
         root: {
           '& svg': {

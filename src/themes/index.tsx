@@ -3,7 +3,13 @@ import { ReactNode, useMemo } from 'react';
 // MATERIAL - UI
 import CssBaseline from '@mui/material/CssBaseline';
 import StyledEngineProvider from '@mui/material/StyledEngineProvider';
-import { createTheme, Theme, ThemeOptions, ThemeProvider, TypographyVariantsOptions } from '@mui/material/styles';
+import {
+  createTheme,
+  Theme,
+  ThemeOptions,
+  ThemeProvider,
+  TypographyVariantsOptions
+} from '@mui/material/styles';
 
 // PROJECT IMPORTS
 import { NextAppDirEmotionCacheProvider } from './emotionCache';
@@ -38,14 +44,20 @@ export default function ThemeCustomization({ children }: ThemeCustomizationProps
     }
   }
 
-  const theme: Theme = useMemo<Theme>(() => Palette(themeMode, presetColor, themeContrast), [themeMode, presetColor, themeContrast]);
+  const theme: Theme = useMemo<Theme>(
+    () => Palette(themeMode, presetColor, themeContrast),
+    [themeMode, presetColor, themeContrast]
+  );
 
   const themeTypography: TypographyVariantsOptions = useMemo<TypographyVariantsOptions>(
     () => Typography(themeMode, fontFamily, theme),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [themeMode, fontFamily]
   );
-  const themeCustomShadows: CustomShadowProps = useMemo<CustomShadowProps>(() => CustomShadows(theme), [theme]);
+  const themeCustomShadows: CustomShadowProps = useMemo<CustomShadowProps>(
+    () => CustomShadows(theme),
+    [theme]
+  );
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({

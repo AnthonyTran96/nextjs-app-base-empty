@@ -6,7 +6,11 @@ import { FontFamily, ThemeMode } from 'types/config';
 
 // ==============================|| DEFAULT THEME - TYPOGRAPHY  ||============================== //
 
-const Typography = (mode: ThemeMode, fontFamily: FontFamily, theme: Theme): TypographyVariantsOptions => ({
+const Typography = (
+  mode: ThemeMode,
+  fontFamily: FontFamily,
+  theme: Theme
+): TypographyVariantsOptions => ({
   htmlFontSize: 16,
   fontFamily,
   fontWeightLight: 300,

@@ -40,8 +40,10 @@ const Header = () => {
   // HEADER CONTENT
   const headerContent = useMemo(() => <HeaderContent />, []);
 
-  const iconBackColorOpen = theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
-  const iconBackColor = theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
+  const iconBackColorOpen =
+    theme.palette.mode === ThemeMode.DARK ? 'secondary.200' : 'secondary.200';
+  const iconBackColor =
+    theme.palette.mode === ThemeMode.DARK ? 'background.default' : 'secondary.100';
 
   // COMMON HEADER
   const mainHeader: ReactNode = (
@@ -57,7 +59,12 @@ const Header = () => {
           color="secondary"
           variant="light"
           size="large"
-          sx={{ color: 'secondary.main', bgcolor: drawerOpen ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 }, p: 1 }}
+          sx={{
+            color: 'secondary.main',
+            bgcolor: drawerOpen ? iconBackColorOpen : iconBackColor,
+            ml: { xs: 0, lg: -2 },
+            p: 1
+          }}
         >
           <HambergerMenu />
         </IconButton>
@@ -76,7 +83,12 @@ const Header = () => {
       zIndex: 1200,
       width: isHorizontal
         ? '100%'
-        : { xs: '100%', lg: drawerOpen ? `calc(100% - ${DRAWER_WIDTH}px)` : `calc(100% - ${MINI_DRAWER_WIDTH}px)` }
+        : {
+            xs: '100%',
+            lg: drawerOpen
+              ? `calc(100% - ${DRAWER_WIDTH}px)`
+              : `calc(100% - ${MINI_DRAWER_WIDTH}px)`
+          }
     }
   };
 

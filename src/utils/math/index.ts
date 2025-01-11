@@ -44,7 +44,12 @@ export function formatUserId(userId: string) {
   return userId;
 }
 
-export function formatCurrency(currencyParam: string | Number, separator = ',', typeCurrency?: string, hideUnit?: boolean) {
+export function formatCurrency(
+  currencyParam: string | Number,
+  separator = ',',
+  typeCurrency?: string,
+  hideUnit?: boolean
+) {
   if (currencyParam !== undefined && currencyParam !== null) {
     let currency: string;
     if (
@@ -69,11 +74,18 @@ export function formatCurrency(currencyParam: string | Number, separator = ',', 
     let formattedCurrency = characterFirst + formattedIntegerPart;
     if (decimalPart !== undefined) {
       formattedCurrency += `.${decimalPart.padEnd(2, '0')}`;
-    } else if (currencyParam && currencyParam !== 0 && typeCurrency !== CURRENCY_VND && typeCurrency !== CURRENCY_JPY) {
+    } else if (
+      currencyParam &&
+      currencyParam !== 0 &&
+      typeCurrency !== CURRENCY_VND &&
+      typeCurrency !== CURRENCY_JPY
+    ) {
       formattedCurrency += '.00';
     }
 
-    return typeCurrency && !hideUnit ? `${formattedCurrency || '0'} ${typeCurrency}` : formattedCurrency;
+    return typeCurrency && !hideUnit
+      ? `${formattedCurrency || '0'} ${typeCurrency}`
+      : formattedCurrency;
   }
   return '';
 }
@@ -167,7 +179,18 @@ export function maskCardNumber(param: string) {
 }
 
 export const docSoTien = (SoTien: number) => {
-  const ChuSo = [' không ', ' một ', ' hai ', ' ba ', ' bốn ', ' năm ', ' sáu ', ' bảy ', ' tám ', ' chín '];
+  const ChuSo = [
+    ' không ',
+    ' một ',
+    ' hai ',
+    ' ba ',
+    ' bốn ',
+    ' năm ',
+    ' sáu ',
+    ' bảy ',
+    ' tám ',
+    ' chín '
+  ];
   const Tien = ['', ' nghìn', ' triệu', ' tỷ', ' nghìn tỷ', ' triệu tỷ'];
 
   const docSo3ChuSo = function (baso: any) {

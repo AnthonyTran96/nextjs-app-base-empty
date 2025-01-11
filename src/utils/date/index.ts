@@ -32,7 +32,11 @@ function daysInMonth(_date: string | Date | Moment | number) {
 /**
  * Get list days by month. Maybe has pre month, next month.
  */
-export function getDaysByMonth(mDate: string | Date | Moment | number, firstDayOfWeek: number, showSixWeeks?: boolean) {
+export function getDaysByMonth(
+  mDate: string | Date | Moment | number,
+  firstDayOfWeek: number,
+  showSixWeeks?: boolean
+) {
   const days = daysInMonth(mDate);
   let before: Moment[] = [];
   let after: Moment[] = [];
@@ -142,7 +146,13 @@ export function formartDateCustom(value: any, type: string, toType: string) {
   return moment(value, type).format(toType);
 }
 
-export function calculateIntestSaving(interest: number, dayStart: string, dayEnd: string, amount: number, formatDate: string) {
+export function calculateIntestSaving(
+  interest: number,
+  dayStart: string,
+  dayEnd: string,
+  amount: number,
+  formatDate: string
+) {
   const dayStartMoment = moment(dayStart, formatDate);
   const dayEndMoment = moment(dayEnd, formatDate);
   const day = dayEndMoment.diff(dayStartMoment, 'days');

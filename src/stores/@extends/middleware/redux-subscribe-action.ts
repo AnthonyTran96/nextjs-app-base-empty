@@ -29,7 +29,10 @@ export const subscribeBefore = (listener: Listener) => {
 export const subscribeAfter = (listener: Listener) => {
   return _subscribe(listener, _subscribedAfter);
 };
-const _subscribeAction = (actionListenerContainer: ActionListenerContainer, listenerContainer: ActionListenerContainer[]) => {
+const _subscribeAction = (
+  actionListenerContainer: ActionListenerContainer,
+  listenerContainer: ActionListenerContainer[]
+) => {
   if (!onCheckType(actionListenerContainer.action, 'string')) {
     throw new Error('Expected the action to be a string.');
   }
@@ -77,7 +80,9 @@ export const unsubscribeAll = () => {
 };
 
 const _unsubscribeAction = (listenerContainer: ActionListenerContainer[], filterAction: string) => {
-  const filteredListenerContainer = listenerContainer.filter(({ action }) => action !== filterAction);
+  const filteredListenerContainer = listenerContainer.filter(
+    ({ action }) => action !== filterAction
+  );
   listenerContainer.length = 0;
   listenerContainer.push(...filteredListenerContainer);
 };

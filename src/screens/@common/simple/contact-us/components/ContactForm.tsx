@@ -53,7 +53,13 @@ function ContactForm() {
               <TextField fullWidth type="number" placeholder="Phone Number" />
             </Grid>
             <Grid item xs={12}>
-              <TextField select fullWidth placeholder="Company Size" value={size} onChange={handleCompanySize}>
+              <TextField
+                select
+                fullWidth
+                placeholder="Company Size"
+                value={size}
+                onChange={handleCompanySize}
+              >
                 {sizes.map((option, index) => (
                   <MenuItem key={index} value={option.value}>
                     {option.label}

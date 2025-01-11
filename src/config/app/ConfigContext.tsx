@@ -5,7 +5,15 @@ import config from 'config/app';
 import useLocalStorage from 'hooks/useLocalStorage';
 
 // TYPES
-import { CustomizationProps, FontFamily, I18n, MenuOrientation, PresetColor, ThemeDirection, ThemeMode } from 'types/config';
+import {
+  CustomizationProps,
+  FontFamily,
+  I18n,
+  MenuOrientation,
+  PresetColor,
+  ThemeDirection,
+  ThemeMode
+} from 'types/config';
 
 // initial state
 const initialState: CustomizationProps = {

@@ -64,13 +64,21 @@ export default function AnimateButton({
     case 'slide':
       if (direction === 'up' || direction === 'down') {
         return (
-          <motion.div animate={{ y: y !== undefined ? y : '' }} onHoverEnd={() => cycleY()} onHoverStart={() => cycleY()}>
+          <motion.div
+            animate={{ y: y !== undefined ? y : '' }}
+            onHoverEnd={() => cycleY()}
+            onHoverStart={() => cycleY()}
+          >
             {children}
           </motion.div>
         );
       }
       return (
-        <motion.div animate={{ x: x !== undefined ? x : '' }} onHoverEnd={() => cycleX()} onHoverStart={() => cycleX()}>
+        <motion.div
+          animate={{ x: x !== undefined ? x : '' }}
+          onHoverEnd={() => cycleX()}
+          onHoverStart={() => cycleX()}
+        >
           {children}
         </motion.div>
       );

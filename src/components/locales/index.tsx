@@ -33,12 +33,18 @@ interface Props {
 const Locales = ({ children }: Props) => {
   const { i18n } = useConfig();
 
-  const [messages, setMessages] = useState<Record<string, string> | Record<string, MessageFormatElement[]> | undefined>();
+  const [messages, setMessages] = useState<
+    Record<string, string> | Record<string, MessageFormatElement[]> | undefined
+  >();
 
   useEffect(() => {
-    loadLocaleData(i18n).then((d: { default: Record<string, string> | Record<string, MessageFormatElement[]> | undefined }) => {
-      setMessages(d.default);
-    });
+    loadLocaleData(i18n).then(
+      (d: {
+        default: Record<string, string> | Record<string, MessageFormatElement[]> | undefined;
+      }) => {
+        setMessages(d.default);
+      }
+    );
   }, [i18n]);
 
   return (

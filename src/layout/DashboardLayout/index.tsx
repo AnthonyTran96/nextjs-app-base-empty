@@ -55,7 +55,10 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       <Header />
       {!isHorizontal ? <Drawer /> : <HorizontalBar />}
 
-      <Box component="main" sx={{ width: `calc(100% - ${DRAWER_WIDTH}px)`, flexGrow: 1, p: { xs: 1, sm: 3 } }}>
+      <Box
+        component="main"
+        sx={{ width: `calc(100% - ${DRAWER_WIDTH}px)`, flexGrow: 1, p: { xs: 1, sm: 3 } }}
+      >
         <Toolbar sx={{ mt: isHorizontal ? 8 : 'inherit', mb: isHorizontal ? 2 : 'inherit' }} />
         <Container
           maxWidth={container ? 'xl' : false}

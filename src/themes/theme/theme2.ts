@@ -7,16 +7,60 @@ import { PaletteThemeProps } from 'types/theme';
 const Theme2 = (mode: ThemeMode): PaletteThemeProps => {
   const contrastText = '#fff';
 
-  let primaryColors = ['#EEEDFC', '#D5D1F8', '#B9B2F3', '#9C93EE', '#877CEA', '#7265E6', '#6A5DE3', '#5F53DF', '#5549DB', '#4237D5'];
-  let secondaryColors = ['#F8F9FA', '#F8F9FA', '#F3F5F7', '#DBE0E5', '#BEC8D0', '#8996A4', '#5B6B79', '#3E4853', '#1D2630', '#131920'];
+  let primaryColors = [
+    '#EEEDFC',
+    '#D5D1F8',
+    '#B9B2F3',
+    '#9C93EE',
+    '#877CEA',
+    '#7265E6',
+    '#6A5DE3',
+    '#5F53DF',
+    '#5549DB',
+    '#4237D5'
+  ];
+  let secondaryColors = [
+    '#F8F9FA',
+    '#F8F9FA',
+    '#F3F5F7',
+    '#DBE0E5',
+    '#BEC8D0',
+    '#8996A4',
+    '#5B6B79',
+    '#3E4853',
+    '#1D2630',
+    '#131920'
+  ];
   let errorColors = ['#FDE8E7', '#F25E52', '#F04134', '#EE3B2F', '#E92A21'];
   let warningColors = ['#FFF7E0', '#FFC926', '#FFBF00', '#FFB900', '#FFA900'];
   let infoColors = ['#E0F4F5', '#26B0BA', '#00A2AE', '#009AA7', '#008694'];
   let successColors = ['#E0F5EA', '#26B56E', '#00A854', '#00A04D', '#008D3A'];
 
   if (mode === ThemeMode.DARK) {
-    primaryColors = ['#222130', '#2b2946', '#37335a', '#443e78', '#554ca0', '#655ac8', '#9186dd', '#5F53DF', '#c3baf4', '#efecfb'];
-    secondaryColors = ['#131920', '#1D2630', '#3E4853', '#5B6B79', '#8996A4', '#BEC8D0', '#DBE0E5', '#F3F5F7', '#F8F9FA', '#F8F9FA'];
+    primaryColors = [
+      '#222130',
+      '#2b2946',
+      '#37335a',
+      '#443e78',
+      '#554ca0',
+      '#655ac8',
+      '#9186dd',
+      '#5F53DF',
+      '#c3baf4',
+      '#efecfb'
+    ];
+    secondaryColors = [
+      '#131920',
+      '#1D2630',
+      '#3E4853',
+      '#5B6B79',
+      '#8996A4',
+      '#BEC8D0',
+      '#DBE0E5',
+      '#F3F5F7',
+      '#F8F9FA',
+      '#F8F9FA'
+    ];
     errorColors = ['#321d1d', '#7d2e28', '#d13c31', '#e66859', '#f8baaf'];
     warningColors = ['#342c1a', '#836611', '#dda705', '#e9bf28', '#f8e577'];
     infoColors = ['#1a2628', '#11595f', '#058e98', '#1ea6aa', '#64cfcb'];

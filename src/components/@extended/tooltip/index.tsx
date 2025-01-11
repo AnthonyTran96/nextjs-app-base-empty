@@ -55,9 +55,14 @@ interface StyleProps {
   color?: ColorProps | string;
 }
 
-const TooltipStyle = styled(({ className, ...props }: TooltipProps) => <MuiTooltip {...props} classes={{ popper: className }} />, {
-  shouldForwardProp: (prop) => prop !== 'color' && prop !== 'labelColor'
-})(({ theme, color, labelColor }: StyleProps) => ({
+const TooltipStyle = styled(
+  ({ className, ...props }: TooltipProps) => (
+    <MuiTooltip {...props} classes={{ popper: className }} />
+  ),
+  {
+    shouldForwardProp: (prop) => prop !== 'color' && prop !== 'labelColor'
+  }
+)(({ theme, color, labelColor }: StyleProps) => ({
   ...(color && getVariantStyle({ color, theme, labelColor }))
 }));
 
@@ -69,7 +74,12 @@ interface TooltipExtendProps extends TooltipProps {
   children: TooltipProps['children'];
 }
 
-export default function CustomTooltip({ children, arrow, labelColor = '', ...rest }: TooltipExtendProps) {
+export default function CustomTooltip({
+  children,
+  arrow,
+  labelColor = '',
+  ...rest
+}: TooltipExtendProps) {
   const theme = useTheme();
   return (
     <Box display="flex">

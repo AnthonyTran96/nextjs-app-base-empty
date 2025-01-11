@@ -217,7 +217,9 @@ const AuthRegister = () => {
               <FormControl fullWidth sx={{ mt: 2 }}>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item>
-                    <Box sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }} />
+                    <Box
+                      sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }}
+                    />
                   </Grid>
                   <Grid item>
                     <Typography variant="subtitle1" fontSize="0.75rem">
@@ -246,7 +248,15 @@ const AuthRegister = () => {
             )}
             <Grid item xs={12}>
               <AnimateButton>
-                <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                <Button
+                  disableElevation
+                  disabled={isSubmitting}
+                  fullWidth
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
                   Create Account
                 </Button>
               </AnimateButton>

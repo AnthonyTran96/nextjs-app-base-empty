@@ -81,7 +81,18 @@ export default function Radio(theme: Theme) {
     MuiRadio: {
       defaultProps: {
         className: 'size-medium',
-        icon: <Box className="icon" sx={{ width: 16, height: 16, border: '1px solid', borderColor: 'inherit', borderRadius: '50%' }} />,
+        icon: (
+          <Box
+            className="icon"
+            sx={{
+              width: 16,
+              height: 16,
+              border: '1px solid',
+              borderColor: 'inherit',
+              borderRadius: '50%'
+            }}
+          />
+        ),
         checkedIcon: (
           <Box
             className="icon"
