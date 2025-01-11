@@ -10,3 +10,5 @@ export const selectLoginLoading = createDeepEqualSelector(
 );
 
 export const selectUserInfo = createDeepEqualSelector(selectDomain, (auth) => auth.user);
+
+export const selectToken = createDeepEqualSelector(selectDomain, (auth) => auth.token);
