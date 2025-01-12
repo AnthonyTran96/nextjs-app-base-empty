@@ -44,7 +44,8 @@
       "@common-screens/*": ["./screens/@common/*"],
       "@auth-common/*": ["./screens/authentication/@common/*"],
       "@unauth-common/*": ["./screens/un-authentication/@common/*"],
-      "@app-services": ["./services/networking/app-services.ts"]
+      "@app-services": ["./services/networking/app-services.ts"],
+      "@mock/*": ["../_mock/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

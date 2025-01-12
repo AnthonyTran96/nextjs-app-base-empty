@@ -1,16 +1,19 @@
 {
-  "name": "able-pro-material-next-ts",
+  "name": "anthony-nextjs-base-project",
   "version": "1.0.0",
   "author": {
-    "name": "PhoenixCoded",
-    "email": "PhoenixCoded@gmail.com",
-    "url": "https://phoenixcoded.net/"
+    "name": "Anthony",
+    "email": "quanghust96@gmail.com",
+    "url": "https://www.linkedin.com/in/%C4%91%E1%BB%A9c-quang-tr%E1%BA%A7n-225289199/"
   },
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.dev next dev",
+    "mock:run": "tsx watch ./_mock/mockServer",
+    "dev:mock": "env-cmd -f .env.mock next dev",
     "build": "next build",
     "build:dev": "env-cmd -f .env.dev next build",
+    "build:mock": "env-cmd -f .env.mock next build",
     "build:prod": "env-cmd -f .env.prod next build",
     "start": "next start",
     "lint": "next lint",
@@ -59,6 +62,8 @@
   },
   "devDependencies": {
     "@types/chance": "^1.1.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "@types/lodash": "^4.14.202",
     "@types/node": "20.11.4",
     "@types/react": "^18.2.45",
@@ -70,14 +75,17 @@
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
+    "cors": "^2.8.5",
     "encoding": "^0.1.13",
     "env-cmd": "^10.1.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "express": "^4.21.2",
     "immutable": "^4.3.4",
     "prettier": "^3.1.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.3.3"
   }
 }

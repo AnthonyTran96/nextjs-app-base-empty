@@ -5,7 +5,7 @@ import { ApiConstants } from './networking/app-apis';
 async function login(params: LoginParams) {
   try {
     const rs = await appServices.post(ApiConstants.LOGIN, params);
-    const data = rs.data.data as LoginResult;
+    const data = rs.data as LoginResult;
     return data;
   } catch (error) {}
 }
@@ -13,7 +13,7 @@ async function login(params: LoginParams) {
 async function logout() {
   try {
     const rs = await appServices.post(ApiConstants.LOGOUT);
-    const data = rs.data.data;
+    const data = rs.data;
     return data;
   } catch (error) {}
 }

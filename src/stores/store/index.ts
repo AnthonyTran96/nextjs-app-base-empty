@@ -7,7 +7,7 @@ import storePersist from '../@extends/storePersist';
 import { listenerMiddleware } from '../listener';
 import { allReducer } from './all-reducers';
 
-export const PERSIST_KEY = 'htc_persist_key';
+export const PERSIST_KEY = 'persist_key';
 
 const devMode = process.env.NODE_ENV !== 'production';
 

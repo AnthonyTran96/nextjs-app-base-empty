@@ -10,12 +10,12 @@ takeLatestListeners({
     const response = await authServices.login(body);
     listenerApi.dispatch(authActions.endLogin());
 
-    if (!response || !response.accessToken) {
+    if (!response || !response.data) {
       onFailed();
       return;
     }
 
-    const { accessToken, fullName, userId } = response;
+    const { accessToken, fullName, userId } = response.data;
     listenerApi.dispatch(authActions.setUser({ fullName, userId }));
     listenerApi.dispatch(authActions.setToken(accessToken));
     onSuccess(response);

@@ -1,6 +1,6 @@
 const ApiEndPoint = {
   LOGIN: '/auth/login',
-  LOGOUT: 'auth/logout'
+  LOGOUT: '/auth/logout'
 } as const;
 
 const configApi = () => {
