@@ -6,13 +6,11 @@ import { ReactElement } from 'react';
 
 // PROJECT IMPORT
 import Locales from 'components/locales';
-import RTLLayout from 'components/rtl-layout';
-import ScrollTop from 'components/scroll/ScrollTop';
+
 import { ConfigProvider } from 'config/app/ConfigContext';
 import ThemeCustomization from 'themes';
 
-import Snackbar from 'components/@extended/snackbar';
-import Notistack from 'components/@third-party/notistack';
+import { Snackbar } from '@mui/base';
 import ReduxProvider from 'stores';
 
 // ==============================|| PROVIDER WRAPPER  ||============================== //
@@ -22,16 +20,10 @@ const ProviderWrapper = ({ children }: { children: ReactElement }) => {
     <ReduxProvider>
       <ConfigProvider>
         <ThemeCustomization>
-          <RTLLayout>
-            <Locales>
-              <ScrollTop>
-                <Notistack>
-                  <Snackbar />
-                  {children}
-                </Notistack>
-              </ScrollTop>
-            </Locales>
-          </RTLLayout>
+          <Locales>
+            <Snackbar />
+            {children}
+          </Locales>
         </ThemeCustomization>
       </ConfigProvider>
     </ReduxProvider>
