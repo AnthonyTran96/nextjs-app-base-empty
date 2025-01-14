@@ -1,5 +1,5 @@
 import { takeLatestListeners } from '@listener';
-import { authActions, menuActions, snackbarActions } from '@redux-slice';
+import { authActions } from '@redux-slice';
 import authServices from 'services/auth-services';
 
 takeLatestListeners({
@@ -34,7 +34,5 @@ takeLatestListeners({
   actionCreator: authActions.clearStore,
   effect: async (_, listenerApi) => {
     listenerApi.dispatch(authActions.reset());
-    listenerApi.dispatch(menuActions.reset());
-    listenerApi.dispatch(snackbarActions.reset());
   }
 });
