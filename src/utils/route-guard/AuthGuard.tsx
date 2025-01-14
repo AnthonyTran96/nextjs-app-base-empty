@@ -1,7 +1,6 @@
 'use client';
 
 import { selectToken } from '@redux-selector/auth';
-import { Loader } from 'components';
 import { ROUTES } from 'config/routes';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
@@ -39,7 +38,7 @@ const AuthGuard = ({ children }: GuardProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
-  if (!token) return <Loader />;
+  if (!token) return null;
 
   return <>{children}</>;
 };

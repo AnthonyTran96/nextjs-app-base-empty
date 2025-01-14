@@ -27,7 +27,6 @@ export const initialSnackbar: SnackbarProps = {
   },
   variant: 'default',
   alert: {
-    color: 'primary',
     variant: 'filled'
   },
   transition: 'Fade',
