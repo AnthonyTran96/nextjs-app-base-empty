@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: "export",
-  modularizeImports: {},
+  modularizeImports: {
+    'antd': {
+      transform: 'antd/es/{{member}}',
+      style: true
+    }
+  },
   images: {
     unoptimized: true,
   },
