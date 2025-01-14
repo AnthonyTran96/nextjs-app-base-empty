@@ -1,0 +1,36 @@
+.ant-steps-item-process .ant-steps-item-icon {
+  background-color: rgba(255, 199, 9, 1) !important;
+  border: 0;
+}
+
+.customstep .ant-steps-item-process .ant-steps-item-icon {
+  background-color: rgba(255, 199, 9, 1) !important;
+  border: 0;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: rgba(255, 199, 9, 1) !important;
+  border-color: rgba(255, 199, 9, 1) !important;
+}
+
+.ant-steps-item
+  .ant-steps-item-finish
+  .ant-steps-item-icon
+  .customs
+  .ant-steps-item-container
+  .ant-steps-item-icon {
+  background-color: rgba(255, 199, 9, 1) !important;
+  border-color: rgba(255, 199, 9, 1) !important;
+}
+
+.ant-steps-finish-icon {
+  color: #ffffff;
+}
+
+.ant-steps-icon {
+  color: rgba(27, 29, 41, 1) !important;
+}
+
+.ant-steps .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background-color: rgba(255, 199, 9, 1) !important;
+}

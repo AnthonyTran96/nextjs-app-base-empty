@@ -1,0 +1,22 @@
+.ant-modal .ant-modal-content {
+  border-radius: theme('fontSize.12');
+}
+
+.not-mask .ant-modal .ant-modal-content {
+  box-shadow: none;
+}
+
+.dialog .ant-modal {
+  transform-origin: 50% 50% !important;
+  z-index: 1;
+}
+
+div:has(.ant-modal) {
+  position: relative;
+  z-index: 2;
+}
+
+div:has(.highest-dialog) {
+  position: relative;
+  z-index: 10;
+}

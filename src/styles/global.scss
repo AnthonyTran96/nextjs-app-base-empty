@@ -1,0 +1,319 @@
+@tailwind base;
+
+body,
+html {
+  @apply h-full;
+}
+
+@tailwind components;
+@import './components/buttons.scss';
+@import './components/dialog.scss';
+@import './components/radio.scss';
+@import './components/menu.scss';
+@import './components/toast.scss';
+@import './components/table.scss';
+@import './components/switch.scss';
+@import './components/progressbar.scss';
+@import './components/status.scss';
+@import './components/pagination.scss';
+@import './components/date-picket.scss';
+@import './components/badge.scss';
+
+@import './fonts.scss';
+
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background: transparent;
+  // background: rgb(var(--color-50));
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgb(var(--color-400));
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+//Convert color variable to R,G,B index. Include hex, rgb and hsl color.
+//Ex: #FFFFFF --> 255 255 255
+// rgb(255, 255, 255) --> 255 255 255
+// hsl(0,0,100) --> 255 255 255
+@function toRGB($color) {
+  @return unquote(red($color) + ' ' + green($color) + ' ' + blue($color));
+}
+
+@layer base {
+  :root {
+    font-family: 'Roboto', sans-serif;
+    // To use below color variable in css or scss, use following syntax: rgb(var(--color-name))
+    //Ex: rgb(var(--primary-50)) --> rgb(255,249,230)
+    --text-primary: #{toRGB(#313442)};
+
+    --primary-50: #{toRGB(#fff7df)};
+    --primary-100: #{toRGB(#ffeaaf)};
+    --primary-200: #{toRGB(#ffeaaf)};
+    --primary-300: #{toRGB(#ffeaaf)};
+    --primary-500: #{toRGB(#ffc709)};
+    --primary-600: #{toRGB(#f0af08)};
+    --primary-700: #{toRGB(#db850d)};
+    --primary-800: #{toRGB(#be6500)};
+
+    --secondary: #{toRGB(#82869e)};
+    --secondary-50: #{toRGB(#e6f1f8)};
+    --secondary-100: #{toRGB(#d9eaf5)};
+    --secondary-200: #{toRGB(#b3d5eb)};
+    --secondary-300: #{toRGB(#99c7e4)};
+    --secondary-500: #{toRGB(#0072bc)};
+    --secondary-600: #{toRGB(#0061a0)};
+    --secondary-700: #{toRGB(#005084)};
+    --secondary-800: #{toRGB(#004471)};
+
+    --gradient-priority-start: #{toRGB(#fcdfaa)};
+    --gradient-priority-end: #{toRGB(#f9c461)};
+    --gradient-primary-start: #{toRGB(#31aeff)};
+    --gradient-primary-end: #{toRGB(#006db4)};
+    --gradient-secondary-start: #{toRGB(#ffe609)};
+    --gradient-secondary-end: #{toRGB(#ffa800)};
+    --gradient-100-start: #{toRGB(#ffd143)};
+    --gradient-100-middle: #{toRGB(#fff2cc)};
+    --gradient-100-end: #{toRGB(#ffffff)};
+    --gradient-200-start: #{toRGB(#ffffff)};
+    --gradient-200-middle: #{toRGB(#fff7dd)};
+    --gradient-200-end: #{toRGB(#fffbf0)};
+
+    --link-50: #{toRGB(#ebf5ff)};
+    --link-100: #{toRGB(#ebf5ff)};
+    --link-200: #{toRGB(#c4e2fe)};
+    --link-300: #{toRGB(#a6d3fe)};
+    --link-500: #{toRGB(#3a9efc)};
+    --link-600: #{toRGB(#3186d6)};
+    --link-700: #{toRGB(#296fb0)};
+    --link-800: #{toRGB(#235f97)};
+
+    --success-50: #{toRGB(#e9f8ed)};
+    --success-100: #{toRGB(#ddf5e4)};
+    --success-200: #{toRGB(#bcebca)};
+    --success-300: #{toRGB(#a5e4b8)};
+    --success-500: #{toRGB(#1ebb4d)};
+    --success-600: #{toRGB(#1a9f41)};
+    --success-700: #{toRGB(#158336)};
+    --success-800: #{toRGB(#12702e)};
+
+    --pending-50: #{toRGB(#fff5e9)};
+    --pending-100: #{toRGB(#fff0dd)};
+    --pending-200: #{toRGB(#ffe0bc)};
+    --pending-300: #{toRGB(#ffd6a5)};
+    --pending-500: #{toRGB(#ff991f)};
+    --pending-600: #{toRGB(#d9821a)};
+    --pending-700: #{toRGB(#b36b16)};
+    --pending-800: #{toRGB(#995c13)};
+
+    --error-50: #{toRGB(#fcebeb)};
+    --error-100: #{toRGB(#fbe1e1)};
+    --error-200: #{toRGB(#f7c2c2)};
+    --error-300: #{toRGB(#f4aeae)};
+    --error-500: #{toRGB(#e43434)};
+    --error-600: #{toRGB(#c22c2c)};
+    --error-700: #{toRGB(#a02424)};
+    --error-800: #{toRGB(#891f1f)};
+
+    --color-50: #{toRGB(#ffffff)}; // white
+    --color-100: #{toRGB(#f8f8fc)}; // table-header
+    --color-200: #{toRGB(#f3f3f7)}; // background
+    --color-300: #{toRGB(#e4e5f0)}; // divider
+    --color-400: #{toRGB(#dcdee9)}; // disable
+    --color-500: #{toRGB(#bcbfd6)}; // border
+    --color-600: #{toRGB(#a7abc3)}; // placeholder
+    --color-700: #{toRGB(#82869e)}; // text-secondary
+    --color-800: #{toRGB(#313442)}; // text-primary
+    --color-900: #{toRGB(#1b1d29)}; // text-title
+    --color-black: #{toRGB(#000000)};
+
+    --color-2000: #{toRGB(hsl(209, 97, 61))}; //Test Color, don't use this color
+
+    --blur_modal: #{toRGB(#4a4a4c)};
+
+    --common-0: #{toRGB(#1b1d29)}; // text-label ; text_btn_primary
+    --common-500: #{toRGB(#6f6f6f)};
+    --common-1000: #{toRGB(#ffffff)}; // background icon button;
+
+    --transaction-start: #{toRGB(#ffffff)};
+    --transaction-middle: #{toRGB(#fff2cc)};
+    --transaction-end: #{toRGB(#fff7df)};
+
+    --background_image: #{toRGB(#f6f6f6)};
+
+    --skeleton-background: #{toRGB(#f3f3f7)};
+    --skeleton-highlight: #{toRGB(#ffffff)};
+  }
+}
+
+/* init preset className */
+.h1 {
+  font-size: theme('fontSize.48');
+  line-height: theme('lineHeight.64');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.color.900');
+}
+
+.h2 {
+  font-size: theme('fontSize.40');
+  line-height: theme('lineHeight.56');
+  font-weight: theme('fontWeight.extrabold');
+  color: theme('colors.color.900');
+}
+
+.h3 {
+  font-size: theme('fontSize.32');
+  line-height: theme('lineHeight.40');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.text.primary');
+}
+
+.h4 {
+  font-size: theme('fontSize.28');
+  line-height: theme('lineHeight.36');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.text.primary');
+}
+
+.title1 {
+  font-size: theme('fontSize.24');
+  line-height: theme('lineHeight.32');
+  font-weight: theme('fontWeight.extrabold');
+  color: theme('colors.color.900');
+}
+
+.title2 {
+  font-size: theme('fontSize.24');
+  line-height: theme('lineHeight.36');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.color.900');
+}
+
+.title3 {
+  font-size: theme('fontSize.20');
+  line-height: theme('lineHeight.28');
+  font-weight: theme('fontWeight.extrabold');
+  color: theme('colors.color.900');
+}
+
+.title4 {
+  font-size: theme('fontSize.18');
+  line-height: theme('lineHeight.24');
+  font-weight: theme('fontWeight.bold');
+  color: theme('colors.color.900');
+}
+
+.title5 {
+  font-size: theme('fontSize.18');
+  line-height: theme('lineHeight.24');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.color.900');
+}
+
+.sub-title1 {
+  font-size: theme('fontSize.15');
+  line-height: theme('lineHeight.24');
+  font-weight: theme('fontWeight.bold');
+  color: theme('colors.color.900');
+}
+
+.sub-title2 {
+  font-size: theme('fontSize.16');
+  line-height: theme('lineHeight.24');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.color.900');
+}
+
+.sub-title3 {
+  font-size: theme('fontSize.13');
+  line-height: theme('lineHeight.24');
+  font-weight: theme('fontWeight.bold');
+  color: theme('colors.color.900');
+}
+
+.sub-title4 {
+  font-size: theme('fontSize.14');
+  line-height: theme('lineHeight.24');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.color.900');
+}
+
+.body1 {
+  font-size: theme('fontSize.14');
+  line-height: theme('lineHeight.20');
+  font-weight: theme('fontWeight.normal');
+  color: theme('colors.color.900');
+}
+
+.body2 {
+  font-size: theme('fontSize.13');
+  line-height: theme('lineHeight.20');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.color.900');
+}
+
+.body3 {
+  font-size: theme('fontSize.15');
+  line-height: theme('lineHeight.20');
+  font-weight: theme('fontWeight.normal');
+  color: theme('colors.color.900');
+}
+
+.caption1 {
+  font-size: theme('fontSize.12');
+  line-height: theme('lineHeight.16');
+  font-weight: theme('fontWeight.normal');
+  color: theme('colors.color.900');
+}
+
+.caption2 {
+  font-size: theme('fontSize.12');
+  line-height: theme('lineHeight.16');
+  font-weight: theme('fontWeight.normal');
+  color: theme('colors.color.900');
+}
+
+.caption3 {
+  font-size: theme('fontSize.10');
+  line-height: theme('lineHeight.16');
+  text-transform: uppercase;
+  font-weight: theme('fontWeight.medium');
+  color: theme('colors.color.900');
+}
+
+ct-web-inbox {
+  --inbox-top: 0px;
+  --inbox-left: unset;
+  --inbox-right: 0px;
+  --inbox-bottom: unset;
+}
+
+#unviewedBadge {
+  display: none !important;
+}
+
+.ant-alert-icon {
+  font-size: 20px;
+}

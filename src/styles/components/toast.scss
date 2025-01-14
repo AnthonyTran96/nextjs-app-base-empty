@@ -1,0 +1,56 @@
+.ant-notification .ant-notification-notice-wrapper {
+  border-radius: 12px;
+  margin-bottom: 64px;
+  margin-left: 30vh;
+  @media (max-width: theme('screens.tablet.max')) {
+    margin-left: 0;
+  }
+}
+
+.ant-notification .ant-notification-notice-wrapper:has(.dark-toast) {
+  border-radius: 24px;
+  background-color: theme('colors.color.900');
+  width: auto;
+}
+
+.ant-notification .ant-notification-notice-wrapper > .ant-notification-notice {
+  padding: 16px;
+}
+
+.ant-notification > .ant-notification-notice-wrapper > .dark-toast {
+  padding: 8px 16px;
+}
+
+.ant-notification > .ant-notification-notice-wrapper > .dark-toast .ant-notification-notice-close {
+  display: none;
+}
+
+.ant-notification
+  > .ant-notification-notice-wrapper
+  > .dark-toast
+  .ant-notification-notice-message {
+  color: theme('colors.color.50');
+  font-size: theme('fontSize.13');
+  font-weight: theme('fontWeight.normal');
+}
+
+.ant-notification > .ant-notification-notice-wrapper > .dark-toast .ant-notification-notice-icon {
+  top: 6px;
+}
+
+.ant-notification
+  .ant-notification-notice-wrapper
+  .ant-notification-notice-with-icon
+  > .ant-notification-notice-message {
+  margin-bottom: 0;
+}
+
+.ant-notification .ant-notification-notice-wrapper > .ant-notification-notice-close {
+  width: 24px;
+  height: 24px;
+  top: 16px;
+  right: 12px;
+}
+.ant-tooltip {
+  max-width: unset !important;
+}

@@ -1,0 +1,14 @@
+.ant-badge > .ant-badge-count {
+  box-shadow: none;
+  font-size: 10px;
+  font-weight: 600;
+  right: unset;
+  left: 0;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.ant-badge > .ant-badge-multiple-words {
+  padding: 0 6px;
+  transform: translate(10px, -50%);
+}

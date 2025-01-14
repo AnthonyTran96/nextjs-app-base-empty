@@ -1,0 +1,30 @@
+.ant-radio-wrapper .ant-radio-inner {
+  border-width: 2px;
+  border-color: theme('colors.color.300') !important;
+  background-color: theme('colors.color.50') !important;
+}
+
+.ant-radio-wrapper .ant-radio-checked::after {
+  border: none;
+}
+
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner,
+.ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: #0072bc !important;
+  background-color: theme('colors.color.50') !important;
+}
+
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner::after {
+  background-color: #0072bc;
+  transform: scale(0.475);
+}
+
+.ant-radio-wrapper .ant-radio-disabled .ant-radio-inner,
+.ant-radio-wrapper .ant-radio-disabled.ant-radio-checked:hover .ant-radio-inner {
+  border-color: theme('colors.color.300') !important;
+  background-color: theme('colors.color.200') !important;
+}
+
+.ant-radio-wrapper .ant-radio-checked.ant-radio-disabled .ant-radio-inner::after {
+  background-color: theme('colors.color.300');
+}

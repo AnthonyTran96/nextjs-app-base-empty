@@ -1,0 +1,35 @@
+.progressItem {
+  .progressIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: 1.5px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.progressActive {
+  .progressIcon {
+    background-color: theme('colors.secondary.500');
+    border-color: theme('colors.secondary.500');
+    color: theme('colors.color.50');
+  }
+  color: theme('colors.secondary.500');
+}
+
+.progressFinished {
+  .progressIcon {
+    border: none;
+    background-color: theme('colors.secondary.100');
+  }
+}
+
+.progressInactive {
+  .progressIcon {
+    background-color: theme('colors.color.50');
+    color: theme('colors.color.600');
+    border-color: thme('color.color.600');
+  }
+  color: theme('colors.color.700');
+}

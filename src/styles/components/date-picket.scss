@@ -1,0 +1,15 @@
+.ant-picker .ant-picker-input input {
+  width: 100%;
+  line-height: 20px;
+  margin-right: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ant-picker .ant-picker-input span.ant-picker-suffix {
+  margin: 0;
+}
+
+.ant-picker-focused.ant-picker {
+  border-color: rgb(var(--primary-500));
+}

@@ -1,0 +1,100 @@
+.status-primary {
+  color: theme('colors.color.50');
+  .status-default {
+    color: theme('colors.color.800');
+    background-color: theme('colors.color.400');
+    border-color: theme('colors.color.400');
+  }
+  .status-success {
+    background-color: theme('colors.success.500');
+    border-color: theme('colors.success.500');
+  }
+  .status-error {
+    background-color: theme('colors.error.500');
+    border-color: theme('colors.error.500');
+  }
+  .status-pending {
+    background-color: theme('colors.pending.500');
+    border-color: theme('colors.pending.500');
+  }
+  .status-branding {
+    background-color: theme('colors.primary.500');
+    border-color: theme('colors.primary.500');
+  }
+  .status-confirm {
+    background-color: theme('colors.link.500');
+    border-color: theme('colors.link.500');
+  }
+  .status-disabled {
+    background-color: theme('colors.color.400');
+    border-color: theme('colors.color.400');
+  }
+}
+
+.status-secondary {
+  .status-default {
+    background-color: theme('colors.color.200');
+    border-color: theme('colors.color.200');
+  }
+  .status-success {
+    color: theme('colors.success.600');
+    background-color: theme('colors.success.50');
+    border-color: theme('colors.success.50');
+  }
+  .status-error {
+    color: theme('colors.error.600');
+    background-color: theme('colors.error.50');
+    border-color: theme('colors.error.50');
+  }
+  .status-pending {
+    color: theme('colors.pending.600');
+    background-color: theme('colors.pending.50');
+    border-color: theme('colors.pending.50');
+  }
+  .status-branding {
+    color: theme('colors.primary.600');
+    background-color: theme('colors.primary.50');
+    border-color: theme('colors.primary.50');
+  }
+  .status-confirm {
+    color: theme('colors.link.600');
+    background-color: theme('colors.link.50');
+    border-color: theme('colors.link.50');
+  }
+  .status-disabled {
+    color: theme('colors.color.50');
+    background-color: theme('colors.color.400');
+    border-color: theme('colors.color.400');
+  }
+}
+
+.status-ghost {
+  background: none;
+  .status-default {
+    border-color: theme('colors.color.500');
+  }
+  .status-success {
+    color: theme('colors.success.600');
+    border-color: theme('colors.success.600');
+  }
+  .status-error {
+    color: theme('colors.error.600');
+    border-color: theme('colors.error.600');
+  }
+  .status-pending {
+    color: theme('colors.pending.600');
+    border-color: theme('colors.pending.600');
+  }
+  .status-branding {
+    color: theme('colors.primary.600');
+    border-color: theme('colors.primary.600');
+  }
+  .status-confirm {
+    color: theme('colors.link.600');
+    border-color: theme('colors.link.600');
+  }
+  .status-disabled {
+    color: theme('colors.color.600');
+    border-color: theme('colors.color.400');
+  }
+}

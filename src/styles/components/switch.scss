@@ -1,0 +1,50 @@
+.ant-switch {
+  background-color: theme('colors.color.300');
+  min-width: 36px;
+}
+.ant-switch.ant-switch-small {
+  min-width: 48px;
+  height: 28px;
+}
+.ant-switch:hover {
+  background-color: theme('colors.color.500') !important;
+}
+.ant-switch.ant-switch-checked {
+  background-color: theme('colors.secondary.500') !important;
+}
+.ant-switch.ant-switch-checked:hover {
+  background-color: theme('colors.secondary.600') !important;
+}
+.ant-switch.ant-switch-disabled {
+  background-color: theme('colors.color.200') !important;
+}
+.ant-switch.ant-switch-disabled.ant-switch-checked {
+  background-color: theme('colors.secondary.200') !important;
+}
+.ant-switch.ant-switch-disabled .ant-switch-handle::before {
+  background-color: theme('colors.color.400');
+}
+.ant-switch.ant-switch-disabled.ant-switch-checked .ant-switch-handle::before {
+  background-color: theme('colors.color.50');
+}
+.ant-switch .ant-switch-handle {
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  inset-inline-start: 4px;
+}
+.ant-switch .ant-switch-handle:before {
+  border-radius: 10px;
+}
+.ant-switch.ant-switch-checked .ant-switch-handle {
+  inset-inline-start: calc(100% - 18px);
+}
+.ant-switch.ant-switch-small .ant-switch-handle {
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  inset-inline-start: 4px;
+}
+.ant-switch.ant-switch-small.ant-switch-checked .ant-switch-handle {
+  inset-inline-start: calc(100% - 24px);
+}
