@@ -1,4 +1,4 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 
 import { subscribeActionMiddleware } from 'stores/@extends/middleware/redux-subscribe-action';
@@ -26,7 +26,7 @@ export const makeStore = () => {
 
   const persistConfig = {
     key: PERSIST_KEY,
-    whitelist: [SLICE_NAME.AUTH],
+    whitelist: [SLICE_NAME.APP, SLICE_NAME.AUTH],
     storage: storePersist
   };
 
@@ -45,9 +45,5 @@ export const makeStore = () => {
   store.__persistor = persistStore(store);
   return store;
 };
-
-export type AppStore = ReturnType<typeof makeStore>;
-export type AppState = ReturnType<AppStore['getState']>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action>;
 
 export default makeStore();
