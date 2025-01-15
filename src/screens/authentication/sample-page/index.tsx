@@ -1,12 +1,13 @@
 'use client';
-import { selectUserInfo } from '@redux-selector/auth';
 /* eslint-disable tailwindcss/no-custom-classname */
+import { selectUserInfo } from '@redux-selector/auth';
 import ButtonBase from 'components/button';
 import AppCheckbox from 'components/checkbox';
 import { showDialog } from 'components/dialog';
 import { TYPE_ACTION, TYPE_MESSAGE } from 'components/dialog/type';
 import { IconSvgLocal } from 'components/icon-vec-local';
 import InfoBox from 'components/infobox';
+import Loader from 'components/loader';
 import ProgressBar, { TypeProgressBar } from 'components/progressbar';
 import Status, { KIND_STATUS, TYPE_STATUS } from 'components/status';
 import { TextBase } from 'components/text';
@@ -17,6 +18,7 @@ const SamplePagePage = () => {
 
   return (
     <section className="size-full p-16">
+      <Loader />
       <TextBase
         t18n="text:hello"
         t18nOptions={{ name: fullName }}

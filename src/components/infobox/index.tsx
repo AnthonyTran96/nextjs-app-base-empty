@@ -22,7 +22,7 @@ const InfoBox = (props: InfoBoxProps) => {
     fillIcon = '',
     classNames = '',
     iconClassnames = '',
-    onClick = () => {}
+    onClick
   } = props;
 
   /* eslint-disable tailwindcss/no-custom-classname */

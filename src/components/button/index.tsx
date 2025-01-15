@@ -31,7 +31,7 @@ const ButtonBase = (props: IdPropButton) => {
     type = 'secondary',
     htmlType = 'button',
     disabled = false,
-    onClick = () => {},
+    onClick,
     styles = {},
     classNames = '',
     size = 44,
