@@ -1,4 +1,4 @@
-import ComponentPage from '@common-screens/component';
+import ComponentPage from 'screens/authentication/component';
 
 const Component = () => {
   return <ComponentPage />;

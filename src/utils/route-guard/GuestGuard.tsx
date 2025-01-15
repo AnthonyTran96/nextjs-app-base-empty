@@ -1,6 +1,7 @@
 'use client';
 
 import { selectToken } from '@redux-selector/auth';
+import Loader from 'components/loader';
 import { ROUTES } from 'config/routes';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -21,7 +22,7 @@ const GuestGuard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return null;
+  return <Loader />;
 };
 
 export default GuestGuard;

@@ -1,10 +1,14 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 'use client';
-import { AppCheckbox, ButtonBase, IconSvgLocal, InfoBox, TextBase } from 'components';
+import ButtonBase from 'components/button';
+import AppCheckbox from 'components/checkbox';
 import { showDialog } from 'components/dialog';
 import { TYPE_ACTION, TYPE_MESSAGE } from 'components/dialog/type';
+import { IconSvgLocal } from 'components/icon-vec-local';
+import InfoBox from 'components/infobox';
 import ProgressBar, { TypeProgressBar } from 'components/progressbar';
 import Status, { KIND_STATUS, TYPE_STATUS } from 'components/status';
+import { TextBase } from 'components/text';
 
 const ComponentPage = () => {
   const name = 'Anthony';
