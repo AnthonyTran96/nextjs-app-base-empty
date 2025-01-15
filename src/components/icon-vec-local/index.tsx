@@ -1,3 +1,4 @@
+'use client';
 import { useMemo } from 'react';
 
 import { IconSvgs } from 'assets/svg';

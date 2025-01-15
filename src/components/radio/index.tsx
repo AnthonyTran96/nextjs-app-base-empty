@@ -1,3 +1,4 @@
+'use client';
 import type { RadioGroupProps, SpaceProps } from 'antd';
 import { Radio, Space } from 'antd';
 import AppHelperText from 'components/helper-text';

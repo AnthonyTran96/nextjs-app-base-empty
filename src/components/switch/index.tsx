@@ -1,3 +1,4 @@
+'use client';
 import type { SwitchProps } from 'antd';
 import { Switch } from 'antd';
 import type { Ref } from 'react';

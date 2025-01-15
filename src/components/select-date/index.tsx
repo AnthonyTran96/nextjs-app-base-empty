@@ -1,3 +1,4 @@
+'use client';
 import type { InputProps } from 'antd';
 import { Dropdown, Input } from 'antd';
 import AppHelperText from 'components/helper-text';

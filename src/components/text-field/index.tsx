@@ -1,3 +1,4 @@
+'use client';
 import type { InputProps, InputRef } from 'antd';
 import { Input } from 'antd';
 import AppHelperText from 'components/helper-text';

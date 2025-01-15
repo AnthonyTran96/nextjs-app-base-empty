@@ -1,3 +1,4 @@
+'use client';
 import { notification } from 'antd';
 import { IconSvgLocal } from 'components/icon-vec-local';
 import { createRef, forwardRef, useImperativeHandle } from 'react';

@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable react/display-name */
 import type { DatePickerProps } from 'antd/lib/date-picker';
 import DatePicker from 'antd/lib/date-picker';

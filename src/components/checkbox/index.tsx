@@ -1,3 +1,4 @@
+'use client';
 import { Checkbox } from 'antd';
 import type { CheckboxGroupProps, CheckboxOptionType } from 'antd/es/checkbox/Group';
 import AppHelperText from 'components/helper-text';

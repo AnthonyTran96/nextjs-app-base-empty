@@ -1,3 +1,4 @@
+'use client';
 import { Input } from 'antd';
 import type { TextAreaProps } from 'antd/es/input';
 import type { TextAreaRef } from 'antd/es/input/TextArea';

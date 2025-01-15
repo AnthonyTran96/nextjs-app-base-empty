@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';

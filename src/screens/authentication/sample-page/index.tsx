@@ -1,5 +1,5 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 'use client';
+/* eslint-disable tailwindcss/no-custom-classname */
 import ButtonBase from 'components/button';
 import AppCheckbox from 'components/checkbox';
 import { showDialog } from 'components/dialog';
@@ -10,7 +10,7 @@ import ProgressBar, { TypeProgressBar } from 'components/progressbar';
 import Status, { KIND_STATUS, TYPE_STATUS } from 'components/status';
 import { TextBase } from 'components/text';
 
-const ComponentPage = () => {
+const SamplePagePage = () => {
   const name = 'Anthony';
 
   return (
@@ -174,4 +174,4 @@ const ComponentPage = () => {
     </>
   );
 };
-export default ComponentPage;
+export default SamplePagePage;
