@@ -1,4 +1,5 @@
 'use client';
+import { selectUserInfo } from '@redux-selector/auth';
 /* eslint-disable tailwindcss/no-custom-classname */
 import ButtonBase from 'components/button';
 import AppCheckbox from 'components/checkbox';
@@ -9,12 +10,18 @@ import InfoBox from 'components/infobox';
 import ProgressBar, { TypeProgressBar } from 'components/progressbar';
 import Status, { KIND_STATUS, TYPE_STATUS } from 'components/status';
 import { TextBase } from 'components/text';
+import { useSelector } from 'react-redux';
 
 const SamplePagePage = () => {
-  const name = 'Anthony';
+  const { fullName } = useSelector(selectUserInfo);
 
   return (
-    <>
+    <section className="size-full p-16">
+      <TextBase
+        t18n="text:hello"
+        t18nOptions={{ name: fullName }}
+        classNames="text-20 text-error-500"
+      />
       <div className="title3">- Button Component</div>
       <div>
         {/* demo khi có customContent */}
@@ -83,7 +90,6 @@ const SamplePagePage = () => {
         </div>
       </div>
       <IconSvgLocal name="ICON_EDIT" width={100} height={100} />
-      <TextBase t18n="text:hello" t18nOptions={{ name }} classNames="text-20 text-error-500" />
       <ButtonBase
         type="ghost"
         customContent="open dialog "
@@ -171,7 +177,7 @@ const SamplePagePage = () => {
           }
         ]}
       />
-    </>
+    </section>
   );
 };
 export default SamplePagePage;

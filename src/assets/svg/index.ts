@@ -13,6 +13,7 @@ import ICON_EDIT from './ic_edit.svg';
 import ICON_ERROR from './ic_error.svg';
 import ICON_INFO_SOLID from './ic_info_solid.svg';
 import ICON_WARNING from './ic_warning.svg';
+import ICON_QUESTION from './question.svg';
 
 export const IconSvgs = {
   ICON_CALENDAR,
@@ -29,7 +30,8 @@ export const IconSvgs = {
   ICON_CHECK,
   ICON_ARROW_CIRCLE_UP,
   ICON_BILL,
-  ICON_EDIT
+  ICON_EDIT,
+  ICON_QUESTION
 };
 
 export type IconSvgTypes = keyof typeof IconSvgs;

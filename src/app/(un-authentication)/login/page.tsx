@@ -1,5 +1,7 @@
+import Login from 'screens/un-authentication/login';
+
 const LoginPage = () => {
-  return <div>Login</div>;
+  return <Login />;
 };
 
 export default LoginPage;

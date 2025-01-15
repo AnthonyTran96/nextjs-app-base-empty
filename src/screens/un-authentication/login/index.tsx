@@ -1,5 +1,12 @@
+import LoginForm from './components/LoginForm';
+import LoginWrapper from './components/LoginWrapper';
+
 const Login = () => {
-  return <div>Login</div>;
+  return (
+    <LoginWrapper>
+      <LoginForm />
+    </LoginWrapper>
+  );
 };
 
 export default Login;

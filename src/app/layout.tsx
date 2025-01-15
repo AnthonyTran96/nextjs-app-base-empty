@@ -6,8 +6,8 @@ import 'styles/global.scss';
 import ProviderWrapper from './ProviderWrapper';
 
 export const metadata: Metadata = {
-  title: 'Able Pro Material UI React Dashboard Template',
-  description: 'Able Pro Material UI React Dashboard Template'
+  title: 'Anthony NextJS App Base',
+  description: 'Anthony NextJS App Base'
 };
 
 export default function RootLayout({ children }: { children: React.ReactElement }) {
