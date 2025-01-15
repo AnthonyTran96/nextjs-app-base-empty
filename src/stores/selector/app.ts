@@ -1,6 +1,6 @@
 import { createDeepEqualSelector } from '@redux-common';
-import { initialApp } from '@redux-slice';
 import { RootState } from '@store/all-reducers';
+import { initialApp } from 'stores/action-slice/app';
 
 const selectDomain = (state: RootState) => state?.app || initialApp;
 

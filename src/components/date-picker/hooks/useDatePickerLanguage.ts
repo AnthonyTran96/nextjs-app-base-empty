@@ -3,10 +3,10 @@ import 'dayjs/locale/en';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'dayjs/locale/vi';
 
-import { LANGUAGE_TYPE } from '@redux-slice';
 import localeEN from 'antd/lib/date-picker/locale/en_US';
 import localeVN from 'antd/lib/date-picker/locale/vi_VN';
 import { useEffect, useState } from 'react';
+import { LANGUAGE_TYPE } from 'stores/action-slice/app';
 import { useAppLanguage } from '../../../hooks/useAppLanguage';
 
 export const useDatePickerLanguage = () => {

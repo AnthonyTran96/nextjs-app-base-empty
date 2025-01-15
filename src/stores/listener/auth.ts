@@ -1,6 +1,6 @@
 import { takeLatestListeners } from '@listener';
-import { authActions } from '@redux-slice';
 import authServices from 'services/auth-services';
+import { authActions } from 'stores/action-slice/auth';
 
 takeLatestListeners({
   actionCreator: authActions.login,

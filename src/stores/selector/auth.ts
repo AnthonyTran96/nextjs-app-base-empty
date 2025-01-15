@@ -1,6 +1,6 @@
 import { createDeepEqualSelector } from '@redux-common';
-import { initialAuth } from '@redux-slice';
 import { RootState } from '@store/all-reducers';
+import { initialAuth } from 'stores/action-slice/auth';
 
 const selectDomain = (state: RootState) => state?.auth || initialAuth;
 
