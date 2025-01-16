@@ -41,7 +41,9 @@
       "@auth-common/*": ["./screens/authentication/@common/*"],
       "@unauth-common/*": ["./screens/un-authentication/@common/*"],
       "@app-services": ["./services/networking/app-services.ts"],
-      "@mock/*": ["../_mock/*"]
+      "@mock/*": ["../_mock/*"],
+      "@pilot": ["./utils/pilot-check/checkService.ts"],
+      "@pilot-component": ["./utils/pilot-check/index"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

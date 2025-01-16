@@ -1,5 +1,6 @@
-'use client';
 /* eslint-disable tailwindcss/no-custom-classname */
+'use client';
+import WrapComponentPilot from '@pilot-component';
 import { selectUserInfo } from '@redux-selector/auth';
 import ButtonBase from 'components/button';
 import AppCheckbox from 'components/checkbox';
@@ -7,7 +8,7 @@ import { showDialog } from 'components/dialog';
 import { TYPE_ACTION, TYPE_MESSAGE } from 'components/dialog/type';
 import { IconSvgLocal } from 'components/icon-vec-local';
 import InfoBox from 'components/infobox';
-import Loader from 'components/loader';
+import LinearProgress from 'components/loader/linear-progress';
 import ProgressBar, { TypeProgressBar } from 'components/progressbar';
 import Status, { KIND_STATUS, TYPE_STATUS } from 'components/status';
 import { TextBase } from 'components/text';
@@ -18,12 +19,18 @@ const SamplePagePage = () => {
 
   return (
     <section className="size-full p-16">
-      <Loader />
+      <WrapComponentPilot>
+        <TextBase
+          text="This text should not be in Production"
+          classNames="text-20 text-error-500"
+        />
+      </WrapComponentPilot>
       <TextBase
         t18n="text:hello"
         t18nOptions={{ name: fullName }}
         classNames="text-20 text-error-500"
       />
+      <LinearProgress />
       <div className="title3">- Button Component</div>
       <div>
         {/* demo khi có customContent */}
