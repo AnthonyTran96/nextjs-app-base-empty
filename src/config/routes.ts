@@ -18,5 +18,6 @@ export const ROUTES = {
   CONTACT_US: '/contact-us',
 
   // SAMPLE_PAGE
-  SAMPLE_PAGE: '/sample-page'
+  SAMPLE_PAGE: '/sample-page',
+  HOME_PAGE: '/sample-page'
 };
