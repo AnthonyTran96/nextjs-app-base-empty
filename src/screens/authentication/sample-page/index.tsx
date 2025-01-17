@@ -2,6 +2,7 @@
 'use client';
 import WrapComponentPilot from '@pilot-component';
 import { selectUserInfo } from '@redux-selector/auth';
+import { LANGUAGE_TYPE } from '@redux-slice/app';
 import ButtonBase from 'components/button';
 import AppCheckbox from 'components/checkbox';
 import { showDialog } from 'components/dialog';
@@ -12,11 +13,13 @@ import LinearProgress from 'components/loader/linear-progress';
 import ProgressBar, { TypeProgressBar } from 'components/progressbar';
 import Status, { KIND_STATUS, TYPE_STATUS } from 'components/status';
 import { TextBase } from 'components/text';
+import { useAppLanguage } from 'hooks/useAppLanguage';
 import { useSelector } from 'react-redux';
+import ThemeToggle from './components/theme-toggle';
 
 const SamplePagePage = () => {
   const { fullName } = useSelector(selectUserInfo);
-
+  const { currentLanguage, setLanguageApp } = useAppLanguage();
   return (
     <section className="size-full p-16">
       <WrapComponentPilot>
@@ -25,12 +28,25 @@ const SamplePagePage = () => {
           classNames="text-20 text-error-500"
         />
       </WrapComponentPilot>
+
+      <LinearProgress />
+      <div className="title3">- I18 Change</div>
+      {currentLanguage}
+      <ButtonBase
+        type="primary"
+        customContent="Change Language"
+        classNames="m-4"
+        onClick={() =>
+          setLanguageApp(currentLanguage === LANGUAGE_TYPE.vi ? LANGUAGE_TYPE.en : LANGUAGE_TYPE.vi)
+        }
+      />
       <TextBase
         t18n="text:hello"
         t18nOptions={{ name: fullName }}
         classNames="text-20 text-error-500"
       />
-      <LinearProgress />
+      <div className="title3">- Dark Mode</div>
+      <ThemeToggle />
       <div className="title3">- Button Component</div>
       <div>
         {/* demo khi có customContent */}

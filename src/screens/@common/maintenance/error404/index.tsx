@@ -1,27 +1,41 @@
-'use client';
-
-import { TextBase } from 'components/text';
 import Button from 'components/button';
-import Error404 from 'assets/images/maintenance/img-error-404.svg';
+import { TextBase } from 'components/text';
 import { ROUTES } from 'config/routes';
-import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+
+const error404 = '/assets/images/maintenance/img-error-404.svg';
 
 const Error404Page = () => {
-  const route = useRouter();
-
   return (
-    <div className='h-full w-full flex items-center justify-center'>
-      <div className='flex flex-col items-center gap-8'>
-        <div className='w-[396px] tablet:w-3/4'>
-          <Error404 style={{ height: 'auto', width: 'auto' }} />
+    <div className="flex size-full items-center justify-center">
+      <div className="flex flex-col items-center gap-8">
+        <div className="mb-16 w-[300px]">
+          {/* <Error404 style={{ height: 'auto', width: 'auto' }} /> */}
+          <Image
+            src={error404}
+            alt="error404"
+            height={370}
+            width={396}
+            style={{
+              maxWidth: '100%',
+              height: 'auto'
+            }}
+          />
         </div>
-        <TextBase text='Page Not Found' preset='h2' classNames='mt-12 px-4 text-center ' />
         <TextBase
-          text='The page you are looking was moved, removed, renamed, or might never exist!'
-          preset='caption1'
-          classNames='px-4 text-center max-w-[356px] !text-color-700'
+          text="Page Not Found"
+          preset="h2"
+          classNames="mt-12 px-4 text-center !text-color-800"
         />
-        <Button t18n='Back To Home' type='primary' classNames='mt-12' onClick={() => route.replace(ROUTES.HOME_PAGE)} />
+        <TextBase
+          text="The page you are looking was moved, removed, renamed, or might never exist!"
+          preset="caption1"
+          classNames="px-4 text-center max-w-[356px] !text-color-700"
+        />
+        <Link href={ROUTES.HOME_PAGE} className="mt-12">
+          <Button t18n="Back To Home" type="primary" />
+        </Link>
       </div>
     </div>
   );

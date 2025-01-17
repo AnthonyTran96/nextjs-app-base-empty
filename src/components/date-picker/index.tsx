@@ -7,9 +7,8 @@ import React, { useImperativeHandle, useRef } from 'react';
 import type { Control, FieldValues, Path } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
-import { IconSvgTypes } from 'assets/svg';
 import { useDatePickerLanguage } from 'components/date-picker/hooks/useDatePickerLanguage';
-import { IconSvgLocal } from '../icon-vec-local';
+import { IconSvgLocal, IconSvgTypes } from '../icon-vec-local';
 
 export interface AppDatePickerProps extends Omit<DatePickerProps, 'suffixIcon' | 'className'> {
   name?: string;

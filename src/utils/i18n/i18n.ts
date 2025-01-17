@@ -1,9 +1,8 @@
-import { getState } from '@redux-common';
+import { PERSIST_KEY } from '@store';
 import type { LanguageDetectorAsyncModule, Resource } from 'i18next';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { LANGUAGE_TYPE } from 'stores/action-slice/app';
-import { SLICE_NAME } from 'stores/types';
 import { resources } from './locales';
 
 const languageDetector: LanguageDetectorAsyncModule = {
@@ -11,11 +10,15 @@ const languageDetector: LanguageDetectorAsyncModule = {
   async: true, // flags below detection to be async
   // eslint-disable-next-line consistent-return
   detect: (callback: (lng: string | readonly string[] | undefined) => void) => {
-    const appStore = getState(SLICE_NAME.APP);
-    if (!appStore || !appStore.language) {
+    if (typeof localStorage === 'undefined') {
       return callback(LANGUAGE_TYPE.vi);
     }
-    return callback(appStore.language);
+
+    const storedLanguageTag = localStorage.getItem(`persist:${PERSIST_KEY}`);
+    if (storedLanguageTag) {
+      return callback(JSON.parse(JSON.parse(storedLanguageTag)?.app)?.language);
+    }
+    callback(LANGUAGE_TYPE.vi);
   },
   init: () => {},
   cacheUserLanguage: () => {}

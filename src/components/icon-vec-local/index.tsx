@@ -1,8 +1,19 @@
 'use client';
 import { useMemo } from 'react';
 
-import { IconSvgs } from 'assets/svg';
-import type { IconSvgLocalProps } from './type';
+import { IconSvgs } from '../../../public/assets/svg';
+
+export interface IconSvgLocalProps {
+  width?: number;
+  height?: number;
+  fill?: string;
+  stroke?: string;
+  onClick?: () => void;
+  classNames?: string;
+  name: IconSvgTypes;
+}
+
+export type IconSvgTypes = keyof typeof IconSvgs;
 
 export const IconSvgLocal = (props: IconSvgLocalProps) => {
   const { name, classNames, fill, ...rest } = props;

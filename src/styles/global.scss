@@ -167,6 +167,115 @@ input:-webkit-autofill:active {
     --skeleton-background: #{toRGB(#f3f3f7)};
     --skeleton-highlight: #{toRGB(#ffffff)};
   }
+
+  /* Define CSS Variables for Dark Theme */
+  :root.dark {
+    /* Dark Theme Colors */
+    --text-primary: #{toRGB(#ffffff)}; // Example: white text for dark theme
+
+    --primary-50: #{toRGB(#333333)};
+    --primary-100: #{toRGB(#444444)};
+    --primary-200: #{toRGB(#555555)};
+    --primary-300: #{toRGB(#666666)};
+    --primary-500: #{toRGB(#777777)};
+    --primary-600: #{toRGB(#888888)};
+    --primary-700: #{toRGB(#999999)};
+    --primary-800: #{toRGB(#aaaaaa)};
+
+    --secondary: #{toRGB(#bbbbbb)};
+    --secondary-50: #{toRGB(#cccccc)};
+    --secondary-100: #{toRGB(#dddddd)};
+    --secondary-200: #{toRGB(#eeeeee)};
+    --secondary-300: #{toRGB(#f0f0f0)};
+    --secondary-500: #{toRGB(#f1f1f1)};
+    --secondary-600: #{toRGB(#f2f2f2)};
+    --secondary-700: #{toRGB(#f3f3f3)};
+    --secondary-800: #{toRGB(#f4f4f4)};
+
+    /* Gradient Colors for Dark Theme */
+    --gradient-priority-start: #{toRGB(#333333)};
+    --gradient-priority-end: #{toRGB(#444444)};
+    --gradient-primary-start: #{toRGB(#555555)};
+    --gradient-primary-end: #{toRGB(#666666)};
+    --gradient-secondary-start: #{toRGB(#777777)};
+    --gradient-secondary-end: #{toRGB(#888888)};
+    --gradient-100-start: #{toRGB(#999999)};
+    --gradient-100-middle: #{toRGB(#aaaaaa)};
+    --gradient-100-end: #{toRGB(#bbbbbb)};
+    --gradient-200-start: #{toRGB(#cccccc)};
+    --gradient-200-middle: #{toRGB(#dddddd)};
+    --gradient-200-end: #{toRGB(#eeeeee)};
+
+    /* Link Colors for Dark Theme */
+    --link-50: #{toRGB(#ffffff)};
+    --link-100: #{toRGB(#ffffff)};
+    --link-200: #{toRGB(#ffffff)};
+    --link-300: #{toRGB(#ffffff)};
+    --link-500: #{toRGB(#ffffff)};
+    --link-600: #{toRGB(#ffffff)};
+    --link-700: #{toRGB(#ffffff)};
+    --link-800: #{toRGB(#ffffff)};
+
+    /* Success Colors for Dark Theme */
+    --success-50: #{toRGB(#28a745)};
+    --success-100: #{toRGB(#218838)};
+    --success-200: #{toRGB(#1c7430)};
+    --success-300: #{toRGB(#186a3b)};
+    --success-500: #{toRGB(#155724)};
+    --success-600: #{toRGB(#0f5132)};
+    --success-700: #{toRGB(#0d3d26)};
+    --success-800: #{toRGB(#0a2a1b)};
+
+    /* Pending Colors for Dark Theme */
+    --pending-50: #{toRGB(#ffc107)};
+    --pending-100: #{toRGB(#e0a800)};
+    --pending-200: #{toRGB(#c69500)};
+    --pending-300: #{toRGB(#a07f00)};
+    --pending-500: #{toRGB(#805700)};
+    --pending-600: #{toRGB(#604200)};
+    --pending-700: #{toRGB(#403000)};
+    --pending-800: #{toRGB(#201900)};
+
+    /* Error Colors for Dark Theme */
+    --error-50: #{toRGB(#dc3545)};
+    --error-100: #{toRGB(#c82333)};
+    --error-200: #{toRGB(#bd2130)};
+    --error-300: #{toRGB(#b21f2d)};
+    --error-500: #{toRGB(#a71d2a)};
+    --error-600: #{toRGB(#911a26)};
+    --error-700: #{toRGB(#7a1722)};
+    --error-800: #{toRGB(#64161e)};
+
+    /* Additional Colors for Dark Theme */
+    --color-50: #{toRGB(#1b1d29)}; // white becomes dark
+    --color-100: #{toRGB(#313442)}; // table-header
+    --color-200: #{toRGB(#42455b)}; // background
+    --color-300: #{toRGB(#53586f)}; // divider
+    --color-400: #{toRGB(#646a83)}; // disable
+    --color-500: #{toRGB(#757b97)}; // border
+    --color-600: #{toRGB(#868cb0)}; // placeholder
+    --color-700: #{toRGB(#979fc4)}; // text-secondary
+    --color-800: #{toRGB(#a8b1d7)}; // text-primary
+    --color-900: #{toRGB(#b9c4ea)}; // text-title
+    --color-black: #{toRGB(#000000)};
+
+    --color-2000: #{toRGB(hsl(209, 97, 61))}; // Test Color, don't use this color
+
+    --blur_modal: #{toRGB(#4a4a4c)};
+
+    --common-0: #{toRGB(#1b1d29)}; // text-label ; text_btn_primary
+    --common-500: #{toRGB(#6f6f6f)};
+    --common-1000: #{toRGB(#ffffff)}; // background icon button;
+
+    --transaction-start: #{toRGB(#ffffff)};
+    --transaction-middle: #{toRGB(#fff2cc)};
+    --transaction-end: #{toRGB(#fff7df)};
+
+    --background_image: #{toRGB(#f6f6f6)};
+
+    --skeleton-background: #{toRGB(#f3f3f7)};
+    --skeleton-highlight: #{toRGB(#ffffff)};
+  }
 }
 
 /* init preset className */

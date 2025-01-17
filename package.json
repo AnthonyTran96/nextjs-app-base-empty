@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.dev next dev",
+    "dev:prod": "env-cmd -f .env.prod next dev",
     "mock:run": "tsx watch ./_mock/mockServer",
     "dev:mock": "env-cmd -f .env.mock next dev",
     "build": "next build",
