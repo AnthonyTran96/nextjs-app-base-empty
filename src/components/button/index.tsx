@@ -4,8 +4,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { IconSvgTypes } from 'assets/svg';
-import { IconSvgLocal } from 'components/icon-vec-local';
+import { IconSvgLocal, IconSvgTypes } from 'components/icon-vec-local';
 
 export interface IdPropButton {
   classNames?: string;

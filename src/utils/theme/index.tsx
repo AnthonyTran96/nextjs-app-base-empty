@@ -24,15 +24,15 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    const storedTheme = localStorage.getItem('theme');
+    const storedTheme = localStorage.getItem('theme') as ThemeMode;
 
-    if (!storedTheme || !Object.keys(ThemeMode).includes(storedTheme)) {
+    if (!storedTheme || !Object.values(ThemeMode).includes(storedTheme)) {
       setDefault();
       return;
     }
 
-    setTheme(storedTheme as ThemeMode);
-    document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    setTheme(storedTheme);
+    document.documentElement.classList.toggle('dark', storedTheme === ThemeMode.DARK);
   }, []);
 
   const store = useMemo(
@@ -51,4 +51,3 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export { ThemeContext, ThemeProvider };
-

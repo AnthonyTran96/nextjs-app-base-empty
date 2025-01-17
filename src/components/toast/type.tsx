@@ -1,5 +1,5 @@
 import type { NotificationPlacement } from 'antd/es/notification/interface';
-import { IconSvgLocalProps } from 'components/icon-vec-local/type';
+import { IconSvgLocalProps } from 'components/icon-vec-local';
 import type React from 'react';
 
 export enum TYPE_TOAST {

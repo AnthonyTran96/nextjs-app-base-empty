@@ -33,5 +33,3 @@ export const IconSvgs = {
   ICON_EDIT,
   ICON_QUESTION
 };
-
-export type IconSvgTypes = keyof typeof IconSvgs;

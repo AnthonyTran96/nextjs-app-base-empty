@@ -1,4 +1,4 @@
-import { IconSvgTypes } from 'assets/svg';
+import { IconSvgTypes } from 'components/icon-vec-local';
 import type { ReactNode } from 'react';
 
 export enum TYPE_MESSAGE {

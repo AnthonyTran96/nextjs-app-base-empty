@@ -20,7 +20,6 @@ import ThemeToggle from './components/theme-toggle';
 const SamplePagePage = () => {
   const { fullName } = useSelector(selectUserInfo);
   const { currentLanguage, setLanguageApp } = useAppLanguage();
-
   return (
     <section className="size-full p-16">
       <WrapComponentPilot>
@@ -46,7 +45,6 @@ const SamplePagePage = () => {
         t18nOptions={{ name: fullName }}
         classNames="text-20 text-error-500"
       />
-      <ThemeToggle />
       <div className="title3">- Dark Mode</div>
       <ThemeToggle />
       <div className="title3">- Button Component</div>

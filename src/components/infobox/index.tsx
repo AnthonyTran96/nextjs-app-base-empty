@@ -1,7 +1,6 @@
 import { K_SIZE_24 } from '@constant';
 import { Flex } from 'antd';
-import { IconSvgTypes } from 'assets/svg';
-import { IconSvgLocal } from 'components/icon-vec-local';
+import { IconSvgLocal, IconSvgTypes } from 'components/icon-vec-local';
 import { TextBase } from 'components/text';
 
 export interface InfoBoxProps {
