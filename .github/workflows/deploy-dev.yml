@@ -26,26 +26,23 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      # Step 4: Setup cloudflared for ARM64
+      # Step 4: Setup cloudflared for ARM64 and Test Connection to Server
       - name: Setup cloudflared
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
-
-      - name: Test Copy file to server via Cloudflare SSH
-        run: |
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" package.json ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app/"
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" package.json ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app" echo '✅ SCP thành công qua Cloudflare Tunnel'
 
       # Step 5: Install dependencies
       - name: Install dependencies
         run: |
-          yarn install
+          yarn install --omit=dev
 
       # Step 6: Build the app
       - name: Build the app
         run: |
-          yarn build:prod
+          yarn build
 
       # Step 7: Zip all necessary files in a build directory
       - name: Zip the build files
