@@ -29,16 +29,11 @@ jobs:
       # Step 4: Setup cloudflared for ARM64
       - name: Setup cloudflared
         run: |
-          echo "Using SSH user: $SSH_USER"
-          echo "Using SSH hostname: $SSH_HOSTNAME"
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
-          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" \ 
-          -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} \ 
+          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ssh.helloworldagain.site" \ 
+          anthony@ssh.helloworldagain.site \ 
           "echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'"
-        env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOSTNAME: ${{ secrets.SSH_HOSTNAME }}
 
       # Step 5: Install dependencies
       - name: Install dependencies
