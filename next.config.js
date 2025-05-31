@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: "export",
+  output: "export",
   modularizeImports: {
     'antd': {
       transform: 'antd/es/{{member}}',

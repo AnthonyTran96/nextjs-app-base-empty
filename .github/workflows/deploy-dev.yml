@@ -1,0 +1,74 @@
+name: Deploy to Dev Server
+
+on:
+  push:
+    branches:
+      - auto-build-static # Trigger workflow on push to auto-build-static
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-22.04-arm
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Specify the Node.js version you want to use
+
+      # Step 3: Setup SSH key
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      # Step 4: Setup cloudflared for ARM64 and Test Connection to Server
+      - name: Setup cloudflared
+        run: |
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
+          sudo dpkg -i cloudflared.deb
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} 
+          echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
+          touch test.txt
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" test.txt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME_STATIC }}" 
+          echo '✅ SCP thành công qua Cloudflare Tunnel'
+
+      # Step 5: Install dependencies
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      # Step 6: Lint check
+      - name: Lint check
+        run: |
+          yarn lint
+
+      # Step 7: Build the app
+      - name: Build the app
+        run: |
+          yarn build:dev
+
+      # Step 8: Zip all necessary files in a build directory
+      - name: Zip all necessary files
+        run: |
+          zip -r build.zip out
+
+      # Step 9: Copy file to server via Cloudflare SSH
+      - name: Copy file to server via Cloudflare SSH
+        run: |
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME_STATIC }}"
+
+      # Step 10: SSH & Deploy on Server
+      - name: SSH & Deploy on Server
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
+          unzip -o /home/${USER}/Projects/tmp/htc/${{ vars.APP_NAME_STATIC }}/build.zip -d /var/www/
+          cd /var/www/
+          [ -d ${{ vars.APP_NAME_STATIC }} ] && zip -r /home/${USER}/Projects/bak/htc/${{ vars.APP_NAME_STATIC }}.zip ${{ vars.APP_NAME_STATIC }}
+          [ -d ${{ vars.APP_NAME_STATIC }} ] && rm -rf ${{ vars.APP_NAME_STATIC }}
+          mv out ${{ vars.APP_NAME_STATIC }}
+          EOF
