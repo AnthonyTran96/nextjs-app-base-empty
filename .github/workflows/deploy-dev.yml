@@ -31,8 +31,10 @@ jobs:
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" package.json ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app" echo '✅ SCP thành công qua Cloudflare Tunnel'
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} 
+          echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" package.json ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app" 
+          echo '✅ SCP thành công qua Cloudflare Tunnel'
 
       # Step 5: Install dependencies
       - name: Install dependencies
