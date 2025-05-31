@@ -33,7 +33,8 @@ jobs:
           sudo dpkg -i cloudflared.deb
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} 
           echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" package.json ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app" 
+          touch test.txt
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" test.txt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}" 
           echo '✅ SCP thành công qua Cloudflare Tunnel'
 
       # Step 5: Install dependencies
@@ -57,17 +58,17 @@ jobs:
       # Step 8: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
         run: |
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app"
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}"
 
       # Step 9: SSH & Deploy on Server
       - name: SSH & Deploy on Server
         run: |
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
-          unzip -o /home/${USER}/Projects/tmp/htc/nextjs-base-app/build.zip -d /home/${USER}/Projects/htc/
+          unzip -o /home/${USER}/Projects/tmp/htc/${{ vars.APP_NAME }}/build.zip -d /home/${USER}/Projects/htc/
           cd /home/${USER}/Projects/htc
-          [ -d nextjs-base-app ] && zip -r /home/${USER}/Projects/bak/htc/nextjs-base-app.zip nextjs-base-app
-          [ -d nextjs-base-app ] && rm -rf nextjs-base-app
-          mv output nextjs-base-app
-          cd nextjs-base-app
-          if pm2 describe nextjs-base-app > /dev/null; then echo "Ứng dụng đang chạy, thực hiện restart..."; pm2 restart nextjs-base-app; else echo "Ứng dụng chưa được khởi động, thực hiện start..."; pm2 start pm2.config.js; fi
+          [ -d ${{ vars.APP_NAME }} ] && zip -r /home/${USER}/Projects/bak/htc/${{ vars.APP_NAME }}.zip ${{ vars.APP_NAME }}
+          [ -d ${{ vars.APP_NAME }} ] && rm -rf ${{ vars.APP_NAME }}
+          mv output ${{ vars.APP_NAME }}
+          cd ${{ vars.APP_NAME }}
+          if pm2 describe ${{ vars.APP_NAME }} > /dev/null; then echo "Ứng dụng đang chạy, thực hiện restart..."; pm2 restart ${{ vars.APP_NAME }}; else echo "Ứng dụng chưa được khởi động, thực hiện start..."; pm2 start pm2.config.js; fi
           EOF
