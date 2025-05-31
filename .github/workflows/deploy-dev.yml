@@ -1,0 +1,69 @@
+name: Deploy to Dev Server
+
+on:
+  push:
+    branches:
+      - auto-build # Trigger workflow on push to auto-build
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-22.04-arm
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Specify the Node.js version you want to use
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      # Step 4: Build the app
+      - name: Build the app
+        run: |
+          yarn build:prod
+
+      # Step 5: Zip all necessary files in a build directory
+      - name: Zip the build files
+        run: |
+          mkdir -p output
+          [ -d public ] && mv public output/ 
+          mv .next node_modules pm2.config.js package.json output/
+          zip -r build.zip output/
+
+      # Step 6: Setup SSH key
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      # Step 7: Setup cloudflared
+      - name: Setup cloudflared
+        run: |
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+          sudo dpkg -i cloudflared.deb
+
+      # Step 8: Copy file to server via Cloudflare SSH
+      - name: Copy file to server via Cloudflare SSH
+        run: |
+          scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app/build.zip
+
+      # Step 9: SSH & Deploy on Server
+      - name: SSH & Deploy on Server
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
+          unzip -o /home/${USER}/Projects/tmp/htc/nextjs-base-app/build.zip -d /home/${USER}/Projects/htc/
+          cd /home/${USER}/Projects/htc
+          [ -d nextjs-base-app ] && zip -r /home/${USER}/Projects/bak/htc/nextjs-base-app.zip nextjs-base-app
+          [ -d nextjs-base-app ] && rm -rf nextjs-base-app
+          mv output nextjs-base-app
+          cd nextjs-base-app
+          if pm2 describe nextjs-base-app > /dev/null; then   echo "Ứng dụng đang chạy, thực hiện restart...";   pm2 restart nextjs-base-app; else   echo "Ứng dụng chưa được khởi động, thực hiện start...";   pm2 start pm2.config.js; fi
+          EOF
