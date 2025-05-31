@@ -19,36 +19,36 @@ jobs:
         with:
           node-version: '20' # Specify the Node.js version you want to use
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: |
-          yarn install
-
-      # Step 4: Build the app
-      - name: Build the app
-        run: |
-          yarn build:prod
-
-      # Step 5: Zip all necessary files in a build directory
-      - name: Zip the build files
-        run: |
-          mkdir -p output
-          [ -d public ] && mv public output/ 
-          mv .next node_modules pm2.config.js package.json output/
-          zip -r build.zip output/
-
-      # Step 6: Setup SSH key
+      # Step 3: Setup SSH key
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      # Step 7: Setup cloudflared
+      # Step 4: Setup cloudflared for ARM64
       - name: Setup cloudflared
         run: |
-          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
+
+      # Step 5: Install dependencies
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      # Step 6: Build the app
+      - name: Build the app
+        run: |
+          yarn build:prod
+
+      # Step 7: Zip all necessary files in a build directory
+      - name: Zip the build files
+        run: |
+          mkdir -p output
+          [ -d public ] && mv public output/ 
+          mv .next node_modules pm2.config.js package.json output/
+          zip -r build.zip output/
 
       # Step 8: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
