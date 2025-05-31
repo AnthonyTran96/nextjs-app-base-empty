@@ -31,7 +31,7 @@ jobs:
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
-          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ssh.helloworldagain.site" anthony@ssh.helloworldagain.site echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
 
       # Step 5: Install dependencies
       - name: Install dependencies
@@ -54,12 +54,12 @@ jobs:
       # Step 8: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
         run: |
-          scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app/build.zip
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app/build.zip
 
       # Step 9: SSH & Deploy on Server
       - name: SSH & Deploy on Server
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} -o StrictHostKeyChecking=no << 'EOF'
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} -o StrictHostKeyChecking=no << 'EOF'
           unzip -o /home/${USER}/Projects/tmp/htc/nextjs-base-app/build.zip -d /home/${USER}/Projects/htc/
           cd /home/${USER}/Projects/htc
           [ -d nextjs-base-app ] && zip -r /home/${USER}/Projects/bak/htc/nextjs-base-app.zip nextjs-base-app
