@@ -29,6 +29,8 @@ jobs:
       # Step 4: Setup cloudflared for ARM64
       - name: Setup cloudflared
         run: |
+          echo "Using SSH user: ${{ secrets.SSH_USER }}"
+          echo "Using SSH hostname: ${{ secrets.SSH_HOSTNAME }}"
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
           ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" \ 
