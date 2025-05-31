@@ -40,27 +40,38 @@ jobs:
       # Step 5: Install dependencies
       - name: Install dependencies
         run: |
-          yarn install --omit=dev
+          yarn install
 
-      # Step 6: Build the app
+      # Step 6: Lint check
+      - name: Lint check
+        run: |
+          yarn lint
+
+      # Step 7: Build the app
       - name: Build the app
         run: |
-          yarn build
+          yarn build:dev
 
-      # Step 7: Zip all necessary files in a build directory
-      - name: Zip the build files
+      # Step 8: Remove dev dependencies
+      - name: Remove dev dependencies
+        run: |
+          rm -rf node_modules
+          yarn install --omit=dev
+
+      # Step 9: Zip all necessary files in a build directory
+      - name: Zip all necessary files
         run: |
           mkdir -p output
           [ -d public ] && mv public output/ 
           mv .next node_modules pm2.config.js package.json output/
           zip -r build.zip output/
 
-      # Step 8: Copy file to server via Cloudflare SSH
+      # Step 10: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
         run: |
           scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}"
 
-      # Step 9: SSH & Deploy on Server
+      # Step 11: SSH & Deploy on Server
       - name: SSH & Deploy on Server
         run: |
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
