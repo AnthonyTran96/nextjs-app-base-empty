@@ -31,9 +31,7 @@ jobs:
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
-          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ssh.helloworldagain.site" \ 
-          anthony@ssh.helloworldagain.site \ 
-          "echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'"
+          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ssh.helloworldagain.site" anthony@ssh.helloworldagain.site echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
 
       # Step 5: Install dependencies
       - name: Install dependencies
@@ -56,8 +54,7 @@ jobs:
       # Step 8: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
         run: |
-          scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" -o StrictHostKeyChecking=no \ 
-          build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app/build.zip
+          scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/nextjs-base-app/build.zip
 
       # Step 9: SSH & Deploy on Server
       - name: SSH & Deploy on Server
@@ -69,7 +66,5 @@ jobs:
           [ -d nextjs-base-app ] && rm -rf nextjs-base-app
           mv output nextjs-base-app
           cd nextjs-base-app
-          if pm2 describe nextjs-base-app > /dev/null; \ 
-          then echo "Ứng dụng đang chạy, thực hiện restart..."; pm2 restart nextjs-base-app; \ 
-          else echo "Ứng dụng chưa được khởi động, thực hiện start..."; pm2 start pm2.config.js; fi
+          if pm2 describe nextjs-base-app > /dev/null; then echo "Ứng dụng đang chạy, thực hiện restart..."; pm2 restart nextjs-base-app; else echo "Ứng dụng chưa được khởi động, thực hiện start..."; pm2 start pm2.config.js; fi
           EOF
