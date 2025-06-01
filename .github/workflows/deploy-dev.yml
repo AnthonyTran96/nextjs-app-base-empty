@@ -26,39 +26,45 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      # Step 4: Setup cloudflared for ARM64 and Test Connection to Server
+      # Step 4: Add Server to Known Hosts
+      - name: Add SSH Host Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_FINGERPRINT }}" >> ~/.ssh/known_hosts
+
+      # Step 5: Setup cloudflared for ARM64 and Test Connection to Server
       - name: Setup cloudflared
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} 
+          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} 
           echo '✅ SSH kết nối thành công qua Cloudflare Tunnel'
           touch test.txt
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" test.txt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}" 
+          scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" test.txt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}" 
           echo '✅ SCP thành công qua Cloudflare Tunnel'
 
-      # Step 5: Install dependencies
+      # Step 6: Install dependencies
       - name: Install dependencies
         run: |
           yarn install
 
-      # Step 6: Lint check
+      # Step 7: Lint check
       - name: Lint check
         run: |
           yarn lint
 
-      # Step 7: Build the app
+      # Step 8: Build the app
       - name: Build the app
         run: |
           yarn build:dev
 
-      # Step 8: Remove dev dependencies
+      # Step 9: Remove dev dependencies
       - name: Remove dev dependencies
         run: |
           rm -rf node_modules
           yarn install --omit=dev
 
-      # Step 9: Zip all necessary files in a build directory
+      # Step 10: Zip all necessary files in a build directory
       - name: Zip all necessary files
         run: |
           mkdir -p output
@@ -66,15 +72,15 @@ jobs:
           mv .next node_modules pm2.config.js package.json output/
           zip -r build.zip output/
 
-      # Step 10: Copy file to server via Cloudflare SSH
+      # Step 11: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
         run: |
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}"
+          scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME }}"
 
-      # Step 11: SSH & Deploy on Server
+      # Step 12: SSH & Deploy on Server
       - name: SSH & Deploy on Server
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
+          ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
           unzip -o /home/${USER}/Projects/tmp/htc/${{ vars.APP_NAME }}/build.zip -d /home/${USER}/Projects/htc/
           cd /home/${USER}/Projects/htc
           [ -d ${{ vars.APP_NAME }} ] && zip -r /home/${USER}/Projects/bak/htc/${{ vars.APP_NAME }}.zip ${{ vars.APP_NAME }}
