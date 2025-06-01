@@ -26,13 +26,13 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      # Step 8: Add Server to Known Hosts
+      # Step 4: Add Server to Known Hosts
       - name: Add SSH Host Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_FINGERPRINT }}" >> ~/.ssh/known_hosts
 
-      # Step 4: Setup cloudflared for ARM64 and Test Connection to Server
+      # Step 5: Setup cloudflared for ARM64 and Test Connection to Server
       - name: Setup cloudflared
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb -o cloudflared.deb
@@ -43,32 +43,32 @@ jobs:
           scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" test.txt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME_STATIC }}" 
           echo '✅ SCP thành công qua Cloudflare Tunnel'
 
-      # Step 5: Install dependencies
+      # Step 6: Install dependencies
       - name: Install dependencies
         run: |
           yarn install
 
-      # Step 6: Lint check
+      # Step 7: Lint check
       - name: Lint check
         run: |
           yarn lint
 
-      # Step 7: Build the app
+      # Step 8: Build the app
       - name: Build the app
         run: |
           yarn build:dev
 
-      # Step 8: Zip all necessary files in a build directory
+      # Step 9: Zip all necessary files in a build directory
       - name: Zip all necessary files
         run: |
           zip -r build.zip out
 
-      # Step 9: Copy file to server via Cloudflare SSH
+      # Step 10: Copy file to server via Cloudflare SSH
       - name: Copy file to server via Cloudflare SSH
         run: |
           scp -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" build.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }}:"/home/${{ secrets.SSH_USER }}/Projects/tmp/htc/${{ vars.APP_NAME_STATIC }}"
 
-      # Step 10: SSH & Deploy on Server
+      # Step 11: SSH & Deploy on Server
       - name: SSH & Deploy on Server
         run: |
           ssh -i ~/.ssh/id_ed25519 -o "ProxyCommand=cloudflared access ssh --hostname ${{ secrets.SSH_HOSTNAME }}" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOSTNAME }} << 'EOF'
