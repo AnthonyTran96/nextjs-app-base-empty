@@ -9,17 +9,17 @@ export interface IconSvgLocalProps {
   fill?: string;
   stroke?: string;
   onClick?: () => void;
-  classNames?: string;
+  className?: string;
   name: IconSvgTypes;
 }
 
 export type IconSvgTypes = keyof typeof IconSvgs;
 
 export const IconSvgLocal = (props: IconSvgLocalProps) => {
-  const { name, classNames, fill, ...rest } = props;
+  const { name, className, fill, ...rest } = props;
   const Icon = useMemo(() => {
     return IconSvgs[name];
   }, [name]);
   // render
-  return <Icon fill={fill || ''} className={classNames} onClick={props.onClick} {...rest} />;
+  return <Icon fill={fill || ''} className={className} onClick={props.onClick} {...rest} />;
 };

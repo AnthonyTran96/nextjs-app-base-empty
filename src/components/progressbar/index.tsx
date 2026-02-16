@@ -9,7 +9,7 @@ export enum TypeProgressBar {
 
 interface ProgressBarProps {
   styles?: React.CSSProperties;
-  classNames?: string;
+  className?: string;
   stepTitles?: string[];
   currentStep?: number;
   type?: TypeProgressBar;
@@ -18,14 +18,14 @@ interface ProgressBarProps {
 const ProgressBar = (props: ProgressBarProps) => {
   const {
     styles = {},
-    classNames = '',
+    className = '',
     stepTitles = ['step 1', 'step 2', 'step 3', 'step 4'],
     currentStep = 3,
     type = TypeProgressBar.STEP
   } = props;
 
   return type !== TypeProgressBar.LINE ? (
-    <div className={`flex flex-row justify-between gap-8 ${classNames}`} style={{ ...styles }}>
+    <div className={`flex flex-row justify-between gap-8 ${className}`} style={{ ...styles }}>
       {stepTitles.map((title, index) => {
         const step = index + 1;
         return (
@@ -49,7 +49,7 @@ const ProgressBar = (props: ProgressBarProps) => {
                     height={24}
                     width={24}
                     fill="rgb(var(--secondary-500))"
-                    classNames="absolute top-1 left-1 overflow-hidden "
+                    className="top-1 left-1 absolute overflow-hidden "
                   />
                 ) : (
                   step

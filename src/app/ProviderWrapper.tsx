@@ -1,6 +1,7 @@
 'use client';
 
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { ConfigProvider, theme } from 'antd';
 import { DialogView } from 'components/dialog';
 import { ToastView } from 'components/toast';
 import { ReactElement } from 'react';
@@ -18,9 +19,18 @@ const ProviderWrapper = ({ children }: { children: ReactElement }) => {
       <ThemeProvider>
         <I18nextProvider i18n={i18n}>
           <AntdRegistry>
-            {children}
-            <ToastView />
-            <DialogView />
+            <ConfigProvider
+              theme={{
+                algorithm: theme.defaultAlgorithm,
+                token: {
+                  fontFamily: 'inherit'
+                }
+              }}
+            >
+              {children}
+              <ToastView />
+              <DialogView />
+            </ConfigProvider>
           </AntdRegistry>
         </I18nextProvider>
       </ThemeProvider>

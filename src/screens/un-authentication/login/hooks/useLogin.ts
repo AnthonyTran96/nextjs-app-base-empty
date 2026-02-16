@@ -21,13 +21,13 @@ export default function useLogin() {
     username: z
       .string()
       .trim()
-      .min(1, { message: t('validate:required', { name: t('login_screen:username') }) }),
+      .min(1, { message: t('validate:required', { name: t('text:username') }) }),
     password: z
       .string()
       .trim()
       .min(6, {
         message: t('validate:at_least_characters', {
-          name: t('login_screen:password'),
+          name: t('text:password'),
           number: '6'
         })
       })

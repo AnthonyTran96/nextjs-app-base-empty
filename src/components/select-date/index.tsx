@@ -122,7 +122,8 @@ export function SelectDate(props: SelectDateProps) {
         {defaultDropdownLabel && (
           <TextBase
             text={defaultDropdownLabel}
-            classNames={`sub-title2 !text-color-900 ${dropdownLabelClass}`}
+            preset="sub-title2"
+            className={`!text-color-900 ${dropdownLabelClass}`}
           />
         )}
         <div className={popoverClass}>{React.cloneElement(menuInstance as React.ReactElement)}</div>

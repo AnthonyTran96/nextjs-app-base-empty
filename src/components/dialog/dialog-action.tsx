@@ -36,7 +36,7 @@ const Component = (prop: ActionProps) => {
     <ButtonBase
       type={_getType}
       customContent={title}
-      classNames={`${_getClassNames}} ${className || ''}`}
+      className={`${_getClassNames} ${className || ''}`}
       leftIcon={iconLeftName}
       rightIcon={iconRightName}
       onClick={handleClick}

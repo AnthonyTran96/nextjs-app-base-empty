@@ -13,7 +13,7 @@ const LoginWrapper = ({ children }: Props) => {
         <div className="mb-20 flex items-center justify-between">
           <TextBase preset="h4" text="Login" />
           <Link href={'https://www.facebook.com/'} target="_blank">
-            <TextBase preset="body1" classNames="!text-link-500" text="Don't have an account?" />
+            <TextBase preset="body1" className="!text-link-500" text="Don't have an account?" />
           </Link>
         </div>
         {children}

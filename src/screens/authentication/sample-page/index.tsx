@@ -23,10 +23,7 @@ const SamplePagePage = () => {
   return (
     <section className="size-full p-16">
       <WrapComponentPilot>
-        <TextBase
-          text="This text should not be in Production"
-          classNames="text-20 text-error-500"
-        />
+        <TextBase text="This text should not be in Production" className="text-20 text-error-500" />
       </WrapComponentPilot>
 
       <LinearProgress />
@@ -35,7 +32,7 @@ const SamplePagePage = () => {
       <ButtonBase
         type="primary"
         customContent="Change Language"
-        classNames="m-4"
+        className="m-4"
         onClick={() =>
           setLanguageApp(currentLanguage === LANGUAGE_TYPE.vi ? LANGUAGE_TYPE.en : LANGUAGE_TYPE.vi)
         }
@@ -43,28 +40,28 @@ const SamplePagePage = () => {
       <TextBase
         t18n="text:hello"
         t18nOptions={{ name: fullName }}
-        classNames="text-20 text-error-500"
+        className="text-20 text-error-500"
       />
       <div className="title3">- Dark Mode</div>
       <ThemeToggle />
       <div className="title3">- Button Component</div>
       <div>
         {/* demo khi có customContent */}
-        <ButtonBase type="primary" customContent="Primary" classNames="m-4" />
-        <ButtonBase type="primary" disabled customContent="Disabled Primary" classNames="m-4" />
+        <ButtonBase type="primary" customContent="Primary" className="m-4" />
+        <ButtonBase type="primary" disabled customContent="Disabled Primary" className="m-4" />
 
-        <ButtonBase type="secondary" customContent="Secondary" classNames="m-4" />
-        <ButtonBase type="secondary" disabled customContent="Disabled Secondary" classNames="m-4" />
+        <ButtonBase type="secondary" customContent="Secondary" className="m-4" />
+        <ButtonBase type="secondary" disabled customContent="Disabled Secondary" className="m-4" />
 
-        <ButtonBase type="ghost" customContent="Ghost" classNames="m-4" />
-        <ButtonBase type="ghost" customContent="Disabled Ghost" disabled classNames="m-4" />
+        <ButtonBase type="ghost" customContent="Ghost" className="m-4" />
+        <ButtonBase type="ghost" customContent="Disabled Ghost" disabled className="m-4" />
 
-        <ButtonBase type="whiteGhost" customContent="White Ghost" classNames="m-4" />
+        <ButtonBase type="whiteGhost" customContent="White Ghost" className="m-4" />
         <ButtonBase
           type="whiteGhost"
           customContent="Disabled WhiteGhost"
           disabled
-          classNames="m-4"
+          className="m-4"
         />
 
         <ButtonBase
@@ -72,13 +69,13 @@ const SamplePagePage = () => {
           customContent="Primary with Icon"
           leftIcon="ICON_EDIT"
           rightIcon="ICON_ARROW_CIRCLE_UP"
-          classNames="m-4"
+          className="m-4"
         />
         <ButtonBase
           type="primary"
           customContent="Primary with Icon"
           leftIcon="ICON_EDIT"
-          classNames="m-4"
+          className="m-4"
         />
         <ButtonBase type="primary" leftIcon="ICON_EDIT" />
       </div>
@@ -159,7 +156,7 @@ const SamplePagePage = () => {
       />
       <ProgressBar
         stepTitles={['buoc 1', 'buoc 2', 'buoc 3', 'buoc 4', 'buoc 5']}
-        classNames="py-12"
+        className="py-12"
       />
       <ProgressBar
         stepTitles={['buoc 1', 'buoc 2', 'buoc 3', 'buoc 4', 'buoc 5']}
@@ -172,7 +169,7 @@ const SamplePagePage = () => {
         icon="ICON_BILL"
         onClick={() => alert('23456')}
       />
-      <InfoBox title="Thông" caption="text:copyright" icon="ICON_CHECK" classNames="w-[400px]" />
+      <InfoBox title="Thông" caption="text:copyright" icon="ICON_CHECK" className="w-[400px]" />
       <Status type={TYPE_STATUS.CONFIRM} content="23456" />
       <Status kind={KIND_STATUS.SECONDARY} type={TYPE_STATUS.CONFIRM} content="23456" />
       <Status kind={KIND_STATUS.GHOST} type={TYPE_STATUS.CONFIRM} content="23456" />

@@ -8,7 +8,7 @@ import { useMemo, useState } from 'react';
 
 export interface AppSegmentProps extends Omit<SegmentedProps, 'ref' | 'onChange'> {
   options: AppSegmentedOption[];
-  classNames?: string;
+  className?: string;
   wrapClassNames?: string;
   classNamesWithContent?: string;
   externalOnChange?: (value: SegmentedValue) => void;
@@ -25,7 +25,7 @@ export default function AppSegment({
   options,
   size = 'large',
   block = true,
-  classNames = '',
+  className = '',
   wrapClassNames,
   classNamesWithContent,
   defaultValue,
@@ -67,9 +67,9 @@ export default function AppSegment({
       '[&_.ant-segmented-thumb]:!shadow-down-m',
       '[&_.ant-segmented-thumb]:!shadow-[rgb(var(--color-black)/0.05)]'
     ];
-    classes.push(classNames);
+    classes.push(className);
     return classes.join(' ');
-  }, [classNames]);
+  }, [className]);
 
   return (
     <div className={`flex flex-col ${!block && 'items-start'} ${wrapClassNames}`}>

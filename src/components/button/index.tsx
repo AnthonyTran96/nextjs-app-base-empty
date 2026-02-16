@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { IconSvgLocal, IconSvgTypes } from 'components/icon-vec-local';
 
 export interface IdPropButton {
-  classNames?: string;
+  className?: string;
   customContent?: React.ReactNode;
   disabled?: boolean;
   heightIcon?: number; // css inline để đè lên css mặc định
@@ -32,7 +32,7 @@ const ButtonBase = (props: IdPropButton) => {
     disabled = false,
     onClick,
     styles = {},
-    classNames = '',
+    className = '',
     size = 44,
     t18n,
     t18nOptions,
@@ -57,14 +57,14 @@ const ButtonBase = (props: IdPropButton) => {
       : '';
   };
 
-  let className = '';
+  let contentClass = '';
 
   if (size === 32) {
-    className = 'text-14 font-normal leading-20';
+    contentClass = 'text-14 font-normal leading-20';
   } else if (size === 44) {
-    className = 'text-16'; // assuming 'text-15' represents 15px size
+    contentClass = 'text-16'; // assuming 'text-15' represents 15px size
   } else {
-    className = 'text-16 font-semibold leading-24';
+    contentClass = 'text-16 font-semibold leading-24';
   }
 
   return (
@@ -73,7 +73,7 @@ const ButtonBase = (props: IdPropButton) => {
       onClick={(e) => (onClick ? onClick(e) : null)}
       style={{ height: size, fontSize, ...styles }}
       disabled={disabled}
-      className={`btn_base btn_${type} ${classNames}`}
+      className={`btn_base btn_${type} ${className}`}
       onMouseEnter={() => setHoveredItem('rgb(var(--color-700)')}
       onMouseLeave={() => setHoveredItem('')}
     >
@@ -87,7 +87,7 @@ const ButtonBase = (props: IdPropButton) => {
           />
         </div>
       )}
-      <span className={className}>{content}</span>
+      <span className={contentClass}>{content}</span>
       {rightIcon && (
         <div style={{ marginLeft: content ? 8 : 0 }}>
           <IconSvgLocal

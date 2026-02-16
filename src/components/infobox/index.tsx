@@ -8,8 +8,8 @@ export interface InfoBoxProps {
   caption: string;
   icon: IconSvgTypes;
   fillIcon?: string;
-  classNames?: string;
-  iconClassnames?: string;
+  className?: string;
+  iconClassname?: string;
   onClick?: (e: any) => void;
 }
 
@@ -19,8 +19,8 @@ const InfoBox = (props: InfoBoxProps) => {
     caption = 'Caption',
     icon = 'ICON_CALL',
     fillIcon = '',
-    classNames = '',
-    iconClassnames = '',
+    className = '',
+    iconClassname = '',
     onClick
   } = props;
 
@@ -28,21 +28,21 @@ const InfoBox = (props: InfoBoxProps) => {
   return (
     <Flex
       className={`tablet:w-[302px], w-[302}px] group gap-16 rounded-radius-l border border-color-300 bg-color-50
-      p-16 duration-1000 hover:cursor-pointer hover:border-primary-500 mobile:w-full ${classNames}`}
+      p-16 duration-1000 hover:cursor-pointer hover:border-primary-500 mobile:w-full ${className}`}
       onClick={onClick}
     >
       <Flex
         justify="center"
         align="center"
-        className={`size-48 rounded-[50%] bg-color-100 duration-[1500ms] ease-out group-hover:bg-primary-300 ${iconClassnames}`}
+        className={`size-48 rounded-[50%] bg-color-100 duration-[1500ms] ease-out group-hover:bg-primary-300 ${iconClassname}`}
       >
         <IconSvgLocal fill={fillIcon} name={icon} width={K_SIZE_24} height={K_SIZE_24} />
       </Flex>
       <Flex vertical flex={1} className="gap-4 overflow-hidden">
-        <TextBase t18n={title} classNames="sub-title4 !text-14 !font-bold" />
+        <TextBase t18n={title} className="sub-title4 !text-14 !font-bold" />
         <TextBase
           t18n={caption}
-          classNames="text-12 leading-16 font-normal text-color-700 line-clamp-2"
+          className="line-clamp-2 text-12 font-normal leading-16 text-color-700"
         />
       </Flex>
     </Flex>

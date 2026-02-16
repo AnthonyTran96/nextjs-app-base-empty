@@ -26,12 +26,12 @@ const Error404Page = () => {
         <TextBase
           text="Page Not Found"
           preset="h2"
-          classNames="mt-12 px-4 text-center !text-color-800"
+          className="mt-12 px-4 text-center !text-color-800"
         />
         <TextBase
           text="The page you are looking was moved, removed, renamed, or might never exist!"
           preset="caption1"
-          classNames="px-4 text-center max-w-[356px] !text-color-700"
+          className="max-w-[356px] px-4 text-center !text-color-700"
         />
         <Link href={ROUTES.HOME_PAGE} className="mt-12">
           <Button t18n="Back To Home" type="primary" />
