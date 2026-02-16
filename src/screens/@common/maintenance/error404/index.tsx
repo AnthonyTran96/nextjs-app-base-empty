@@ -11,7 +11,6 @@ const Error404Page = () => {
     <div className="flex size-full items-center justify-center">
       <div className="flex flex-col items-center gap-8">
         <div className="mb-16 w-[300px]">
-          {/* <Error404 style={{ height: 'auto', width: 'auto' }} /> */}
           <Image
             src={error404}
             alt="error404"
@@ -30,7 +29,7 @@ const Error404Page = () => {
         />
         <TextBase
           text="The page you are looking was moved, removed, renamed, or might never exist!"
-          preset="caption1"
+          preset="body1"
           className="max-w-[356px] px-4 text-center !text-color-700"
         />
         <Link href={ROUTES.HOME_PAGE} className="mt-12">
