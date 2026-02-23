@@ -37,6 +37,14 @@
 |---|---|---|
 | Axios | ^1.6.2 | HTTP client |
 
+## UI Development & Testing
+| Technology | Version | Purpose |
+|---|---|---|
+| Storybook | ^8.6.0 | Component development & documentation |
+| @storybook/nextjs | ^8.6.0 | Next.js framework integration |
+| @storybook/addon-essentials | ^8.6.0 | Core Storybook addons (controls, docs, actions) |
+| @storybook/addon-interactions | ^8.6.0 | Interaction testing |
+
 ## Development Tools
 | Technology | Version | Purpose |
 |---|---|---|
@@ -46,6 +54,11 @@
 | @svgr/webpack | ^8.1.0 | SVG as React components |
 | Express | ^4.21.2 | Mock server |
 | tsx | ^4.19.2 | TypeScript execution (mock server) |
+
+## AI Context Documents
+| Directory | Contents |
+|---|---|
+| `ai-context/` | URD PDF + 24 Markdown files (feature-level requirements for ProfiX Phase 1) |
 
 ## Other Libraries
 - `lodash` — Utility functions
@@ -70,6 +83,8 @@ npm run build:prod   # Build with prod env
 npm run lint         # ESLint check
 npm run lint:fix     # ESLint auto-fix
 npm run prettier     # Format code
+npm run storybook    # Storybook dev server on port 6006
+npm run build-storybook  # Build static Storybook
 ```
 
 ### TypeScript Configuration
@@ -84,3 +99,4 @@ npm run prettier     # Format code
 - Console logs removed in production (except `console.error`)
 - API timeout: 1 minute
 - Request cancellation: 1 minute
+- Webpack pinned to `5.101.2` via `overrides` in `package.json` (fixes compatibility bug with `@storybook/nextjs` — webpack >=5.101.3 has a `tap` error with Next.js bundled webpack)

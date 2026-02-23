@@ -21,3 +21,20 @@ Starting a new Next.js project from scratch involves significant repetitive setu
 - **Developer experience**: Clean code, clear conventions, minimal friction
 - **End-user experience**: Fast page loads, responsive UI, smooth transitions, accessible components
 - **Maintainability**: Easy to understand, extend, and hand off to other developers
+
+## Target Product: ProfiX
+The base template is being extended to build **ProfiX** — a centralized fee management system for PVcomBank (banking). Key business domains:
+
+### User Groups
+1. **Nghiệp vụ (Maker/Checker)**: Set up product catalogs, fee schedules, and promotions
+2. **Quản trị hệ thống**: Manage users and system connections
+
+### Core Business Flows
+1. **Thu phí theo giao dịch**: Fee collection triggered by customer transactions (transfers, loan repayments, etc.)
+2. **Thu phí định kỳ**: Periodic fee collection (account management fees, annual card fees, etc.)
+
+### Feature Groups (22 features in Phase 1)
+- **PR (5)**: Fee parameter setup — product catalog, fee formulas, fee schedules, unused codes, promotions
+- **SE (4)**: Fee inquiry — tree view, by customer, history, periodic schedule
+- **OT (2)**: Workflow — pending approvals, my pending tasks
+- **SA (11)**: System admin — login/logout, password, users, roles, fee conditions, default params, job management

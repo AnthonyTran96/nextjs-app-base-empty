@@ -11,6 +11,26 @@
       "sourceType": "github",
       "computedHash": "1a2f4694384cb90d19d75354975dfb654d5c4ad230041667cb4b5b898474d7df"
     },
+    "storybook": {
+      "source": "dalestudy/skills",
+      "sourceType": "github",
+      "computedHash": "7ee1ade015bc1ed39667f772a3cb0680a58d15752309adf845b12d222c0524e2"
+    },
+    "storybook-args-controls": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "computedHash": "94daa6b5ae681620162fca6804a6104e41d59f073765c030357c52e1292f0d87"
+    },
+    "storybook-component-documentation": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "computedHash": "3bb8d6fc62be3dd7d71196985333caf5ed0a61f225bfc2389b9df793530be1b3"
+    },
+    "storybook-play-functions": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "computedHash": "2f05acd65738ce830fdbee5cd336625ecac53b6ff01fa53e37757cf5a4b8ce24"
+    },
     "storybook-story-writing": {
       "source": "thebushidocollective/han",
       "sourceType": "github",
